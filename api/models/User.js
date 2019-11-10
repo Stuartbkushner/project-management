@@ -5,12 +5,27 @@
  */
 
 module.exports = {
+  primaryKey: 'user_id',
 
   attributes: {
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+    user_id: {
+      type: 'number',
+      unique: true,
+      autoIncrement: true,
+      // required: true,
+    },
+    user_first: {
+      type: 'string',
+      // required: true,
+    },
+    user_last: {
+      type: 'string',
+      // required: true,
+    },
 
     emailAddress: {
       type: 'string',
@@ -155,17 +170,93 @@ without necessarily having a billing card.`
       example: 1502844074211
     },
 
+    slug: { 
+      type: 'string',
+      // required: true,
+    },
+
+    user_version: { 
+      type: 'number',
+      //required: true,
+    },
+
+    user_quickstart: { 
+      type: 'boolean',
+      defaultsTo: true,
+    },
+
+    contact_name: { 
+      type: 'string',
+      //required: true,
+    },
+
+    phone: { 
+      type: 'string',
+      //required: true,
+    },
+
+    contact_email: { 
+      type: 'string',
+      //required: true,
+    },
+
+    message: { 
+      type: 'string',
+      //required: true,
+    },
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
-    // n/a
+    grids: {
+      collection: 'grid',
+      via: 'user_id'
+    },
 
+    projects: {
+      collection: 'project',
+      via: 'user_id'
+    },
+
+    teams: {
+      collection: 'team',
+      via: 'members'
+    }, 
+
+    sources: {
+      collection: 'source',
+      via: 'user_id'
+    },
+
+    tiles: {
+      collection: 'tile',
+      via: 'user_id'
+    },
+
+    tags: {
+      collection: 'tag',
+      via: 'user_id'
+    },
+
+    tile_groups: {
+      collection: 'tile_group',
+      via: 'user_id'
+    },
+
+    grid_groups: {
+      collection: 'grid_group',
+      via: 'user_id'
+    },
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    // n/a
-
+    
+    user_current_group_id: {
+      model: 'team'
   },
 
+    user_active_project_id: {
+    model: 'project'
+  },
+}
 
 };
