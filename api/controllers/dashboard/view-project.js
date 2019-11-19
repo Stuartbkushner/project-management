@@ -18,8 +18,19 @@ module.exports = {
 
   fn: async function () {
 
+    project = [
+      {
+        name:'1'
+      },
+      {
+        name:'2'
+      },
+    ]
+
     // Respond with view.
-    return {};
+    return {
+      project: project
+    };
 
   }
 
