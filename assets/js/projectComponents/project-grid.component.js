@@ -18,9 +18,7 @@ parasails.registerComponent('jsTimestamp', {
   //  ╠═╝╠╦╝║ ║╠═╝╚═╗
   //  ╩  ╩╚═╚═╝╩  ╚═╝
   props: [
-    'at',// « The JS timestamp to format
-    'short',// « Whether to shorten the formatted date by not including the time of day (may only be used with timeago, and even then only applicable in certain situations)
-    'format',// « one of: 'calendar', 'timeago' (defaults to 'timeago'.  Otherwise, the "calendar" format displays data as US-style calendar dates with a four-character year, separated by dashes.  In other words: "MM-DD-YYYY")
+
   ],
 
   //  ╦╔╗╔╦╔╦╗╦╔═╗╦    ╔═╗╔╦╗╔═╗╔╦╗╔═╗
