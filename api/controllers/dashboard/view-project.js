@@ -6,7 +6,6 @@ module.exports = {
 
   description: 'Display "Project" page.',
 
-
   exits: {
 
     success: {
@@ -18,19 +17,9 @@ module.exports = {
 
   fn: async function () {
 
-    project = [
-      {
-        name:'1'
-      },
-      {
-        name:'2'
-      },
-    ]
 
     // Respond with view.
-    return {
-      project: project
-    };
+    return {};
 
   }
 

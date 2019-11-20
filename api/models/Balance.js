@@ -32,31 +32,31 @@ module.exports = {
 
     pending: {
         type: 'number',
-        description: 'amount being trasnfered to available' 
+        description: 'amount being trasnfered to available'
     },
     available : {
         type: 'number',
-        description: 'amount that can be spent' 
+        description: 'amount that can be spent'
     },
     payment : {
         type: 'number',
-        description: 'total dividend payment owed' 
+        description: 'total dividend payment owed'
     },
     ownerTokenWorth : {
         type: 'number',
-        description: 'records how much in total owner or owners tokens have been paid' 
+        description: 'records how much in total owner or owners tokens have been paid'
     },
     order : {
         type: 'number',
-        description: 'amount held for market buy/ sell orders' 
+        description: 'amount held for market buy/ sell orders'
     },
     ownershipPercent : {
         type: 'number',
-        description: 'perecntage of total supply owend but this balance' 
+        description: 'perecntage of total supply owned but this balance'
     },
     totalFunding: {
       type: 'number',
-      description: 'Total amount depositedd into this balance',
+      description: 'Total amount deposited into this balance',
 
     },
     totalSpending: {
@@ -101,7 +101,7 @@ module.exports = {
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
-    // Add eth addres of owner user or lib 
+    // Add eth addres of owner user or lib
     // owner: {
     //     model: 'address',
     //     description: 'this will be user address or libary address of smart contract that holds balance',
@@ -112,7 +112,7 @@ module.exports = {
     //     description: 'if balance is owned buy token this will be set',
 
     // },
-   
+
 
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗

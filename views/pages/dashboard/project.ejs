@@ -3,8 +3,70 @@
   <h1>TODO: Implement this page.</h1>
   <p>(See also <em>assets/styles/pages/dashboard/project.less</em>, <em>assets/js/pages/dashboard/project.page.js</em>, and <em>api/controllers/dashboard/view-project.js</em>.)</p>
 
-  <h2>Projects</h2>
-  {{Projects}}
+	<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">All Grids For Project</h3>
+				</div>
+				<table class="grid-table" id="train-table">
+					<thead>
+						<tr>
+							<th>Grid Name</th>
+							<th>Total Spending</th>
+							<th>Total Revenue</th>
+							<th>Total Payouts</th>
+							<th>Spending Balance</th>
+              <th>Pay Out Balance</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">New Grid</h3>
+				</div>
+				<div class="panel-body">
+					<form>
+						<div class="form-group">
+							<label for="grid-name">Grid Name</label>
+							<input class="form-control" id="grid-name" type="text">
+						</div>
+						<div class="form-group">
+							<label for="total-spending">Total Spending</label>
+							<input class="form-control" id="total-spending" type="text">
+						</div>
+						<div class="form-group">
+							<label for="total-revenue">Total Revenue</label>
+							<input class="form-control" id="total-revenue" type="text">
+						</div>
+						<div class="form-group">
+							<label for="total-payouts">Total Payouts</label>
+							<input class="form-control" id="total-payouts" type="text">
+						</div>
+            <div class="form-group">
+							<label for="spending-balance">Spending Balance</label>
+							<input class="form-control" id="spending-balance" type="text">
+						</div>
+            <div class="form-group">
+							<label for="pay-out-balance">Pay Out Balance</label>
+							<input class="form-control" id="pay-out-balance" type="text">
+						</div>
+						<button class="btn btn-primary" id="submit" type="submit">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
 
 </div>
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
