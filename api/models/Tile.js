@@ -29,7 +29,7 @@ module.exports = {
         type: 'string',
         required: true,
     },
-    
+
     tile_color: {
         type: 'string',
         // required: true,
@@ -68,7 +68,7 @@ module.exports = {
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
-    
+
     tags: {
         collection: 'tag',
         via: 'tiles'
@@ -77,8 +77,8 @@ module.exports = {
     annotations: {
         collection: 'source_annotation',
         via: 'tile_id'
-    }, 
-      
+    },
+
     grids: {
         collection: 'grid',
         via: 'tiles'
@@ -86,8 +86,8 @@ module.exports = {
     groups: {
         collection: 'tile_group',
         via: 'tiles'
-    }, 
-      
+    },
+
 
 
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
@@ -100,7 +100,27 @@ module.exports = {
     project_id: {
         model: 'project'
     },
-  
+
+    totalSpending: {
+      model: 'balance'
+    },
+
+    totalProfits: {
+      model: 'balance'
+    },
+
+    totalDividends: {
+      model: 'balance'
+    },
+
+    spendingBalance: {
+      model: 'balance'
+    },
+
+    dividendBalance: {
+      model: 'balance'
+    },
+
   },
 
 

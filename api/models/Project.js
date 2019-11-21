@@ -24,7 +24,7 @@ module.exports = {
       type: 'string',
       required: true,
     },
-    
+
     project_name: {
       type: 'string',
       required: true,
@@ -40,7 +40,7 @@ module.exports = {
         // required: true,
       },
 
-    project_order: { 
+    project_order: {
         type: 'number',
         // required: true,
     },
@@ -96,8 +96,28 @@ module.exports = {
     team_id: {
         model: 'team'
     },
-    
-    
+
+    totalSpending: {
+      model: 'balance'
+    },
+
+    totalProfits: {
+      model: 'balance'
+    },
+
+    totalDividends: {
+      model: 'balance'
+    },
+
+    spendingBalance: {
+      model: 'balance'
+    },
+
+    dividendBalance: {
+      model: 'balance'
+    },
+
+
   },
 
 

@@ -15,7 +15,7 @@ module.exports = {
 
     grid_id: {
       type: 'number',
-      // unique: true, 
+      // unique: true,
       autoIncrement: true,
       // required: true,
     },
@@ -23,7 +23,7 @@ module.exports = {
       type: 'string',
       required: true,
     },
-    
+
     grid_title: {
       type: 'string',
       required: true,
@@ -67,7 +67,7 @@ module.exports = {
       type: 'string',
       required: true,
     },
-    
+
 
 
 
@@ -112,6 +112,27 @@ module.exports = {
     grid_privacy_user_id: {
       model: 'user'
     },
+
+    totalSpending: {
+      model: 'balance'
+    },
+
+    totalProfits: {
+      model: 'balance'
+    },
+
+    totalDividends: {
+      model: 'balance'
+    },
+
+    spendingBalance: {
+      model: 'balance'
+    },
+
+    dividendBalance: {
+      model: 'balance'
+    },
+
   },
 
 
