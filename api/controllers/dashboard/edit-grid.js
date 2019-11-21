@@ -1,7 +1,7 @@
 module.exports = {
 
 
-  friendlyName: 'Update project',
+  friendlyName: 'Edit Grid',
 
 
   description: '',
