@@ -63,11 +63,11 @@ module.exports.routes = {
   'POST  /api/v1/deliver-contact-form-message':          { action: 'deliver-contact-form-message' },
 
   //mosaic
-  'GET /api/v1/dashboard/project': { action: 'dashboard/view-project' },
-  'GET /api/v1/dashboard/project/update': { action: 'dashboard/view-update' },
-  'POST /api/v1/dashboard/project/update': { action: 'dashboard/edit-grid' },
-  'POST /api/v1/dashboard/create-grid': { action: 'dashboard/create-grid' },
-  'GET /api/v1/dashboard/project/update/:grid_id?': { action: 'dashboard/view-update' },
-  'PATCH /api/v1/dashboard/update-project': { action: 'dashboard/update-project' },
+  'GET /project': { action: 'dashboard/view-project' },
+  'GET /project/update': { action: 'dashboard/view-update' },
+  'POST /project/update': { action: 'dashboard/edit-grid' },
+  'POST /project/create': { action: 'dashboard/create-grid' },
+  'GET /project/update/:grid_id?': { action: 'dashboard/view-update' },
+  'PATCH /project/update': { action: 'dashboard/update-project' },
 
 };
