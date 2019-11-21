@@ -1,5 +1,80 @@
 <div id="project" v-cloak>
-
-  <h2>Projects</h2>
-  {{grids}}
+  <div class="container">
+    <% if (newGrid) { %>
+      <h1>New Grid</h1>
+    <% } else { %>
+      <h1>Edit Grid</h1>
+    <% } %>
+      <hr/>
+    <% if (newGrid) { %>
+      <ajax-form action="createGrid" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm()" :handle-parsing="handleParsingForm">
+    <% } else { %>
+      <ajax-form action="editGrid" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm()" :handle-parsing="handleParsingForm">
+    <% } %>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="grid_name">Grid Name</label>
+            <input class="form-control" id="grid_name" name="grid_name" type="text"  :class="[formErrors.grid_name ? 'is-invalid' : '']" v-model.trim="formData.grid_name" placeholder="Sturgis P. Sturgeon" autocomplete="name" focus-first>
+            <div class="invalid-feedback" v-if="formErrors.grid_name">Please enter your grid's name.</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="totalSpending">Total Spending</label>
+            <input class="form-control" id="totalSpending" name="totalSpending" type="text"  :class="[formErrors.totalSpending ? 'is-invalid' : '']" v-model.trim="formData.totalSpending" placeholder="$$$" autocomplete="name">
+            <div class="invalid-feedback" v-if="formErrors.totalSpending">How much do you want to spend on this grid?</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="totalProfits">Total Profits</label>
+            <input class="form-control" id="totalProfits" name="totalProfits" type="text"  :class="[formErrors.totalProfits ? 'is-invalid' : '']" v-model.trim="formData.totalProfits" placeholder="$$$" autocomplete="name">
+            <div class="invalid-feedback" v-if="formErrors.totalProfits">How much will you make from completing this project?</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="totalProfits">Total Profits</label>
+            <input class="form-control" id="totalProfits" name="totalProfits" type="text"  :class="[formErrors.totalProfits ? 'is-invalid' : '']" v-model.trim="formData.totalProfits" placeholder="$$$" autocomplete="name">
+            <div class="invalid-feedback" v-if="formErrors.totalProfits">How much will you make from completing this project?</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="totalDividends">Total Dividends</label>
+            <input class="form-control" id="totalDividends" name="totalDividends" type="text"  :class="[formErrors.totalDividends ? 'is-invalid' : '']" v-model.trim="formData.totalDividends" placeholder="$$$" autocomplete="name">
+            <div class="invalid-feedback" v-if="formErrors.totalDividends">How much will you make in developer royalties?</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="spendingBalance">Spending Balance</label>
+            <input class="form-control" id="spendingBalance" name="spendingBalance" type="text"  :class="[formErrors.spendingBalance ? 'is-invalid' : '']" v-model.trim="formData.spendingBalance" placeholder="$$$" autocomplete="name">
+            <div class="invalid-feedback" v-if="formErrors.spendingBalance">How much will you spend?</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="dividendBalance">Spending Balance</label>
+            <input class="form-control" id="dividendBalance" name="dividendBalance" type="text"  :class="[formErrors.dividendBalance ? 'is-invalid' : '']" v-model.trim="formData.dividendBalance" placeholder="$$$" autocomplete="name">
+            <div class="invalid-feedback" v-if="formErrors.dividendBalance">How much can you pay out in royalties?</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group text-right">
+            <a class="btn btn-outline-info" href="/dashboard/projects">Cancel</a>
+            <% if (newGrid) { %>
+              <ajax-button type="submit" :syncing="syncing" class="btn btn-dark">Create Grid</ajax-button>
+            <% } else { %>
+              <ajax-button type="submit" :syncing="syncing" class="btn btn-dark">Save changes</ajax-button>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </ajax-form>
+  </div>
+</div>
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
