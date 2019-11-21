@@ -18,7 +18,7 @@ parasails.registerComponent('jsTimestamp', {
   //  ╠═╝╠╦╝║ ║╠═╝╚═╗
   //  ╩  ╩╚═╚═╝╩  ╚═╝
   props: [
-
+    'grids',
   ],
 
   //  ╦╔╗╔╦╔╦╗╦╔═╗╦    ╔═╗╔╦╗╔═╗╔╦╗╔═╗
@@ -39,22 +39,22 @@ parasails.registerComponent('jsTimestamp', {
           {{grid.grid_title}}
         </div>
         <div class="col col-md-3 total-funding">
-          {{balance_id.totalFunding}}
+          {{grid.totalFunding}}
         </div>
         <div class="col col-md-3 total-revenue">
-          {{balance_id.totalProfits}}
+          {{grid.totalProfits}}
         </div>
         <div class="col col-md-3 total-payouts">
-          {{balance_id.totalDividends}}
+          {{grid.totalDividends}}
         </div>
         <div class="col col-md-3 spending-balance">
-          {{balance_id.spendingBalance}}
+          {{grid.spendingBalance}}
         </div>
         <div class="col col-md-3 pay-out-balance">
-          {{balance_id.dividendBalance}}
+          {{grid.dividendBalance}}
         </div>
         <div class="col col-md-3 edit-grid">
-          <a class="btn" :href='#'>Edit</a>
+          <a class="btn" :href="'/dashboard/project/create'+grid_id">Edit</a>
         </div>
   `,
 

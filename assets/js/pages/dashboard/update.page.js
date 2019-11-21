@@ -23,6 +23,7 @@ parasails.registerPage('update', {
 
     // Set the form data.
     console.log(this.project);
+    this.formData.grid_id = this.formData.grid_id;
     this.formData.name = this.grid.grid_title;
     this.formData.totalSpending = this.grid.totalSpending;
     this.formData.totalProfits = this.grid.totalProfits;
