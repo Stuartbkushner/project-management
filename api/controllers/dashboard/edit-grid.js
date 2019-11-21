@@ -13,23 +13,28 @@ module.exports = {
         // required: true,
       },
       totalSpending: {
-        model: 'balance'
+        type: 'number',
+        model: 'balance',
       },
 
       totalProfits: {
-        model: 'balance'
+        type: 'number',
+        model: 'balance',
       },
 
       totalDividends: {
-        model: 'balance'
+        type: 'number',
+        model: 'balance',
       },
 
       spendingBalance: {
-        model: 'balance'
+        type: 'number',
+        model: 'balance',
       },
 
       dividendBalance: {
-        model: 'balance'
+        type: 'number',
+        model: 'balance',
       },
   },
 
