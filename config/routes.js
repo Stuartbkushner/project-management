@@ -64,5 +64,7 @@ module.exports.routes = {
 
   //mosaic
   'GET /dashboard/project': { action: 'dashboard/view-project' },
+  'POST /api/v1/dashboard/create-grid': { action: 'dashboard/create-grid' },
+  'PATCH /api/v1/dashboard/update-project': { action: 'dashboard/update-project' },
 
 };

@@ -24,7 +24,7 @@ module.exports = {
     var grids;
     // if project exists, grab the grids
     if (project_id) {
-      /*global Project, a*/
+      /*global Project, */
       grids = await Project.find().populate('grids');
       console.log(grids);
       // else, just return an empty object
