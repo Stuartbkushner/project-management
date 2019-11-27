@@ -92,14 +92,20 @@ the account verification message.)`,
       let stripeCustomerId = await sails.helpers.stripe.saveBillingInfo.with({
         emailAddress: newEmailAddress
       }).timeout(5000).retry();
-      await User.updateOne(newUserRecord.id)
+      await User.updateOne(newUserRecord.user_id)
       .set({
         stripeCustomerId
       });
     }
 
+    await User.updateOne(newUserRecord.user_id)
+      .set({
+        id:newUserRecord.user_id
+      });
+
     // Store the user's new id in their session.
-    this.req.session.userId = newUserRecord.id;
+    // this.req.session.userId = newUserRecord.id;
+    this.req.session.userId = newUserRecord.user_id;
 
     if (sails.config.custom.verifyEmailAddresses) {
       // Send "confirm account" email

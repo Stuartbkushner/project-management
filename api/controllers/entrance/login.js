@@ -103,10 +103,11 @@ and exposed as \`req.me\`.)`
         this.req.session.cookie.maxAge = sails.config.custom.rememberMeCookieMaxAge;
       }
     }//ﬁ
-
+    console.log("login userRecord",userRecord);
     // Modify the active session instance.
     // (This will be persisted when the response is sent.)
-    this.req.session.userId = userRecord.id;
+    // this.req.session.userId = userRecord.id;
+    this.req.session.userId = userRecord.user_id;
 
   }
 

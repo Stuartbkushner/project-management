@@ -5,13 +5,19 @@
  */
 
 module.exports = {
-  primaryKey: 'user_id',
+  primaryKey: 'user_id', 
 
   attributes: {
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+    // id: {
+    //   type: 'number',
+    //   // unique: true,
+    //   autoIncrement: true,
+    //   // required: true,
+    // },
     user_id: {
       type: 'number',
       unique: true,

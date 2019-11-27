@@ -66,7 +66,8 @@ module.exports = {
 
     // Log the user in.
     // (This will be persisted when the response is sent.)
-    this.req.session.userId = userRecord.id;
+    // this.req.session.userId = userRecord.id; 
+    this.req.session.userId = userRecord.user_id;
 
   }
 

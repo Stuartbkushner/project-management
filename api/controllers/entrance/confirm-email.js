@@ -130,7 +130,8 @@ then redirect to either a special landing page (for newly-signed up users), or t
         emailAddress: user.emailChangeCandidate,
         emailChangeCandidate: '',
       });
-      this.req.session.userId = user.id;
+      // this.req.session.userId = user.id;
+      this.req.session.userId = user.user_id;
       if (this.req.wantsJSON) {
         return;
       } else {
