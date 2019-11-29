@@ -12,12 +12,13 @@
  * -----------------------------------------------------------------------------
  */
 
-parasails.registerComponent('jsTimestamp', {
+parasails.registerComponent('projectGrid', {
 
   //  ╔═╗╦═╗╔═╗╔═╗╔═╗
   //  ╠═╝╠╦╝║ ║╠═╝╚═╗
   //  ╩  ╩╚═╚═╝╩  ╚═╝
   props: [
+    'id',
     'grids',
   ],
 
@@ -56,6 +57,13 @@ parasails.registerComponent('jsTimestamp', {
         <div class="col col-md-3 edit-grid">
           <a class="btn" :href="'/dashboard/project/create'+grid_id">Edit</a>
         </div>
+        <div class="col col-md-2 createdAt">
+          <js-timestamp :at="grid.createdAt"></js-timestamp>
+        </div>
+        <div class="col col-md-2 pay">
+          <button type="button" class="btn pay-btn">Pay Now</button>
+          <input class="grid_id" type="hidden" :value="grid.spending" />
+        </div>
   `,
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -67,13 +75,53 @@ parasails.registerComponent('jsTimestamp', {
   beforeDestroy: function() {
   },
 
-  watch: {
-  }
+  mounted: async function() {
+    this.bindUIActions();
+  },
 
 
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
+
+  methods: {
+
+    bindUIActions: function() {
+      var Grid = this;
+      Grid.pay();
+    },
+
+    pay: async function() {
+      var Grid = this;
+      var id = this.id;
+
+      $('#'+id+' .pay-btn').off('click').on('click', function(event){
+        event.preventDefault();
+        console.log($event.target).parents('.grid').length;
+        console.log($event.target).parents('.grid').find('.grid_id').length;
+        var gridId = ($event.target).parents('.grid').find('.grid_id').val();
+        console.log(gridId);
+        Grid.payGrid(gridId);
+      });
+    },
+
+    payGrid: async function(gridId) {
+      var Grid = this;
+      var id = this.id;
+      this.sync = true;
+
+      var csrf = await CSRF.token();
+      console.log(csrf);
+      console.log(gridId);
+      var apiRequestHeader = {
+        'X-CSRF-Token':csrf,_csrf,
+      };
+      return io.socket.request({
+        method: 'post',
+        url: '/api/v1/'
+      })
+    }
+  }
 
 
 });

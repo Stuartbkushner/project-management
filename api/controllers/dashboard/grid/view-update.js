@@ -10,7 +10,7 @@ module.exports = {
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/dashboard/project/update'
+      viewTemplatePath: 'pages/dashboard/grid/update'
     }
 
   },
