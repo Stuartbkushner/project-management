@@ -20,12 +20,12 @@ module.exports = {
   fn: async function () {
       var grids = [
         {
-          grid_id: '',
-          grid_title: ''
+          grid_id: '1',
+          grid_title: 'Grid1'
         },
         {
-          grid_id: '',
-          grid_title: ''
+          grid_id: '2',
+          grid_title: 'Grid2'
         },
       ]
 
@@ -42,12 +42,23 @@ module.exports = {
 
       var tiles = [
         {
-          tile_id: '',
-          tile_title: ''
+          tile_id: '1',
+          tile_title: 'Tile1'
         },
         {
-          tile_id: '',
-          tile_title: ''
+          tile_id: '2',
+          tile_title: 'Tile2'
+        },
+      ]
+
+      var sources = [
+        {
+          source_id: '1',
+          source_filename: 'Source1'
+        },
+        {
+          source_id: '2',
+          source_filename: 'Source2'
         },
       ]
 
@@ -55,6 +66,7 @@ module.exports = {
         grids: grids,
         projects: projects, 
         tiles: tiles, 
+        sources: sources,
       };
 
     }

@@ -99,6 +99,9 @@
       <li class="nav-item">
         <a class="nav-link" id="tile-tab" data-toggle="tab" href="#tile" role="tab" aria-controls="tile" aria-selected="false">Tiles</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" id="source-tab" data-toggle="tab" href="#source" role="tab" aria-controls="tile" aria-selected="false">Sources</a>
+      </li>
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"></div>
@@ -106,38 +109,13 @@
         <project-table id="project-table" :projects="projects"></project-table>
       </div>
       <div class="tab-pane fade" id="grid" role="tabpanel" aria-labelledby="grid-tab">
-        <table id="grid-table">
-          <thead>
-            <tr>
-              <th data-field="id">Grid ID</th>
-              <th data-field="name">Grid Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <ul id="example-1">
-              <li v-for="grid in grids">
-                {{ grids }}
-              </li>
-            </ul>
-          </tbody>
-        </table>
+        <grid-table id="grid-table" :grids="grids"></grid-table>
       </div>
       <div class="tab-pane fade" id="tile" role="tabpanel" aria-labelledby="tile-tab">
-        <table id="grid-table">
-          <thead>
-            <tr>
-              <th data-field="id">Tile ID</th>
-              <th data-field="name">Tile Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <ul id="example-1">
-              <li v-for="tile in tiles">
-                {{ tiles }}
-              </li>
-            </ul>
-          </tbody>
-        </table>
+        <tile-table id="tile-table" :tiles="tiles"></tile-table>
+      </div>
+      <div class="tab-pane fade" id="source" role="tabpanel" aria-labelledby="source-tab">
+        <source-table id="source-table" :sources="sources"></source-table>
       </div>
     </div>
   </div>
