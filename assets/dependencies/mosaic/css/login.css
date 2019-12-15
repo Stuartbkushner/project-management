@@ -1,0 +1,14 @@
+.headerWrapper {
+  margin-bottom: 20px;
+  background-color: #000;
+}
+.center {
+  text-align: center;
+}
+.container {
+  max-width: 1500px;
+  font-family: "Arial" !important;
+}
+.c3, .c2 {
+  font-family: "Arial" !important;
+}

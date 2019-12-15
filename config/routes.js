@@ -70,4 +70,49 @@ module.exports.routes = {
   'GET /dashboard/project/update/:grid_id?': { action: 'dashboard/view-update' },
   'PATCH /dashboard/project/update': { action: 'dashboard/update-project' },
 
+
+  // project
+  'POST /project/get': { action: 'project/get-project' },
+  'POST /project/getGrids': { action: 'project/get-grids' },
+
+  //grid 
+
+  'GET /grid/view': { action: 'grid/view-view' },
+  'POST /grid/get': { action: 'grid/get-grid' },
+
+  'POST /grid/saveGrid': { action: 'grid/save-grid' },
+  'POST /grid/copy': { action: 'grid/copy-grid' },
+  'POST /grid/unlock': { action: 'grid/unlock-grid' },
+  'POST /grid/lock': { action: 'grid/lock-grid' },
+  'POST /grid/setPrivacy': { action: 'grid/set-privacy' },
+  'POST /grid/saveDecision': { action: 'grid/save-decision' },
+  'POST /grid/setDecisionShown': { action: 'grid/set-decision-shown' },
+  'POST /grid/deleteGrid': { action: 'grid/delete-grid' },
+
+  // tile
+  'POST /tile/get': { action: 'tile/get-tile' },
+  'POST /tile/update': { action: 'tile/update-tile' },
+  'POST /tile/saveTileAndSource': { action: 'tile/save-tile-and-source' },
+  'POST /tile/addGridTile': { action: 'tile/add-grid-tile' },
+  'POST /tile/moveGridTile': { action: 'tile/move-grid-tile' },
+  'POST /tile/placeTileOnGrid': { action: 'tile/place-tile-on-grid' },
+  'POST /tile/editGroup': { action: 'tile/edit-group' },
+  'POST /tile/group': { action: 'tile/group' },
+  'POST /tile/ungroup': { action: 'tile/ungroup' },
+  'POST /tile/deleteTileSingle': { action: 'tile/delete-tile-single' },
+  'POST /tile/removeFromGrid': { action: 'tile/remove-from-grid' },
+  'POST /tile/copyToNewGrid': { action: 'tile/copy-to-new-grid' },
+  'POST /tile/moveToNewGrid': { action: 'tile/move-to-new-grid' },
+  'POST /tile/saveTile': { action: 'tile/save-tile' },
+  'POST /tile/starTile': { action: 'tile/star-tile' },
+  'POST /tile/ungroup': { action: 'tile/ungroup' },
+
+
+
+  'POST /tile/add2Group': { action: 'tile/add-2-group' },
+
+  "GET /csrfToken": { action: "security/grant-csrf-token" },
+
+
+
 };

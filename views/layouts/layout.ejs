@@ -40,6 +40,26 @@
     <!--STYLES-->
     <link rel="stylesheet" href="/dependencies/bootstrap-4/bootstrap-4.css">
     <link rel="stylesheet" href="/dependencies/fontawesome.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/bootstrap.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/bootstrap4.min.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/fonts.googleapis.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/global.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/jquery-ui.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/jquery-ui.custom.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/jquery.contextMenu.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/jquery.custom-scrollbar.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/jquery.Jcrop.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/jquery.tag.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/layout-default-latest.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/login.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/mosaicjunctionnew.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/reset.css">
+    <link rel="stylesheet" href="/dependencies/mosaic/css/static.css">
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
   </head>
@@ -56,6 +76,7 @@
             <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
             <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
               <a class="dropdown-item" href='/project'>Projects</a>
+              <a class="dropdown-item" href='/grid/view'>Grid</a>
               <a class="dropdown-item" href="/account">Settings</a>
               <a class="dropdown-item" href="/logout">Sign out</a>
             </div>
@@ -103,7 +124,7 @@
           <small class="nav-item"><a class="nav-link text-info" href="/logout">Sign out</a></small>
           <% } %>
         </div>
-        <small class="copy">Copyright &copy; 2018 <a target="_blank" href="NEW_APP_COMPANY_ABOUT_HREF">NEW_APP_COMPANY_NAME</a>. <br class="xs-only"/>All rights reserved.</small>
+        <small class="copy">Copyright &copy; 2018 <a target="_blank" href="NEW_APP_COMPANY_ABOUT_HREF">Mosaic Junction LLC</a>. <br class="xs-only"/>All rights reserved.</small>
       </footer>
     </div>
 
@@ -136,14 +157,63 @@
     <script src="/dependencies/vue-router.js"></script>
     <script src="/dependencies/bootstrap-4/bootstrap-4.bundle.js"></script>
     <script src="/dependencies/cloud.js"></script>
+    <script src="/dependencies/csrf.js"></script>
     <script src="/dependencies/moment.js"></script>
+    <script src="/dependencies/mosaic/ckeditor/ckeditor.js"></script>
+    <script src="/dependencies/mosaic/js/application.js"></script>
+    <script src="/dependencies/mosaic/js/clipboard.min.js"></script>
+    <script src="/dependencies/mosaic/js/contextMenu.js"></script>
+    <script src="/dependencies/mosaic/js/global.js"></script>
+    <script src="/dependencies/mosaic/js/grid.js"></script>
+    <script src="/dependencies/mosaic/js/group.js"></script>
+    <script src="/dependencies/mosaic/js/jquery-ui.js"></script>
+    <script src="/dependencies/mosaic/js/jquery.contextMenu.js"></script>
+    <script src="/dependencies/mosaic/js/jquery.dotdotdot.min.js"></script>
+    <script src="/dependencies/mosaic/js/jquery.Jcrop.js"></script>
+    <script src="/dependencies/mosaic/js/jquery.kinetic.min.js"></script>
+    <script src="/dependencies/mosaic/js/jquery.layout-latest.js"></script>
+    <script src="/dependencies/mosaic/js/jquery.tag.js"></script>
+    <script src="/dependencies/mosaic/js/jquery.tag.min.js"></script>
+    <script src="/dependencies/mosaic/js/jquery.truncate.js"></script>
+    <script src="/dependencies/mosaic/js/jquery.truncate.min.js"></script>
+    <script src="/dependencies/mosaic/js/jquery.validate.min.js"></script>
+    <script src="/dependencies/mosaic/js/layout.js"></script>
+    <script src="/dependencies/mosaic/js/login.js"></script>
+    <script src="/dependencies/mosaic/js/outline.js"></script>
+    <script src="/dependencies/mosaic/js/owl.carousel.min.js"></script>
+    <script src="/dependencies/mosaic/js/pile.js"></script>
+    <script src="/dependencies/mosaic/js/public_view.js"></script>
+    <script src="/dependencies/mosaic/js/public.js"></script>
+    <script src="/dependencies/mosaic/js/published.js"></script>
+    <script src="/dependencies/mosaic/js/source.js"></script>
+    <script src="/dependencies/mosaic/js/template.js"></script>
+    <script src="/dependencies/mosaic/js/textlayerbuilder.js"></script>
+    <script src="/dependencies/mosaic/js/tile.js"></script>
     <script src="/dependencies/parasails.js"></script>
     <script src="/js/cloud.setup.js"></script>
     <script src="/js/components/ajax-button.component.js"></script>
     <script src="/js/components/ajax-form.component.js"></script>
+    <script src="/js/components/grids/grid-nav.component.js"></script>
+    <script src="/js/components/grids/grid-wrapper.component.js"></script>
+    <script src="/js/components/grids/modals/decision-modals.component.js"></script>
+    <script src="/js/components/grids/modals/grid-modals.component.js"></script>
+    <script src="/js/components/grids/modals/group-modals.component.js"></script>
+    <script src="/js/components/grids/modals/outline-modals.component.js"></script>
+    <script src="/js/components/grids/modals/project-modals.component.js"></script>
+    <script src="/js/components/grids/modals/publish-modals.component.js"></script>
+    <script src="/js/components/grids/modals/source-modals.component.js"></script>
+    <script src="/js/components/grids/modals/team-modals.component.js"></script>
+    <script src="/js/components/grids/modals/template-modals.component.js"></script>
+    <script src="/js/components/grids/modals/tile-modals.component.js"></script>
+    <script src="/js/components/grids/modals/tutorial-modals.component.js"></script>
+    <script src="/js/components/grids/pile.component.js"></script>
     <script src="/js/components/js-timestamp.component.js"></script>
     <script src="/js/components/modal.component.js"></script>
+    <script src="/js/components/tiles/color-box.component.js"></script>
     <script src="/js/utilities/open-stripe-checkout.js"></script>
+    <script src="/js/mosaic/navigation.js"></script>
+    <script src="/js/mosaic/project.js"></script>
+    <script src="/js/mosaic/user.js"></script>
     <script src="/js/pages/498.page.js"></script>
     <script src="/js/pages/account/account-overview.page.js"></script>
     <script src="/js/pages/account/edit-password.page.js"></script>
@@ -158,6 +228,7 @@
     <script src="/js/pages/entrance/new-password.page.js"></script>
     <script src="/js/pages/entrance/signup.page.js"></script>
     <script src="/js/pages/faq.page.js"></script>
+    <script src="/js/pages/grid/view.page.js"></script>
     <script src="/js/pages/homepage.page.js"></script>
     <script src="/js/pages/legal/privacy.page.js"></script>
     <script src="/js/pages/legal/terms.page.js"></script>
