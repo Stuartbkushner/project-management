@@ -18,8 +18,44 @@ module.exports = {
 
 
   fn: async function () {
+    var grids = [
+      {
+        grid_id: '',
+        grid_title: ''
+      },
+      {
+        grid_id: '',
+        grid_title: ''
+      },
+    ]
 
-    return {};
+    var projects = [
+      {
+        project_id: '',
+        project_name: ''
+      },
+      {
+        project_id: '',
+        project_name: ''
+      },
+    ]
+
+    var tiles = [
+      {
+        tile_id: '',
+        tile_title: ''
+      },
+      {
+        tile_id: '',
+        tile_title: ''
+      },
+    ]
+
+    return {
+      grids: grids,
+      projects: projects,
+      tiles: tiles,
+    };
 
   }
 

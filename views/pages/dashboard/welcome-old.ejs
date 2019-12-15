@@ -1,44 +1,4 @@
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="project-tab" data-toggle="tab" href="#project" role="tab" aria-controls="project" aria-selected="false">Projects</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="grid-tab" data-toggle="tab" href="#grid" role="tab" aria-controls="grid" aria-selected="false">Grids</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="tile-tab" data-toggle="tab" href="#tile" role="tab" aria-controls="tile" aria-selected="false">Tiles</a>
-  </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"></div>
-  <div class="tab-pane fade" id="project" role="tabpanel" aria-labelledby="project-tab">
-    <ul id="example-1">
-      <li v-for="project in projects">
-        {{ projects }}
-      </li>
-    </ul>
-  </div>
-  <div class="tab-pane fade" id="grid" role="tabpanel" aria-labelledby="grid-tab">
-    <ul id="example-1">
-      <li v-for="grid in grids">
-        {{ grids }}
-      </li>
-    </ul>
-  </div>
-  <div class="tab-pane fade" id="tile" role="tabpanel" aria-labelledby="tile-tab">
-    <ul id="example-1">
-      <li v-for="tile in tiles">
-        {{ tiles }}
-      </li>
-    </ul>
-  </div>
-</div>
-
-
-<!-- <div id="welcome">
+<div id="welcome">
   <div class="container">
     <h1>Welcome!</h1>
     <hr/>
@@ -49,12 +9,12 @@
     </div>
   </div>
 
-  <router-view></router-view> -->
+  <router-view></router-view>
 
   <!--  ╔═╗═╗ ╦╔═╗╔╦╗╔═╗╦  ╔═╗  ┌┬┐┌─┐┌┬┐┌─┐┬
         ║╣ ╔╩╦╝╠═╣║║║╠═╝║  ║╣   ││││ │ ││├─┤│
         ╚═╝╩ ╚═╩ ╩╩ ╩╩  ╩═╝╚═╝  ┴ ┴└─┘─┴┘┴ ┴┴─┘  -->
-  <!-- <modal class="example-modal" v-if="modal==='example'" @close="closeExampleModal()" v-cloak>
+  <modal class="example-modal" v-if="modal==='example'" @close="closeExampleModal()" v-cloak>
     <div class="modal-header">
       <h2 class="modal-title">Example modal</h2>
       <p>At your leisure, please peruse this excerpt from a whale of a tale.</p>
@@ -138,5 +98,5 @@
       <button type="button" data-dismiss="modal" class="btn btn-outline-info">Cancel</button>
     </div>
   </modal>
-</div> -->
+</div>
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
