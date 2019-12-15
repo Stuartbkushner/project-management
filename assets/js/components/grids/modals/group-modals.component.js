@@ -30,7 +30,7 @@ parasails.registerComponent('group-modals', {
   //  ╠═╣ ║ ║║║║
   //  ╩ ╩ ╩ ╩ ╩╩═╝
   template: `
-    <div class="modal" >
+    <div class="modal"  group_modal>
         <div class="header unselectable"><div class="modalCloseButton">X</div></div>
         <div class="content">
             <input type="hidden" value="1" class="groupBorderInput">

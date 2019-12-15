@@ -1673,7 +1673,7 @@ reloadGrids: async function() {
       $.ajax({
         type: "POST",
         headers :apiRequestHeader,
-        url: '/grid/getGrids',
+        url: '/project/getGrids',
         data: {
           project_id : User.data.settings.current_project_id
         },

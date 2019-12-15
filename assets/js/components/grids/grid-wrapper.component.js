@@ -45,6 +45,7 @@ parasails.registerComponent('grid-wrapper', {
         <div class="gridInnerWrapper">
             <div class="grid"></div>
         </div>
+        <div>
     </div>
   
   `,
@@ -56,13 +57,13 @@ parasails.registerComponent('grid-wrapper', {
 
   },
   mounted: function(){
-    Grid = this;
-    grid = Grid.grid;
+    GridWrapper = this;
+    grid = GridWrapper.grid;
     console.log("grid wrapper grid",grid);
     console.log("grid wrapper User",User);
     // console.log("grid wrapper Tile",Tile);
 
-    Grid.renderGrid(grid);
+    GridWrapper.renderGrid(grid);
 
   },
 
@@ -71,8 +72,8 @@ parasails.registerComponent('grid-wrapper', {
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
     init: function() {
-        Grid = this;
-        Grid.watchActivity();
+        GridWrapper = this;
+        GridWrapper.watchActivity();
     },
     
     // should proabably get called to load all projects grids
@@ -450,13 +451,13 @@ parasails.registerComponent('grid-wrapper', {
     
     
     bindUIActions: function() {
-      var Grid = this;
+      var GridWrapper = this;
       $(".editDecisionBtn").on("click", function() {
-        Grid.setDecision();
+        GridWrapper.setDecision();
       });
     
       $(".gridDecision .modalCloseButton").on("click", function() {
-        $.when(Grid.setDecisionShown(0)).done(function() {
+        $.when(GridWrapper.setDecisionShown(0)).done(function() {
           $(".gridDecision").hide();
         });
       });
@@ -480,13 +481,13 @@ parasails.registerComponent('grid-wrapper', {
     
             //ui.helper.remove();
     
-            var target_coordinates = Grid.getCellCoordinatesByCursorPosition(event.clientX,event.clientY);
+            var target_coordinates = GridWrapper.getCellCoordinatesByCursorPosition(event.clientX,event.clientY);
             var target_coords_array = target_coordinates.split(",");
             if(target_coords_array[0] == 0 || target_coords_array[1] == 0)
             {
               return;
             }
-            var tile_position = Grid.getPositionByCoordinates(target_coordinates);
+            var tile_position = GridWrapper.getPositionByCoordinates(target_coordinates);
     
             var rendered_tile = ui.draggable;
     
@@ -521,7 +522,7 @@ parasails.registerComponent('grid-wrapper', {
             {
               new_tile.find(".template_header_template_id").val(Template.getOpenTemplate());
               // new_tile.find(".template_header_grid_id").val(Grid.getActiveGridID());
-              new_tile.find(".template_header_grid_id").val(Grid.id);
+              new_tile.find(".template_header_grid_id").val(GridWrapper.id);
               new_tile.removeClass("draggableTemplateHeader");
             }
     
