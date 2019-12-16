@@ -146,21 +146,30 @@ parasails.registerComponent('pile', {
   
   },
   
-    reloadPile: function() {
-        $.ajax({
-        type: "POST",
-        url: '/action?action=getPile',
-        data: {
-          project_id: User.data.settings.current_project_id
-        },
-        success: function(data) 
-        {
-          User.data.pile_tiles = data;
-          Pile.loadPile(User.data.pile_tiles);
-        },
-        dataType: 'json'
-        });
-    },
+  reloadPile: async function() {
+      console.log('get tile CSRF',CSRF);
+      var csrf = await CSRF.token();
+      var apiRequestHeader = {
+        'X-CSRF-Token':csrf._csrf,
+          // 'cookie':cookie
+      };
+      console.log('csrf',csrf);
+      console.log('pile componet js reloadPile User',User);
+      $.ajax({
+      headers :apiRequestHeader,
+      type: "POST",
+      url: '/tile/getPile',
+      data: {
+        project_id: User.data.settings.current_project_id
+      },
+      success: function(data) 
+      {
+        User.data.pile_tiles = data;
+        Pile.loadPile(User.data.pile_tiles);
+      },
+      dataType: 'json'
+      });
+  },
   
   
     filterActiveTiles: function(tiles) {

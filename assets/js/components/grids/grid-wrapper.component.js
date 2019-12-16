@@ -45,7 +45,7 @@ parasails.registerComponent('grid-wrapper', {
         <div class="gridInnerWrapper">
             <div class="grid"></div>
         </div>
-        <div>
+        
     </div>
   
   `,

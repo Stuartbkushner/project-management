@@ -4,14 +4,13 @@ grid component
         delete tile
 
     bugs
-        edit tile submit after math
-        getPile end point
+        //edit tile submit after math
+        //getPile end point
         remove from grid needs grid tile id
         copy to new grid, move to new grid
             reload grids after math  reload grid doesnt work
                 User.data.settings.current_project_id
-        group 
-            doesnt do any thing
+   
 
 
 RoadMap
