@@ -15,6 +15,8 @@ module.exports.routes = {
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
   'GET /':                   { action: 'view-homepage-or-redirect' },
   'GET /welcome/:unused?':   { action: 'dashboard/view-welcome' },
+  'GET /project/:unused?':   { action: 'dashboard/view-project' },
+
 
   'GET /faq':                { view:   'pages/faq' },
   'GET /legal/terms':        { view:   'pages/legal/terms' },
@@ -119,7 +121,6 @@ module.exports.routes = {
   'POST /tile/add2Group': { action: 'tile/add-2-group' },
 
   "GET /csrfToken": { action: "security/grant-csrf-token" },
-
 
 
 };
