@@ -200,7 +200,7 @@ User = {
     });  
   },
   submitFeedback: function(name,email,content) {
-    ga('send', 'event', 'User', 'submit feedback', email);
+    console.log('send', 'event', 'User', 'submit feedback', email);
 	  $.ajax({
 		    type: "POST",
 		    url: '/action?action=submitFeedback',

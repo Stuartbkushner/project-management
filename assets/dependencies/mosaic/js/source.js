@@ -195,7 +195,7 @@ viewSource: function(source_id,page_num) {
             Source.modal = modal;
             Source.page_count = Source.source.pages.length;
             source_annotations= new Array();
-            ga('send', 'event', 'Sources', 'view', Source.source.source_title, Source.source.source_id);
+            console.log('send', 'event', 'Sources', 'view', Source.source.source_title, Source.source.source_id);
             var webpage_url = "";
             if(Source.source.source_url !== "" && Source.source.source_url !== 0 && Source.source.source_url !== '0')
             {
@@ -351,7 +351,7 @@ loadLeftNav: function(tiles,modal) {
           },
           success: function(data) 
           {
-            ga('send', 'event', 'Sources', 'delete', data.source_title, data.source_id);
+            console.log('send', 'event', 'Sources', 'delete', data.source_title, data.source_id);
 
           },
           dataType: 'json'
@@ -501,7 +501,7 @@ loadLeftNav: function(tiles,modal) {
           },
           success: function(data) 
           {
-            ga('send', 'event', 'Sources', 'edit', data.source_title, data.source_id);
+            console.log('send', 'event', 'Sources', 'edit', data.source_title, data.source_id);
 
           },
           dataType: 'json'

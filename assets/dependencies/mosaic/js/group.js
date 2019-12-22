@@ -23,7 +23,7 @@ Group = {
 
 
 	declineInvitation: function(team_invite_id) {
-       ga('send', 'event', 'Teams', 'decline invitation', 'decline invitation', team_invite_id);
+       console.log('send', 'event', 'Teams', 'decline invitation', 'decline invitation', team_invite_id);
 	  return $.ajax({
 	      type: "POST",
 	      url: '/action?action=declineInvitation',
@@ -35,7 +35,7 @@ Group = {
 	},
 
 	acceptInvitation: function(team_invite_id) {
-       ga('send', 'event', 'Teams', 'accept invitation', 'accept invitation', team_invite_id);
+       console.log('send', 'event', 'Teams', 'accept invitation', 'accept invitation', team_invite_id);
 	  return $.ajax({
 	      type: "POST",
 	      url: '/action?action=acceptInvitation',
@@ -134,7 +134,7 @@ Group = {
 												    $.when(Group.makeTeamOwner(group.team_id,member.user_id ) ).done(function(data) {
 														view_groups_modal.remove();
 														Group.viewGroup();
-      													ga('send', 'event', 'Teams', 'change owener', group.team_name+' - '+ group.team_id, member.user_id);
+      													console.log('send', 'event', 'Teams', 'change owener', group.team_name+' - '+ group.team_id, member.user_id);
 
 													});
 												}
@@ -152,7 +152,7 @@ Group = {
 												    $.when(Group.removeTeamMember(group.team_id,member.user_id ) ).done(function(data) {
 														view_groups_modal.remove();
 														Group.viewGroup();
-      													ga('send', 'event', 'Teams', 'remove member', group.team_name+' - '+ group.team_id, member.user_id);
+      													console.log('send', 'event', 'Teams', 'remove member', group.team_name+' - '+ group.team_id, member.user_id);
 
 													});
 												}
@@ -178,7 +178,7 @@ Group = {
 												    $.when(Group.leaveTeam(member.team_user_id ) ).done(function(data) {
 														view_groups_modal.remove();
 														Group.viewGroup();
-      													ga('send', 'event', 'Teams', 'remove team', group.team_name+' - '+ group.team_id, member.user_id);
+      													console.log('send', 'event', 'Teams', 'remove team', group.team_name+' - '+ group.team_id, member.user_id);
 
 													});
 												}
@@ -223,7 +223,7 @@ Group = {
 												    $.when(Group.removeTeam(group.team_id ) ).done(function(data) {
 														view_groups_modal.remove();
 														Group.viewGroup();
-      													ga('send', 'event', 'Teams', 'delete', group.team_name+' - '+ group.team_id,group.team_id );
+      													console.log('send', 'event', 'Teams', 'delete', group.team_name+' - '+ group.team_id,group.team_id );
 
 													});
 												}
@@ -264,7 +264,7 @@ Group = {
 
 
 	sendInvite: function(group_id, invitee_email) {
-       ga('send', 'event', 'Teams', 'send invite', invitee_email, User.data.user_id);
+       console.log('send', 'event', 'Teams', 'send invite', invitee_email, User.data.user_id);
 	  return $.ajax({
 	      type: "POST",
 	      url: '/action?action=inviteUserToGroup',
@@ -277,7 +277,7 @@ Group = {
 	},
 
 	editGroup: function(group_id, group_name) {
-        ga('send', 'event', 'Teams', 'edit', group_name, group_id);
+        console.log('send', 'event', 'Teams', 'edit', group_name, group_id);
 		$(".viewGroupsModal").filter(":visible").remove();
 
 		var new_group_modal = $("#new_group_modal").mj_modal();
@@ -296,7 +296,7 @@ Group = {
 	},
 
 	getGroups: function() {
-       ga('send', 'event', 'Teams', 'get', 'Get user teams', User.data.user_id);
+       console.log('send', 'event', 'Teams', 'get', 'Get user teams', User.data.user_id);
 
 	  return $.ajax({
 	      type: "POST",
@@ -325,7 +325,7 @@ Group = {
 
 
 	saveGroup: function(team_name, team_id) {
-      ga('send', 'event', 'Teams', 'save', team_name, team_id);
+      console.log('send', 'event', 'Teams', 'save', team_name, team_id);
 
 	  return $.ajax({
 	      type: "POST",

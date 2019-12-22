@@ -32,7 +32,7 @@ parasails.registerComponent('sourceModals', {
   template: `
     <div class=" sourceModals">
       <!-- start new source modal -->
-        <div class="modal newSourceModal">
+        <div id="new_source_modal" class="modal newSourceModal">
             <div class="header unselectable"><div class="modalCloseButton">X</div></div>
             <div class="content">
                 <div class="newSourceRight">

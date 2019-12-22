@@ -29,16 +29,7 @@ module.exports = {
         },
       ]
 
-      var projects = [
-        {
-          project_id: '1',
-          project_name: 'Name1'
-        },
-        {
-          project_id: '2',
-          project_name: 'Name2'
-        },
-      ]
+      var projects = await Project.find();
 
       var tiles = [
         {

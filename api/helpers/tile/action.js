@@ -25,7 +25,7 @@ module.exports = {
     var action = inputs.action;
     var req = inputs.req;
     var result = inputs.result;
-    var post = inputs.req;
+    var post = inputs.req.body;
     user_id = req.me ? req.me.user_id : 0;
 
 
