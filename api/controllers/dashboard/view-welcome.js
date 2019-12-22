@@ -51,13 +51,49 @@ module.exports = {
           source_id: '2',
           source_filename: 'Source2'
         },
-      ]
+      ];
+
+
+      var public = true;
+      var user = {
+        active_tab_type: "project",
+        author: {user_first: "Mosaic", user_last: "Junction", user_id: "0", slug: "", invite_cnt: "0", },
+        contact_email: undefined,
+        contact_name: undefined,
+        grid_groups_dict: {},
+        invite_cnt: "0",
+        message: undefined,
+        name: "Mosaic Junction",
+        phone: undefined,
+        projects:  [],
+        public: public,
+        settings: {current_project_id: 1, outline_cnt: 0, publish_cnt: 0, timer: 0},
+        slug: "",
+        state: "public",
+        state_data: {
+        },
+        team_id: "0",
+        team_leader_id: "0",
+        team_slug: "0",
+        url: "",
+        user_first: "Mosaic",
+        user_id: "0",
+        user_last: "Junction",
+        username: "MosaicJunction",
+        active_grid : {},
+        global_grid_groups : { 
+          templates : [],
+        }
+      }
+  
 
       return {
         grids: grids,
         projects: projects, 
         tiles: tiles, 
         sources: sources,
+        user: user,
+        public: public,
       };
 
     }
