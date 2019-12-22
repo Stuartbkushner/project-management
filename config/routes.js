@@ -79,8 +79,12 @@ module.exports.routes = {
 
 
   // project
+  'POST /project/saveProject': { action: 'project/save-project' },
+  'POST /project/deleteProject': { action: 'project/delete-project' },
   'POST /project/get': { action: 'project/get-project' },
   'POST /project/getGrids': { action: 'project/get-grids' },
+
+  'GET /project/:projectSlug?': { action: 'project/view-project' },
 
   //grid 
 

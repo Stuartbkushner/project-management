@@ -1,13 +1,28 @@
 module.exports = {
 
 
-  friendlyName: 'Project Action',
+  friendlyName: 'Tile Action',
 
 
-  description: 'Project Action.',
+  description: 'Tile Action.',
 
 
   inputs: {
+    action: {
+      description: 'action of grid',
+      required: true,
+      type: "string",
+    },
+    req: {
+        description: 'req object posted',
+        required: true,
+        type: "ref",
+    },
+    result: {
+        description: 'req object posted',
+        type: "ref",
+        defaultsTo: {},
+    },
 
   },
 
@@ -25,7 +40,7 @@ module.exports = {
     var action = inputs.action;
     var req = inputs.req;
     var result = inputs.result;
-    var post = inputs.req;
+    var post = inputs.req.body;
     user_id = req.me ? req.me.user_id : 0;
 
     switch(action) {

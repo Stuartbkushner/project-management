@@ -1,6 +1,7 @@
 Navigation = {
 
 	init: function() {
+		console.log("navigation init called");
 
 	    this.populateProjectsList(User.data.projects);
 	    this.bindUIActions();
@@ -403,6 +404,7 @@ Navigation = {
 	},
 
 	bindUIActions: function() {
+		console.log("navigation bindUIActions called")
 
 		$(".myGroupsContainer a").on("click", function() {
 			if(User.data.public > 0){
@@ -411,8 +413,12 @@ Navigation = {
 				Group.viewGroup();
 			}
 		});
+		$("#new_team_button").on("click", function() {
+			Group.viewGroup();
+		});
 
 		$("#new_project_button").on("click", function() {
+			console.log("navigation bindUIActions new project button clicked")
 			Project.newProject();
 		});
 

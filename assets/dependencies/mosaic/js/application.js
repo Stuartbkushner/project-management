@@ -5,6 +5,7 @@ Application = {
 
 
   init: function(user) {
+    console.log("application init called",user);
     var state = user.state;
     var state_data = user.state_data;
     global_tiles = new Array();

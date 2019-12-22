@@ -150,7 +150,7 @@ loadProject: function(project_id) {
         Navigation.showAllItems();
         Navigation.updateFrames();
 		Project.loadDashboard();
-    	ga('send', 'event', 'Projects', 'load Project', project.project_name, project.project_id);
+    	console.log('send', 'event', 'Projects', 'load Project', project.project_name, project.project_id);
         $('.headerCurrentProject').html(data.project_name);
 
 	});
@@ -161,7 +161,7 @@ getProject: function(project_id) {
 	return $.ajax({
       type: "POST",
       dataType: 'json',
-      url: '/action?action=getProject',
+      url: '/project/getProject',
       data: {
         project_id: project_id
       }
@@ -206,7 +206,7 @@ editProject: function(project,rendered_element) {
 			alert('Please Name Your Project');
 		}else{
 			project.project_description = modal.find(".description").val();
-			ga('send', 'event', 'Projects', 'edit', project.project_name, project.project_id);
+			console.log('send', 'event', 'Projects', 'edit', project.project_name, project.project_id);
 			$.when(Project.save(project)).done(function(data) {
 				project = data;
 				rendered_element.find(".listItemTitle").html(project.project_name.trimToLength(40));
@@ -259,7 +259,7 @@ activateSave: function(modal) {
 			project.project_description = modal.find(".description").val();
 			$.when(Project.save(project)).done(function(data) {
 				project = data;
-				ga('send', 'event', 'Projects', 'save', project.project_name, project.project_id);
+				console.log('send', 'event', 'Projects', 'save', project.project_name, project.project_id);
 				$("#project_list").prepend(Project.renderProjectAsListItem(project));
 				var project_as_object = {
 					"project_id":project.project_id,
@@ -304,46 +304,26 @@ activateSave: function(modal) {
 },
 
 save: async function(project) {
-	// return $.ajax({
-    //   type: "POST",
-    //   url: '/action?action=saveProject',
-    //   dataType:'JSON',
-    //   data: {
-    //     project_id: project.project_id,
-    //     project_name: project.project_name,
-    //     project_description: project.project_description
-    //   }
-	// });
-	var data = {
-        project_id: project.project_id,
-        project_name: project.project_name,
-        project_description: project.project_description
-      }
 	var csrf = await CSRF.token();
        console.log('csrf',csrf);
     //    console.log('form_id',form_id);
-       console.log('data',data); //data in json format
+       console.log('project',project); //data in json format
 	var action = "saveProject";
        var apiRequestHeader = {
          'X-CSRF-Token':csrf._csrf,
            // 'cookie':cookie
        };
-      return io.socket.request({
-       method: 'post',
-       url: '/app/action/'+action,
-       data: data,
-       headers: apiRequestHeader
-     }, function (resData, jwres) {
-       console.log(resData); // => e.g. 403
-      
-       if (jwres.error) {
-         console.log(jwres.statusCode); // => e.g. 403
-         return;
-       }
-    
-       console.log(jwres.statusCode); // => e.g. 200
-    
-     });
+	return $.ajax({
+	  type: "POST",
+	  headers:apiRequestHeader,
+      url: '/project/saveProject',
+      dataType:'JSON',
+      data: {
+        project_id: project.project_id,
+        project_name: project.project_name,
+        project_description: project.project_description
+      }
+	});
 
 },
 
@@ -352,13 +332,13 @@ deleteProject: function(project_id) {
 	$('.tab_project_' + project_id).remove();
       $.ajax({
       type: "POST",
-      url: '/action?action=deleteProject',
+      url: '/project/deleteProject',
       data: {
         project_id: project_id
       },
       success: function(data) 
       {
-			ga('send', 'event', 'Projects', 'delete', data.project_name, data.project_id);
+			console.log('send', 'event', 'Projects', 'delete', data.project_name, data.project_id);
 	      	var new_projects = User.data.projects.filter(function(project) {
 	      		return project.project_id != project_id;
 	      	});

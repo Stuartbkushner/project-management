@@ -40,7 +40,7 @@ module.exports = {
     var action = inputs.action;
     var req = inputs.req;
     var result = inputs.result;
-    var post = inputs.req;
+    var post = inputs.req.body;
     var user_id = req.me ? req.me.user_id : 0;
     var team_id = req.session.team_id ? req.session.team_id: 0;
 
