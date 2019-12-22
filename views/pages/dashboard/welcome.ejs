@@ -34,6 +34,28 @@
       </div>
     </div>
   </div>
+  
+  <button id="new_project_button" class="btn">New Project</button>
+  <button id="new_grid_button" class="btn">New Grid</button>
+  <button id="new_source_button" class="btn">New Source</button>
+  <button id="new_outline_button" class="btn">New Outline</button>
+  <button id="new_published_button" class="btn">Publish Grid</button>
+  <button id="new_template_button" class="btn">New Template</button>
+  <button id="new_team_button" class="btn">New Team</button>
+  <button id="edit_source_button" class="btn" onClick="Source.editSource(1,'test','test')">Edit Source</button>
+  <button id="edit_project_button" class="btn" onClick="Project.editProject({project_id:1,project_name:'test',project_description:'test' },{})">Edit Project</button>
+
+
+  <grid-modals id="grid_modals"></grid-modals>
+  <group-modals id="group_modals"></group-modals>
+  <outline-modals id="outline_modals"></outline-modals>
+  <project-modals id="project_modals"></project-modals>
+  <publish-modals id="publish_modals"></publish-modals>
+  <source-modals id="source_modals"></source-modals>
+  <team-modals id="team_modals"></team-modals>
+  <template-modals id="template_modals"></template-modals>
+  <tile-modals id="tile_modals" ></tile-modals>
+  <tutorial-modals id="tutorial_modals" ></tutorial-modals>
 
   <router-view></router-view>
 

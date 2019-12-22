@@ -1663,38 +1663,41 @@ deleteGrid: async function(grid_id) {
 },
 
 reloadGrids: async function() {
-      console.log('get tile CSRF',CSRF);
-      var csrf = await CSRF.token();
-      var apiRequestHeader = {
-          'X-CSRF-Token':csrf._csrf,
-          // 'cookie':cookie
-      };
-      console.log('csrf',csrf);
-      $.ajax({
-        type: "POST",
-        headers :apiRequestHeader,
-        url: '/project/getGrids',
-        data: {
-          project_id : User.data.settings.current_project_id
-        },
-        success: function(project) 
-        {
-          var grids = project.grids;
-          User.data.grid_groups = project.grid_groups;
-          User.data.grids = grids;
-          $.each(project.grid_groups, function(index,grid_group) {
-            Grid.loadGridGroupDict(grid_group);
-          });
-          
-          Grid.loadGrids(grids);
-          Grid.reloadTemplatePage();
-          if(Navigation.getActiveTabType() == "project_dashboard")
+      if(User.data.settings.current_project_id){
+
+        console.log('get tile CSRF',CSRF);
+        var csrf = await CSRF.token();
+        var apiRequestHeader = {
+            'X-CSRF-Token':csrf._csrf,
+            // 'cookie':cookie
+        };
+        console.log('csrf',csrf);
+        $.ajax({
+          type: "POST",
+          headers :apiRequestHeader,
+          url: '/project/getGrids',
+          data: {
+            project_id : User.data.settings.current_project_id
+          },
+          success: function(project) 
           {
-              Project.loadDashboard();
-          }
-        },
-        dataType: 'json'
-      });
+            var grids = project.grids;
+            User.data.grid_groups = project.grid_groups;
+            User.data.grids = grids;
+            $.each(project.grid_groups, function(index,grid_group) {
+              Grid.loadGridGroupDict(grid_group);
+            });
+            
+            Grid.loadGrids(grids);
+            Grid.reloadTemplatePage();
+            if(Navigation.getActiveTabType() == "project_dashboard")
+            {
+                Project.loadDashboard();
+            }
+          },
+          dataType: 'json'
+        });
+      }
 
 },
 
