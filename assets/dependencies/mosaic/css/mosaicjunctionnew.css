@@ -566,7 +566,7 @@ select > option {
 	/* display: table-cell; */
 	height: 1100px;
 	/* overflow: auto; */
-	position: fixed;
+	/* position: fixed; */
 	overflow: auto;
 	width: 100%;
 }

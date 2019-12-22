@@ -5,14 +5,30 @@
   {{grid}}
   <div class="bodyContainer">
     <div class="bodyWrapper">
-      
-      <div class="appTable">
-        <grid-nav id="grid-nav"></grid-nav>
-        <pile id="pile"></pile>
-        <grid-wrapper id="grid-wrapper" :grid="grid"></grid-wrapper>
-
-        
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link tab active" id="projcts-tab" data-toggle="tab" href="#projcts" role="tab" aria-controls="projcts" aria-selected="true">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link tab" id="grids-tab" data-toggle="tab" href="#grids" role="tab" aria-controls="grids" aria-selected="false">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link tab" id="tiles-tab" data-toggle="tab" href="#tiles" role="tab" aria-controls="tiles" aria-selected="false">Contact</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="projcts" role="tabpanel" aria-labelledby="projcts-tab">...</div>
+        <div class="tab-pane fade" id="grids" role="tabpanel" aria-labelledby="grids-tab">
+          <div class="appTable">
+            <grid-nav id="grid-nav"></grid-nav>
+            <pile id="pile"></pile>
+            <grid-wrapper id="grid-wrapper" :grid="grid"></grid-wrapper>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="tiles" role="tabpanel" aria-labelledby="tiles-tab">...</div>
       </div>
+      
+      
 
 
     </div>

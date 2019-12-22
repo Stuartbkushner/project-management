@@ -1,16 +1,16 @@
 module.exports = {
 
 
-  friendlyName: 'Get grid',
+  friendlyName: 'Get project',
 
 
-  description: 'Get the grid for the logged-in user.',
+  description: 'Get the project for the logged-in user.',
 
 
   inputs: {
 
     project_id: {
-      description: 'The new, unencrypted grid.',
+      description: 'The new, unencrypted project.',
       example: 'abc123v2',
       required: true
     }
@@ -20,19 +20,19 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    var grid_id =  inputs.grid_id
-    //get grid
-    console.log("get grid inputs",inputs);
-    var grid = {
-        grid_id : 1,
-        grid_title : "Test Data",
-        grid_type : "grid",
-        grid_version : 0,
-        grid_version : 0,
-        grid_version : 0,
-        grid_lock_user_id : 0,
-        grid_decision_shown : 0,
-        grid_slug : "test-grid",
+    var project_id =  inputs.project_id
+    //get project
+    console.log("get project inputs",inputs);
+    var project = {
+        project_id : 1,
+        project_title : "Test Project Data",
+        project_type : "project",
+        project_version : 0,
+        project_version : 0,
+        project_version : 0,
+        project_lock_user_id : 0,
+        project_decision_shown : 0,
+        project_slug : "test-project",
         tiles : [
           {
             tile_id:1,
@@ -44,7 +44,7 @@ module.exports = {
             tile_version : 0,
             tile_type : "tile",
             tile_video : "",
-            tile_grid_id : 1,
+            tile_project_id : 1,
             location_id : 1,
             x : 1,
             y : 1,
@@ -62,7 +62,7 @@ module.exports = {
         updated_at : "jan 5th ",
       }
       return {
-        grid : grid,
+        project : project,
       };
    
 

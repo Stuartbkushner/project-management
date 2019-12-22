@@ -1,0 +1,89 @@
+grid component
+    good
+        edit tile
+        delete tile
+
+    bugs
+        //edit tile submit after math
+        //getPile end point
+        remove from grid needs grid tile id
+        copy to new grid, move to new grid
+            reload grids after math  reload grid doesnt work
+                User.data.settings.current_project_id
+   
+
+
+RoadMap
+
+-Finish Navation
+    pages 
+        dashboard
+        project page
+        grid page
+        source page 
+    Navation Tables
+        note - title should be a link to view 
+        project
+            title
+            view 
+            edit
+            delete
+        grids
+            title 
+            view
+            edit
+            delete
+            publish
+        templates
+            title 
+            view
+            edit
+            delete
+            use template (create grid from template)
+        publish
+            title 
+            view
+            edit
+            delete
+            
+        source
+            title 
+            view
+            edit
+            delete
+        tile
+            title 
+            view
+            edit
+            delete
+
+
+
+- source page
+     tile annoation features
+     source component
+     soucrce pile of tiles on left
+
+-grid page  
+    grid component
+    grid tile features 
+    pile component
+    grid css
+
+-test emails
+
+
+
+
+-convert all modals to twitter boostrap / update css
+    team modals
+    title modal
+
+
+-grid sockets for real time update
+
+
+-dropdown nav
+    quick strt link
+    tutorials ect
+

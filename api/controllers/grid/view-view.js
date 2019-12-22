@@ -58,6 +58,44 @@ module.exports = {
       ],
       updated_at : "jan 5th ",
     }
+    var project = {
+      project_id : 1,
+      project_title : "Test Project Data",
+      project_type : "project",
+      project_version : 0,
+      project_version : 0,
+      project_version : 0,
+      project_lock_user_id : 0,
+      project_decision_shown : 0,
+      project_slug : "test-project",
+      tiles : [
+        {
+          tile_id:1,
+          tile_title : "Test Tile",
+          tile_color : "#fff",
+          tile_content : "test-tile",
+          tile_active : 0,
+          tile_starred : true,
+          tile_version : 0,
+          tile_type : "tile",
+          tile_video : "",
+          tile_project_id : 1,
+          location_id : 1,
+          x : 1,
+          y : 1,
+          user_first : "Tony",
+          user_last : "Sparks",
+          tags : [
+            {
+              tag_id : 1,
+              tag_content : "test",
+            }
+          ],
+          groups:[],
+        }
+      ],
+      updated_at : "jan 5th ",
+    }
     var user = {
       active_tab_type: "project",
 			author: {user_first: "Mosaic", user_last: "Junction", user_id: "0", slug: "", invite_cnt: "0", },
@@ -75,7 +113,7 @@ module.exports = {
 			state: "loadGrid",
 			state_data: {
         grid:grid,
-        project:grid,
+        project:project,
       },
 			team_id: "0",
 			team_leader_id: "0",
@@ -85,7 +123,10 @@ module.exports = {
 			user_id: "0",
 			user_last: "Junction",
       username: "MosaicJunction",
-      active_grid : grid
+      active_grid : grid,
+      global_grid_groups : { 
+        templates : [],
+      }
     }
     return {
       user : user,
