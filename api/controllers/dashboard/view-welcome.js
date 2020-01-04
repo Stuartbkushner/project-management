@@ -18,19 +18,69 @@ module.exports = {
 
 
   fn: async function () {
-      var grids = [
-        {
-          grid_id: '1',
-          grid_title: 'Grid1'
-        },
-        {
-          grid_id: '2',
-          grid_title: 'Grid2'
-        },
-      ]
 
-      var projects = await Project.find();
+      var grids = await Grid.find({grid_type:"grid"});
+      var templates = await Grid.find({grid_type:"template"});
+      // var published = await Grid.find({grid_type:"published"});
 
+      var projects = await Project.find().populate("user_id");
+
+      // var tiles = await Tile.find();
+
+      var sources = await Source.find().populate("project_id").populate("team_id").populate("user_id");
+      var project = {
+        project_id: '1',
+        project_name: 'Project1',
+        slug: 'Slug1',
+        user_id: {
+          slug: 'Slug1',
+        }
+      };
+      // var grids = [
+      //   {
+      //     grid_id: '1',
+      //     grid_title: 'Grid1',
+      //     slug: 'Slug1',
+      //     user_id: {
+      //       slug: 'Slug1',
+      //     },
+      //     project_id: {
+      //       slug: 'Slug1',
+      //     },
+      //     team_id: {
+      //       slug: 'Team1',
+      //     }
+      //   },
+      //   {
+      //     grid_id: '2',
+      //     grid_title: 'Grid2',
+      //     slug: 'Slug2',
+      //     user_id: {
+      //       slug: 'Slug2',
+      //     },
+      //     project_id: {
+      //       slug: 'Slug2',
+      //     },
+      //   },
+      // ]
+      // var projects = [
+      //   {
+      //     project_id: '1',
+      //     project_name: 'Project1',
+      //     slug: 'Slug1',
+      //     user_id: {
+      //       slug: 'Slug1',
+      //     }
+      //   },
+      //   {
+      //     project_id: '2',
+      //     project_name: 'Project2',
+      //     slug: 'Slug2',
+      //     user_id: {
+      //       slug: 'Slug2',
+      //     }
+      //   },
+      // ]
       var tiles = [
         {
           tile_id: '1',
@@ -42,16 +92,96 @@ module.exports = {
         },
       ]
 
-      var sources = [
+  
+      // var sources = [
+      //   {
+      //     source_id: '1',
+      //     source_filename: 'Source1',
+      //     slug: 'Slug1',
+      //     user_id: {
+      //       slug: 'Slug1',
+      //     },
+      //     project_id: {
+      //       slug: 'Slug1',
+      //     },
+      //     team_id: {
+      //       slug: 'Team1',
+      //     }
+      //   },
+      //   {
+      //     source_id: '2',
+      //     source_filename: 'Source2',
+      //     slug: 'Slug2',
+      //     user_id: {
+      //       slug: 'Slug2',
+      //     },
+      //     project_id: {
+      //       slug: 'Slug2',
+      //     },
+      //   },
+      // ];
+      // var templates = await Grid.find({project_id:project.project_id, grid_type:"template"});
+      // var published = await Grid.find({project_id:project.project_id, grid_type:"published"});
+  
+      // var projects = await Project.find().populate("user_id");
+  
+      //   var tiles = await Tile.find();
+  
+      //   var sources = await Source.find();
+      var published = [
         {
-          source_id: '1',
-          source_filename: 'Source1'
+          grid_id: '1',
+          grid_title: 'Grid1',
+          slug: 'Slug1',
+          user_id: {
+            slug: 'Slug1',
+          },
+          project_id: {
+            slug: 'Slug1',
+          },
+          team_id: {
+            slug: 'Team1',
+          }
         },
         {
-          source_id: '2',
-          source_filename: 'Source2'
+          grid_id: '2',
+          grid_title: 'Grid2',
+          slug: 'Slug2',
+          user_id: {
+            slug: 'Slug2',
+          },
+          project_id: {
+            slug: 'Slug2',
+          },
         },
-      ];
+      ]
+      // var templates = [
+      //   {
+      //     grid_id: '1',
+      //     grid_title: 'Grid1',
+      //     slug: 'Slug1',
+      //     user_id: {
+      //       slug: 'Slug1',
+      //     },
+      //     project_id: {
+      //       slug: 'Slug1',
+      //     },
+      //     team_id: {
+      //       slug: 'Team1',
+      //     }
+      //   },
+      //   {
+      //     grid_id: '2',
+      //     grid_title: 'Grid2',
+      //     slug: 'Slug2',
+      //     user_id: {
+      //       slug: 'Slug2',
+      //     },
+      //     project_id: {
+      //       slug: 'Slug2',
+      //     },
+      //   },
+      // ]
 
 
       var public = true;

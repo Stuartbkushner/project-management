@@ -41,6 +41,7 @@ module.exports = {
     /*
         
     */
+    delete info.grid_id;
     info['user_id'] = user_id;
     info['grid_decision'] = '';
     info['slug'] = "test";

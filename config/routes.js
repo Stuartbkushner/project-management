@@ -87,6 +87,22 @@ module.exports.routes = {
   'POST /project/getGrids': { action: 'project/get-grids' },
 
   'GET /project/:projectSlug?': { action: 'project/view-project' },
+  'GET /project': { action: 'project/view-project' },
+  'GET /grid': { action: 'grid/view-view' },
+  'GET /source': { action: 'source/view-source' },
+
+  //app routes minus dashboard
+  'GET /:userSlug?/:projectSlug?/:gridSlug?': { action: 'grid/view-view' },
+  'GET /:userSlug?/:projectSlug?/:sourceSlug?': { action: 'project/view-project' },
+  'GET /:userSlug?/:projectSlug?/:projectSlug?': { action: 'project/view-project' },
+
+  'GET /:userSlug?/:projectSlug?': { action: 'project/view-project' },
+  //souces dont have team_id from legacy so this route wont work until updates are made
+  'GET /:userSlug?/:projectSlug?/sources/:sourceSlug?': { action: 'source/view-source' },
+  //this is a better source route that works with the legacy code and db structrue
+  'GET /sources/:projectSlug?/:sourceSlug?': { action: 'source/view-source' },
+
+
 
   //grid 
 
@@ -101,6 +117,11 @@ module.exports.routes = {
   'POST /grid/saveDecision': { action: 'grid/save-decision' },
   'POST /grid/setDecisionShown': { action: 'grid/set-decision-shown' },
   'POST /grid/deleteGrid': { action: 'grid/delete-grid' },
+
+  'POST /grid/publishGrid': { action: 'grid/publish-grid' },
+  'GET /grid/template': { action: 'grid/view-template' },
+  'GET /grid/published': { action: 'grid/view-published' },
+
 
   // tile
   'POST /tile/get': { action: 'tile/get-tile' },
@@ -126,6 +147,35 @@ module.exports.routes = {
   'POST /tile/add2Group': { action: 'tile/add-2-group' },
 
   "GET /csrfToken": { action: "security/grant-csrf-token" },
+
+
+  // source
+  'GET /source/source': { action: 'source/view-source' },
+  'POST /source/saveSource': { action: 'source/save-source' },
+  'POST /source/editSource': { action: 'source/edit-source' },
+
+
+  //published 
+  'POST /user/saveContact': { action: 'user/save-contact' },
+
+  //team 
+  'POST /team/setTeam': { action: 'team/set-team' },
+  'POST /team/declineInvitation': { action: 'team/decline-invitation' },
+  'POST /team/acceptInvitation': { action: 'team/accept-invitation' },
+  'POST /team/inviteUserToGroup': { action: 'team/invite-user' },
+  'POST /team/getGroups': { action: 'team/get-teams' },
+  'POST /team/createNewGroup': { action: 'team/save-team' },
+  'POST /team/removeTeam': { action: 'team/remove-team' },
+  'POST /team/makeTeamOwner': { action: 'team/make-team-owner' },
+  'POST /team/removeTeamMember': { action: 'team/remove-team-member' },
+  'POST /team/leaveTeam': { action: 'team/leave-team' },
+
+  
+
+  
+  
+  
+
 
 
 };

@@ -65,7 +65,7 @@ module.exports = {
 
     grid_type: {
       type: 'string',
-      required: true,
+      defaultsTo:"grid",
     },
 
 

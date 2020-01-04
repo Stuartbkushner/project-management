@@ -14,7 +14,8 @@ parasails.registerComponent('publish-modals', {
   //  ╠═╝╠╦╝║ ║╠═╝╚═╗
   //  ╩  ╩╚═╚═╝╩  ╚═╝
   props: [
-    //…
+    'projects',
+    'grids'
   ],
 
   //  ╦╔╗╔╦╔╦╗╦╔═╗╦    ╔═╗╔╦╗╔═╗╔╦╗╔═╗
@@ -37,16 +38,18 @@ parasails.registerComponent('publish-modals', {
             <div class="content">
               <input id="publish-name" type="text" class="name" placeholder="Publish Name">
               <textarea id="publish-description" class="description" placeholder="Publish Description"></textarea>
+              <!--
+              <label class="">Select a project to publish to</label>
+                <select name="project" class=" projectSelect">
+          
+                    <option v-for="project in projects" :value="project.project_id"> {{project.project_name}}</option>
+          
+                </select>
+              -->
               <label>Select a grid to publish</label>
               <select class="publishedModalGrids">
-                <!-- <?php 
-                if (isset($grids)) {
-                  foreach(json_decode($grids) as $grid) {?>
-                    <option value="<?php echo $grid->grid_id; ?>"><?php echo $grid->grid_title; ?></option>
-                  <?php 
-                  }
-                } 
-                ?> -->
+                <option v-for="grid in grids" :value="grid.grid_id">{{grid.grid_title}}</option>
+                
               </select>
               <label>Public Name</label>
               <input id="contact-username" type="text" disabled="disabled" class="contact-username" placeholder="Public Name">

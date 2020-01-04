@@ -91,6 +91,12 @@ module.exports = {
     user_id: {
         model: 'user'
     },
+
+    // this is new and might not need to be a thing
+    //
+    team_id: {
+        model: 'team'
+    },
     
     
   },

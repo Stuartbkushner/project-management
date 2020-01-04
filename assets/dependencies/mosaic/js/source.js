@@ -111,7 +111,7 @@ findAnnoObjectByTempID: function(temp_id) {
   
   
   
-viewSource: function(source_id,page_num) {
+viewSource: async function(source_id,page_num) {
   User.data.active_source_id =  source_id;
   if($(".source_modal").is(":visible"))
   {
@@ -176,10 +176,18 @@ viewSource: function(source_id,page_num) {
         //TODO: FIX THIS SO IT'S nNOT CALLED WHEN WE ARE JUST LOADING ONE PAGE FROM AN INITIAL VIEW SOURCE CALL
         Source.scrollToPage(new_page_number);
       });
+      var csrf = await CSRF.token();
+       console.log('csrf',csrf);
+    //    console.log('form_id',form_id);
+      var apiRequestHeader = {
+        'X-CSRF-Token':csrf._csrf,
+          // 'cookie':cookie
+      };
 
       $.ajax({
           type: "POST",
-          url: '/action?action=getSource',
+          headers:apiRequestHeader,
+          url: '/source/getSource',
           data: {
             source_id: source_id
           },
@@ -247,7 +255,7 @@ viewSource: function(source_id,page_num) {
   },
 
 
-reloadSourceAnnotations: function() {
+reloadSourceAnnotations: async function() {
 
     //what source are we lookin at?
     if($(".source_modal").is(":visible"))
@@ -260,10 +268,18 @@ reloadSourceAnnotations: function() {
       {
         return;
       }
+      var csrf = await CSRF.token();
+       console.log('csrf',csrf);
+    //    console.log('form_id',form_id);
+      var apiRequestHeader = {
+        'X-CSRF-Token':csrf._csrf,
+          // 'cookie':cookie
+      };
 
       $.ajax({
           type: "POST",
-          url: '/action?action=getSource',
+          headers:apiRequestHeader,
+          url: '/source/getSource',
           data: {
             source_id: our_source_id
           },
@@ -341,11 +357,18 @@ loadLeftNav: function(tiles,modal) {
               });
 },
    
-  deleteSource: function(source_id) {
-	  
+  deleteSource: async function(source_id) {
+    var csrf = await CSRF.token();
+        console.log('csrf',csrf);
+    //    console.log('form_id',form_id);
+      var apiRequestHeader = {
+        'X-CSRF-Token':csrf._csrf,
+          // 'cookie':cookie
+      };
       return $.ajax({
           type: "POST",
-          url: '/action?action=deleteSource',
+          headers:apiRequestHeader,
+          url: '/source/deleteSource',
           data: {
             source_id: source_id
           },
@@ -424,9 +447,8 @@ loadLeftNav: function(tiles,modal) {
     modal.find("#new_source_form").submit();
 
   });
-
   //ON SUBMIT FOR NEW SOURCE FORM
-  modal.find("#new_source_form").submit(function(e) {
+  modal.find("#new_source_form").submit(async function(e) {
 
     e.preventDefault();
 
@@ -438,10 +460,19 @@ loadLeftNav: function(tiles,modal) {
         ajaxData.append( $(our_form).find('input[type="file"]').attr('name'), file );
       });
     }
+    var csrf = await CSRF.token();
+    console.log('csrf',csrf);
+    //    console.log('form_id',form_id);
+    console.log('ajaxData',ajaxData); //data in json format
+    var apiRequestHeader = {
+      'X-CSRF-Token':csrf._csrf,
+        // 'cookie':cookie
+    };
 
     $.ajax({
       url: $(our_form).attr('action'),
       type: $(our_form).attr('method'),
+	    headers:apiRequestHeader,
       data: ajaxData,
       dataType: 'json',
       cache: false,
@@ -489,11 +520,18 @@ loadLeftNav: function(tiles,modal) {
 
   },
 
-  saveEditedSource: function(source_id,source_title,source_author) {
-	  
+  saveEditedSource: async function(source_id,source_title,source_author) {
+        var csrf = await CSRF.token();
+        console.log('csrf',csrf);
+    //    console.log('form_id',form_id);
+      var apiRequestHeader = {
+        'X-CSRF-Token':csrf._csrf,
+          // 'cookie':cookie
+      };
       return $.ajax({
           type: "POST",
-          url: '/action?action=editSource',
+          headers:apiRequestHeader,
+          url: '/source/editSource',
           data: {
             source_id:source_id,
             source_author:source_author,
@@ -882,10 +920,18 @@ jcrop_object.ui.selection.find(".jcrop-vline + .jcrop-tracker > div").remove();
 
   },
   
-  getSources: function(project_id) {
+  getSources: async function(project_id) {
+    var csrf = await CSRF.token();
+       console.log('csrf',csrf);
+    //    console.log('form_id',form_id);
+      var apiRequestHeader = {
+        'X-CSRF-Token':csrf._csrf,
+          // 'cookie':cookie
+      };
       $.ajax({
       type: "POST",
-      url: '/action?action=getSources',
+      headers:apiRequestHeader,
+      url: '/source/getSources',
       data: {
         project_id: project_id
       },

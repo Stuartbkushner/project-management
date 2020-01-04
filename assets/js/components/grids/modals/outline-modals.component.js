@@ -15,6 +15,7 @@ parasails.registerComponent('outline-modals', {
   //  ╩  ╩╚═╚═╝╩  ╚═╝
   props: [
     //…
+    'projects'
   ],
 
   //  ╦╔╗╔╦╔╦╗╦╔═╗╦    ╔═╗╔╦╗╔═╗╔╦╗╔═╗
@@ -34,6 +35,12 @@ parasails.registerComponent('outline-modals', {
         <div id="view_outline_modal" class="modal viewOutlineModal">
             <div class="header unselectable">Copy/Paste/Print Outline<div class="modalCloseButton">X</div></div>
             <div class="content">
+            <label class="">Project</label>
+            <select name="project" class=" projectSelect">
+      
+                <option v-for="project in projects" :value="project.project_id"> {{project.project_name}}</option>
+      
+            </select>
             <div class="outline_info">
                 <div class="view_outline_modal_title"></div>
                 <div class="view_outline_modal_outline"></div>

@@ -328,10 +328,19 @@ save: async function(project) {
 },
 
 
-deleteProject: function(project_id) {
+deleteProject: async function(project_id) {
 	$('.tab_project_' + project_id).remove();
+	var csrf = await CSRF.token();
+       console.log('csrf',csrf);
+    //    console.log('form_id',form_id);
+	var action = "saveProject";
+       var apiRequestHeader = {
+         'X-CSRF-Token':csrf._csrf,
+           // 'cookie':cookie
+       };
       $.ajax({
       type: "POST",
+	  headers:apiRequestHeader,
       url: '/project/deleteProject',
       data: {
         project_id: project_id
@@ -344,12 +353,12 @@ deleteProject: function(project_id) {
 	      	});
 	      	User.data.projects = new_projects;
 
-	      if(Navigation.getActiveTabType() === "application_dashboard")
-	      {
-				Application.loadDashboard();
-				// modal.remove();
-				return; //TODO: return is here because updateFrames does some funky stuff if called. function calls in updateFrames that do things besides update the frame should be removed from updateFrames into the appropriate places
-	      }    
+	    //   if(Navigation.getActiveTabType() === "application_dashboard")
+	    //   {
+		// 		Application.loadDashboard();
+		// 		// modal.remove();
+		// 		return; //TODO: return is here because updateFrames does some funky stuff if called. function calls in updateFrames that do things besides update the frame should be removed from updateFrames into the appropriate places
+	    //   }    
 
       },
       dataType: 'json'

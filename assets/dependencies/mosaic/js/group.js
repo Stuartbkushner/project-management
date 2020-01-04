@@ -9,10 +9,18 @@ Group = {
 
 	},
 
-	getAllGroupData: function(group_id) {
-	  return $.ajax({
+	getAllGroupData: async function(group_id) {
+	  console.log('get tile CSRF',CSRF);
+	var csrf = await CSRF.token();
+	var apiRequestHeader = {
+		'X-CSRF-Token':csrf._csrf,
+		// 'cookie':cookie
+	};
+	console.log('csrf',csrf);
+		return $.ajax({
+      	  headers :apiRequestHeader,
 	      type: "POST",
-	      url: '/action?action=setTeam',
+	      url: '/team/setTeam',
 	      data: {
 	        team_id:team_id
 	      },
@@ -22,11 +30,19 @@ Group = {
 	
 
 
-	declineInvitation: function(team_invite_id) {
+	declineInvitation: async function(team_invite_id) {
        console.log('send', 'event', 'Teams', 'decline invitation', 'decline invitation', team_invite_id);
+	console.log('get tile CSRF',CSRF);
+	var csrf = await CSRF.token();
+	var apiRequestHeader = {
+		'X-CSRF-Token':csrf._csrf,
+		// 'cookie':cookie
+	};
+	console.log('csrf',csrf);  
 	  return $.ajax({
+      	  headers :apiRequestHeader,
 	      type: "POST",
-	      url: '/action?action=declineInvitation',
+	      url: '/team/declineInvitation',
 	      data: {
 	      	team_invite_id: team_invite_id
 	      },
@@ -34,11 +50,19 @@ Group = {
 	      });
 	},
 
-	acceptInvitation: function(team_invite_id) {
+	acceptInvitation: async function(team_invite_id) {
        console.log('send', 'event', 'Teams', 'accept invitation', 'accept invitation', team_invite_id);
+	console.log('get tile CSRF',CSRF);
+	var csrf = await CSRF.token();
+	var apiRequestHeader = {
+		'X-CSRF-Token':csrf._csrf,
+		// 'cookie':cookie
+	};
+	console.log('csrf',csrf);  
 	  return $.ajax({
+      	  headers :apiRequestHeader,
 	      type: "POST",
-	      url: '/action?action=acceptInvitation',
+	      url: '/team/acceptInvitation',
 	      data: {
 	      	team_invite_id: team_invite_id
 	      },
@@ -108,7 +132,7 @@ Group = {
 				var group_owner_id  = $(group_owner).prop('user_id');
 
 				var cloned_template = group_container_template.clone();
-				cloned_template.find(".groupName").html("<a href='/action?action=setTeam&team_id="+group.team_id+"'>"+group.team_name+"</a>");
+				cloned_template.find(".groupName").html("<a href='/team/setTeam&team_id="+group.team_id+"'>"+group.team_name+"</a>");
 
 				var member_template = cloned_template.find(".groupMember").clone();
 				cloned_template.find(".groupMember").remove();
@@ -263,11 +287,19 @@ Group = {
 	},
 
 
-	sendInvite: function(group_id, invitee_email) {
+	sendInvite: async function(group_id, invitee_email) {
        console.log('send', 'event', 'Teams', 'send invite', invitee_email, User.data.user_id);
+	console.log('get tile CSRF',CSRF);
+	var csrf = await CSRF.token();
+	var apiRequestHeader = {
+		'X-CSRF-Token':csrf._csrf,
+		// 'cookie':cookie
+	};
+	console.log('csrf',csrf);  
 	  return $.ajax({
+      	  headers :apiRequestHeader,
 	      type: "POST",
-	      url: '/action?action=inviteUserToGroup',
+	      url: '/team/inviteUserToGroup',
 	      data: {
 	      	group_id: group_id,
 	      	invitee_email: invitee_email
@@ -295,12 +327,20 @@ Group = {
 
 	},
 
-	getGroups: function() {
+	getGroups: async function() {
        console.log('send', 'event', 'Teams', 'get', 'Get user teams', User.data.user_id);
 
+	console.log('get tile CSRF',CSRF);
+	var csrf = await CSRF.token();
+	var apiRequestHeader = {
+		'X-CSRF-Token':csrf._csrf,
+		// 'cookie':cookie
+	};
+	console.log('csrf',csrf);  
 	  return $.ajax({
+      	  headers :apiRequestHeader,
 	      type: "POST",
-	      url: '/action?action=getGroups',
+	      url: '/team/getGroups',
 	      data: {
 	      },
 	      dataType: 'json'
@@ -324,12 +364,20 @@ Group = {
 	},
 
 
-	saveGroup: function(team_name, team_id) {
+	saveGroup: async function(team_name, team_id) {
       console.log('send', 'event', 'Teams', 'save', team_name, team_id);
 
-	  return $.ajax({
+	console.log('get tile CSRF',CSRF);
+	var csrf = await CSRF.token();
+	var apiRequestHeader = {
+		'X-CSRF-Token':csrf._csrf,
+		// 'cookie':cookie
+	};
+	console.log('csrf',csrf);  
+	 return $.ajax({
+      	  headers :apiRequestHeader,
 	      type: "POST",
-	      url: '/action?action=createNewGroup',
+	      url: '/team/createNewGroup',
 	      data: {
 	      	team_name:team_name,
 	      	team_id:team_id
@@ -337,21 +385,37 @@ Group = {
 	      dataType: 'json'
 	      });
 	},
-	removeTeam: function(team_id) {
-	  return $.ajax({
+	removeTeam: async function(team_id) {
+	  console.log('get tile CSRF',CSRF);
+	var csrf = await CSRF.token();
+	var apiRequestHeader = {
+		'X-CSRF-Token':csrf._csrf,
+		// 'cookie':cookie
+	};
+	console.log('csrf',csrf);
+		return $.ajax({
+      	  headers :apiRequestHeader,
 	      type: "POST",
-	      url: '/action?action=removeTeam',
+	      url: '/team/removeTeam',
 	      data: {
 	      	team_id:team_id
 	      },
 	      dataType: 'json'
 	      });
 	},
-	makeTeamOwner: function(team_id,user_id) {
+	makeTeamOwner: async function(team_id,user_id) {
 
-	  return $.ajax({
+	  console.log('get tile CSRF',CSRF);
+	var csrf = await CSRF.token();
+	var apiRequestHeader = {
+		'X-CSRF-Token':csrf._csrf,
+		// 'cookie':cookie
+	};
+	console.log('csrf',csrf);
+		return $.ajax({
+      	  headers :apiRequestHeader,
 	      type: "POST",
-	      url: '/action?action=makeTeamOwner',
+	      url: '/team/makeTeamOwner',
 	      data: {
 	      	team_id:team_id,
 	      	user_id:user_id
@@ -359,11 +423,19 @@ Group = {
 	      dataType: 'json'
 	      });
 	},
-	removeTeamMember: function(team_id,user_id) {
+	removeTeamMember: async function(team_id,user_id) {
 
-	  return $.ajax({
+	  console.log('get tile CSRF',CSRF);
+	var csrf = await CSRF.token();
+	var apiRequestHeader = {
+		'X-CSRF-Token':csrf._csrf,
+		// 'cookie':cookie
+	};
+	console.log('csrf',csrf);
+		return $.ajax({
+      	  headers :apiRequestHeader,
 	      type: "POST",
-	      url: '/action?action=removeTeamMember',
+	      url: '/team/removeTeamMember',
 	      data: {
 	      	team_id:team_id,
 	      	user_id:user_id
@@ -371,11 +443,19 @@ Group = {
 	      dataType: 'json'
 	      });
 	},
-	leaveTeam: function(team_user_id) {
+	leaveTeam: async function(team_user_id) {
 
-	  return $.ajax({
+	  console.log('get tile CSRF',CSRF);
+	var csrf = await CSRF.token();
+	var apiRequestHeader = {
+		'X-CSRF-Token':csrf._csrf,
+		// 'cookie':cookie
+	};
+	console.log('csrf',csrf);
+		return $.ajax({
+      	  headers :apiRequestHeader,
 	      type: "POST",
-	      url: '/action?action=leaveTeam',
+	      url: '/team/leaveTeam',
 	      data: {
 	      	team_user_id:team_user_id
 	      },

@@ -203,7 +203,8 @@ save: async function(grid) {
           grid_title: grid.grid_title,
           grid_description: grid.grid_description,
           project_id:  grid.project_id,
-          grid_template: grid.grid_template
+          grid_template: grid.grid_template,
+          grid_type: 'grid',
         }
       }
   });
@@ -247,7 +248,7 @@ newGrid: function() {
     grid.grid_title = modal.find(".name").val();
     grid.grid_description = modal.find(".description").val();
     grid.grid_template = modal.find(".templateSelect").val();
-    grid.project_id = current_project_id;
+    grid.project_id = modal.find(".projectSelect").val();
     
     $.when(Grid.save(grid)).done(function(data) {
 

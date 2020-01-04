@@ -133,13 +133,13 @@ module.exports = {
         if (grid_id == 0 ) {
           grid_template_id = parseInt(info['grid_template']);
           if (grid_template_id == 0 ) {
-            new_grid = sails.helpers.grid.create(user_id,post['grid']) ;
+            new_grid = await sails.helpers.grid.create(user_id,post['grid']) ;
             if (post['grid_tiles']) {
-              new_grid_tiles = sails.helpers.grid.tile.createBatch(post['grid_tiles'],new_grid.grid_id) ;
+              new_grid_tiles = await sails.helpers.grid.tile.createBatch(post['grid_tiles'],new_grid.grid_id) ;
             }
           }else{
             info['grid_type'] = 'grid';
-            new_grid = sails.helpers.grid.copy(grid_template_id,info) ;
+            new_grid = await sails.helpers.grid.copy(grid_template_id,info) ;
           }
         }
         else{
@@ -157,7 +157,7 @@ module.exports = {
       //   result = grid;
       //   break;
       case "deleteGrid":
-        grid = await sails.helpers.grid.destory(post['grid_id']) ;
+        grid = await sails.helpers.grid.destroy(post['grid_id']) ;
         result = grid;
         break;
       case "getGrid":
@@ -179,7 +179,7 @@ module.exports = {
       //   result = new_grid;	
       //   break;
       case "removeFromGrid":
-        grids_tile = await sails.helpers.grid.tile.destory(post['grid_tile_id']) ;
+        grids_tile = await sails.helpers.grid.tile.destroy(post['grid_tile_id']) ;
         result = grids_tile;
         break;
       // case "copyToNewGrid":
@@ -205,8 +205,8 @@ module.exports = {
       //     new_grid_tiles[grid_tile_id] = sails.helpers.grid.tile.copy(grid_tile_id,update);
       //   }
       //   new_group = sails.helpers.group.copy(new_grid_tiles);
-      //   await sails.helpers.group.tile.destory(grid_tile_ids);
-      //   sails.helpers.grid.tile.destory(grid_tile_ids);
+      //   await sails.helpers.group.tile.destroy(grid_tile_ids);
+      //   sails.helpers.grid.tile.destroy(grid_tile_ids);
       //   new_grid = sails.helpers.grid.get(new_grid.grid_id,false) ;
       //   result = new_grid;
       //   break;

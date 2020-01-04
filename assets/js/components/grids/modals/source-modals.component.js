@@ -14,7 +14,7 @@ parasails.registerComponent('sourceModals', {
   //  ╠═╝╠╦╝║ ║╠═╝╚═╗
   //  ╩  ╩╚═╚═╝╩  ╚═╝
   props: [
-    //…
+    'projects'
   ],
 
   //  ╦╔╗╔╦╔╦╗╦╔═╗╦    ╔═╗╔╦╗╔═╗╔╦╗╔═╗
@@ -37,9 +37,14 @@ parasails.registerComponent('sourceModals', {
             <div class="content">
                 <div class="newSourceRight">
                     <div class="formContainer">
-                        <form id="new_source_form" method="POST" action="/action?action=saveSource" enctype="multipart/form-data">
+                        <form id="new_source_form" method="POST" action="/source/saveSource" enctype="multipart/form-data">
                         <input type="hidden" id="new_source_id" value="0">
-                        <input type="hidden" name="new_source_project_id" id="new_source_project_id" value="" />
+                        <label class="">Project</label>
+                        <select id="new_source_project_id" name="new_source_project_id" class=" projectSelect">
+                  
+                            <option v-for="project in projects" :value="project.project_id"> {{project.project_name}}</option>
+                  
+                        </select>
                         <label>Source Title:</label><input type="text" name="new_source_title" id="new_source_title">
                         <label>Source Author:</label><input type="text" name="new_source_author" id="new_source_author">
                         <label>Source Type:</label>

@@ -27,7 +27,7 @@ module.exports = {
 
   fn: async function (inputs) {
     var team_invite_id = inpputs.team_invite_id;
-    var deleted_invite = await Team_Invite.destory({team_invite_id:team_invite_id});
+    var deleted_invite = await Team_Invite.destroy({team_invite_id:team_invite_id});
     return deleted_invite;
 
     /*

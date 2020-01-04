@@ -32,18 +32,23 @@ parasails.registerComponent('source-table', {
     //  ╩ ╩ ╩ ╩ ╩╩═╝
     template: `
     <table id="source-table">
-            <thead>
-              <tr>
-                <th data-field="id">Source ID</th>
-                <th data-field="name">Source Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="source in sources">
-                <td>{{ source.source_id }}</td>
-                <td>{{ source.source_filename }}</td>
-              </tr>
-            </tbody>
+
+        <thead>
+        <tr>
+          <th data-field="name">Source Name</th>
+          <th data-field="edit">Edit</th>
+          <th data-field="delete">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="source in sources">
+          <td v-if="true" ><a :href="'/sources/'+source.project_id.slug+'/'+source.slug"> {{ source.source_title }} </a> </td>
+          <td v-else-if="source.team_id" ><a :href="'/'+source.team_id.slug+'/'+source.project_id.slug+'/sources/'+source.slug"> {{ source.source_title }} </a> </td>
+          <td v-else><a :href="'/'+source.user_id.slug+'/'+source.project_id.slug+'/sources/'+source.slug"> {{ source.source_title }} </a> </td>
+          <td><button type="button" class="btn btn-success">Edit</button></td>
+          <td><button type="button" class="btn btn-danger">Delete</button></td>
+        </tr>
+      </tbody>
     </table>
   `,
   

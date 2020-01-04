@@ -64,11 +64,11 @@ module.exports = {
         result = tile;
         break;
       case "deleteTile": // used to be deleteNote
-        tile = await sails.helpers.tile.destory(post['tile_id']) ;
+        tile = await sails.helpers.tile.destroy(post['tile_id']) ;
         result = tile;	
         break;
       case "deleteTileSingle": // used to be deleteNote
-        tile = await sails.helpers.tile.destory(post['tile_id']) ;
+        tile = await sails.helpers.tile.destroy(post['tile_id']) ;
         result = tile;	
         break;
       // case "copyTileToProject":

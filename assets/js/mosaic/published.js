@@ -34,15 +34,23 @@ Published = {
 
     });
   },
-  saveContact: function(contact_info) {
+  saveContact: async function(contact_info) {
     $(".contact-name").val(contact_info.contact_name);
     $(".email").val(contact_info.email);
     $(".message").val(contact_info.message);
     $(".phone").val(contact_info.phone);
     $(".contact-username").val(contact_info.username);
+    var csrf = await CSRF.token();
+    console.log('csrf',csrf);
+    //    console.log('form_id',form_id);
+    var apiRequestHeader = {
+      'X-CSRF-Token':csrf._csrf,
+        // 'cookie':cookie
+    };
     return $.ajax({
+	      headers:apiRequestHeader,
         type: "POST",
-        url: '/action?action=saveContact',
+        url: '/user/saveContact',
         dataType: "json",
         data:contact_info
     });
@@ -137,7 +145,7 @@ contact: function(contact_info) {
 
 
   //attach handler to save button
-  modal.find('.save').on("click", function() {
+  modal.find('.save').on("click", async function() {
     // project.name = modal.find(".name").val();
     // project.description = modal.find(".description").val();
     // $.when(Project.save(project)).done(function(data) {
@@ -270,15 +278,23 @@ showPublishedModal: function(grid) {
 
 },
 
-publishGrid: function(publish_info) {
+publishGrid: async function(publish_info) {
   $(".contact-name").val(publish_info.contact_name);
   $(".email").val(publish_info.email);
   $(".message").val(publish_info.message);
   $(".phone").val(publish_info.phone);
   $(".contact-username").val(publish_info.username);
+  var csrf = await CSRF.token();
+    console.log('csrf',csrf);
+    //    console.log('form_id',form_id);
+    var apiRequestHeader = {
+      'X-CSRF-Token':csrf._csrf,
+        // 'cookie':cookie
+    };
   return $.ajax({
       type: "POST",
-      url: '/action?action=publishGrid',
+	    headers:apiRequestHeader,
+      url: '/grid/publishGrid',
       dataType: "json",
       data:publish_info
   });

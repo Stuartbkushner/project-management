@@ -88,7 +88,7 @@ module.exports = {
 
           break;
         case "deleteProject":
-          project = await sails.helpers.project.destory(post['project_id']) ;
+          project = await sails.helpers.project.destroy(post['project_id']) ;
           result = project;
           break;
         case "exportCSV":

@@ -15,23 +15,42 @@
         <a class="nav-link" id="tile-tab" data-toggle="tab" href="#tile" role="tab" aria-controls="tile" aria-selected="false">Tiles</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="source-tab" data-toggle="tab" href="#source" role="tab" aria-controls="tile" aria-selected="false">Sources</a>
+
+        <a class="nav-link" id="source-tab" data-toggle="tab" href="#source-content" role="tab" aria-controls="tile" aria-selected="false">Sources</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="template-tab" data-toggle="tab" href="#template-content" role="tab" aria-controls="tile" aria-selected="false">Templates</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="published-tab" data-toggle="tab" href="#published-tab" role="tab" aria-controls="tile" aria-selected="false">Published</a>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"></div>
       <div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="project-tab">
         <project-table id="project-table" :projects="projects"></project-table>
+        
       </div>
       <div class="tab-pane fade" id="grid" role="tabpanel" aria-labelledby="grid-tab">
         <grid-table id="grid-table" :grids="grids"></grid-table>
       </div>
+      <!-- 
       <div class="tab-pane fade" id="tile" role="tabpanel" aria-labelledby="tile-tab">
         <tile-table id="tile-table" :tiles="tiles"></tile-table>
       </div>
-      <div class="tab-pane fade" id="source" role="tabpanel" aria-labelledby="source-tab">
+
+      -->
+      <div class="tab-pane fade" id="source-content" role="tabpanel" aria-labelledby="source-content">
         <source-table id="source-table" :sources="sources"></source-table>
       </div>
+      
+      <div class="tab-pane fade" id="template-content" role="tabpanel" aria-labelledby="template-content">
+        <template-table id="template-table" :templates="templates"></template-table>
+      </div>
+      <!-- 
+      <div class="tab-pane fade" id="published-tab" role="tabpanel" aria-labelledby="published-tab">
+        <published-table id="published-table" :published="published"></published-table>
+      </div> -->
     </div>
   </div>
   
@@ -45,17 +64,22 @@
   <button id="edit_source_button" class="btn" onClick="Source.editSource(1,'test','test')">Edit Source</button>
   <button id="edit_project_button" class="btn" onClick="Project.editProject({project_id:1,project_name:'test',project_description:'test' },{})">Edit Project</button>
 
-
-  <grid-modals id="grid_modals"></grid-modals>
-  <group-modals id="group_modals"></group-modals>
-  <outline-modals id="outline_modals"></outline-modals>
-  <project-modals id="project_modals"></project-modals>
-  <publish-modals id="publish_modals"></publish-modals>
-  <source-modals id="source_modals"></source-modals>
+<!-- {{projects}} -->
+<!-- {{grids}} -->
+{{templates}}
+<!-- {{sources}} -->
+  <grid-modals id="grid_modals" :projects="projects"></grid-modals>
+  <source-modals id="source_modals" :projects="projects"></source-modals>
+  <publish-modals id="publish_modals" :grids="grids"></publish-modals>
+  <template-modals id="template_modals" :projects="projects"></template-modals>
   <team-modals id="team_modals"></team-modals>
-  <template-modals id="template_modals"></template-modals>
-  <tile-modals id="tile_modals" ></tile-modals>
-  <tutorial-modals id="tutorial_modals" ></tutorial-modals>
+  <project-modals id="project_modals"></project-modals>
+
+
+  <!-- <group-modals id="group_modals" :projects="projects"></group-modals>
+  <outline-modals id="outline_modals" :projects="projects"></outline-modals>
+  <tile-modals id="tile_modals" :projects="projects" ></tile-modals>
+  <tutorial-modals id="tutorial_modals" ></tutorial-modals> -->
 
   <router-view></router-view>
 

@@ -60,7 +60,8 @@ Template = {
       var template_id = 0;
       var template_name = modal.find(".name").val();
       var template_desc = modal.find(".description").val();
-      Template.saveTemplate(0,template_name,template_desc,modal);
+      var template_project_id = modal.find(".projectSelect").val();
+      Template.saveTemplate(0,template_name,template_desc,template_project_id,modal);
     });
   },
 
@@ -77,16 +78,18 @@ Template = {
       var template_id =  template.grid_id;
       var template_name = modal.find(".name").val();
       var template_desc = modal.find(".description").val();
-        $.when(Template.saveTemplate(template_id,template_name,template_desc,modal)).done(function(data) {
+      var template_project_id = modal.find(".projectSelect").val();
+
+        $.when(Template.saveTemplate(template_id,template_name,template_desc,template_project_id,modal)).done(function(data) {
             template.grid_title = data.grid_title;
             template.grid_description = data.grid_description;
         });
     });
   },
 
-  saveTemplate: function(template_id,template_name,template_desc,modal)
+  saveTemplate: function(template_id,template_name,template_desc,template_project_id,modal)
   {
-    return $.when(this.saveTemplateToDB(template_id,template_name,template_desc)).done(function(data) {
+    return $.when(this.saveTemplateToDB(template_id,template_name,template_desc,template_project_id)).done(function(data) {
       if (template_id == 0) {
         $(".templateSelect").append("<option value='"+data.grid_id+"'>"+data.grid_title+"</option>");
         $("#template_list").prepend(Template.renderTemplateAsListItem(data));
@@ -104,11 +107,19 @@ Template = {
     });
   },
 
-  deleteTemplate: function(template_id)
+  deleteTemplate: async function(template_id)
   {
+    var csrf = await CSRF.token();
+    console.log('csrf',csrf);
+    //    console.log('form_id',form_id);
+    var apiRequestHeader = {
+      'X-CSRF-Token':csrf._csrf,
+        // 'cookie':cookie
+    };
     return $.ajax({
+	        headers:apiRequestHeader,
         type: "POST",
-        url: '/action?action=deleteGrid',
+        url: '/grid/deleteGrid',
         data: {
           grid_id:template_id
         },
@@ -116,18 +127,26 @@ Template = {
         });
   },
 
-  saveTemplateToDB: function(template_id,template_name,template_desc) {
+  saveTemplateToDB: async function(template_id,template_name,template_desc,template_project_id) {
+    var csrf = await CSRF.token();
+    console.log('csrf',csrf);
+    //    console.log('form_id',form_id);
+    var apiRequestHeader = {
+      'X-CSRF-Token':csrf._csrf,
+        // 'cookie':cookie
+    };
     return $.ajax({
+	        headers:apiRequestHeader,
         type: "POST",
-        url: '/action?action=saveGrid',
+        url: '/grid/saveGrid',
         data: {
             grid: {
               grid_title: template_name,
                 grid_description: template_desc,
                 grid_id: template_id,
-                grid_template: '',
+                grid_template: 0,
                 grid_type: 'template',
-                project_id:  User.data.settings.current_project_id
+                project_id:  template_project_id
               }
         },
         dataType: 'json'
@@ -225,14 +244,22 @@ Template = {
     });
   },
 
-  updateHeader: function(rendered_header) {
+  updateHeader: async function(rendered_header) {
 
       var header = Template.convertHeaderToObj(rendered_header);
 
 
-      return $.ajax({
+      var csrf = await CSRF.token();
+    console.log('csrf',csrf);
+    //    console.log('form_id',form_id);
+    var apiRequestHeader = {
+      'X-CSRF-Token':csrf._csrf,
+        // 'cookie':cookie
+    };
+    return $.ajax({
+	        headers:apiRequestHeader,
         type: "POST",
-        url: '/action?action=updateTile',
+        url: '/tile/updateTile',
         data: {
           update:{
             tile_title:header.template_header_title,
@@ -384,13 +411,21 @@ Template = {
   },
 
 
-  getTemplateData: function(template_id)
+  getTemplateData: async function(template_id)
   {
-     return $.ajax({
+     var csrf = await CSRF.token();
+    console.log('csrf',csrf);
+    //    console.log('form_id',form_id);
+    var apiRequestHeader = {
+      'X-CSRF-Token':csrf._csrf,
+        // 'cookie':cookie
+    };
+    return $.ajax({
+	        headers:apiRequestHeader,
           type: "POST",
-          url: '/action?action=getTemplate',
+          url: '/grid/getGrid',
           data: {
-                template_id:template_id
+                grid_id:template_id
                 },
           success: function(data) {
           },

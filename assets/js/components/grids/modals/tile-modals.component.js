@@ -83,7 +83,7 @@ parasails.registerComponent('tile-modals', {
             <input class="new_tile_position" type="hidden">
             <input class="tile_share" type="hidden" value="">
             <input class="new_tile_source_id" type="hidden" value="0">
-            <input class="tile_modal_project_id" type="hidden" value="0">
+            <!-- <input class="tile_modal_project_id" type="hidden" value="0"> -->
             <div class="tileModalLeft">
               <input type="text" class="tile_modal_title" placeholder="Title">
               <div class="tile_modal_colors">
@@ -92,6 +92,10 @@ parasails.registerComponent('tile-modals', {
               <input type="text" class="tile_modal_tags" placeholder="Tags">
               <label class="usedOnGridsLabel">Used on grids:</label>
               <div class="tile_modal_used_on_grids"></div>
+              <label class="">Project</label>
+              <select name="project" class="tile_modal_project_id projectSelect">
+                  <option v-for="project in projects" :value="project.project_id"> {{project.project_name}}</option>
+              </select>
 
               <label class="sendToGridLabel">Send to grid:</label><a class="tile_new_grid_btn" href="#">New Grid</a>
               <span style="padding-left:4px; display:block;" class="smallText">Hold CTRL to select mutiple grids.</span>
