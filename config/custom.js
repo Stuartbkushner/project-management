@@ -88,6 +88,7 @@ module.exports.custom = {
   * Any other custom config this Sails app should use during development.    *
   *                                                                          *
   ***************************************************************************/
-  // …
+  
+  sourceDir :  '/assets/images/',
 
 };

@@ -17,7 +17,6 @@ module.exports = {
       type: 'number',
       unique: true,
       autoIncrement: true,
-      required: true,
     },
 
     source_page_number: {
@@ -32,7 +31,6 @@ module.exports = {
 
     source_page_version: {
       type: 'number',
-      required: true,
     },
 
 
@@ -47,7 +45,9 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     source_id: {
-      model: 'source'
+      model: 'source',
+      required: true,
+
     },
 
     

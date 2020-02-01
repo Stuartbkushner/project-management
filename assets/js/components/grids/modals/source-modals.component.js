@@ -14,6 +14,7 @@ parasails.registerComponent('sourceModals', {
   //  ╠═╝╠╦╝║ ║╠═╝╚═╗
   //  ╩  ╩╚═╚═╝╩  ╚═╝
   props: [
+    'id',
     'projects'
   ],
 
@@ -30,7 +31,7 @@ parasails.registerComponent('sourceModals', {
   //  ╠═╣ ║ ║║║║
   //  ╩ ╩ ╩ ╩ ╩╩═╝
   template: `
-    <div class=" sourceModals">
+    <div :id="id" class=" sourceModals">
       <!-- start new source modal -->
         <div id="new_source_modal" class="modal newSourceModal">
             <div class="header unselectable"><div class="modalCloseButton">X</div></div>
@@ -62,17 +63,21 @@ parasails.registerComponent('sourceModals', {
                             <input type="text" id="source_url_input" name="source_url_input" placeholder="Enter URL..."/>
                         </div>
                         <div id="loading"  class="loading"  ></div>
+                        <input  type="file" class="new_source_file" name="new_source_file" id="new_source_file" /> 
+                        <!--
                         <div id="source_type_file_container">
-                <!-- 						<label>File:</label>
-                            <input type="file" name="new_source_file" id="new_source_file" /> -->
+                					<label>File:</label> 
+                          <input  type="file" class="new_source_file" name="new_source_file" id="new_source_file" /> 
+
                             <div class="box__input">
                             <svg class="box__icon" xmlns="http://www.w3.org/2000/svg" width="50" height="43" viewBox="0 0 50 43"><path d="M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v13.2c0 .9.7 1.7 1.7 1.7h46.7c.9 0 1.7-.7 1.7-1.7v-13.2c0-1-.7-1.7-1.7-1.7zm-24.5 6.1c.3.3.8.5 1.2.5.4 0 .9-.2 1.2-.5l10-11.6c.7-.7.7-1.7 0-2.4s-1.7-.7-2.4 0l-7.1 8.3v-25.3c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v25.3l-7.1-8.3c-.7-.7-1.7-.7-2.4 0s-.7 1.7 0 2.4l10 11.6z"></path></svg>
-                            <!-- <input name="files[]" id="file" class="box__file" data-multiple-caption="{count} files selected" multiple="" type="file"> -->
+                             <input name="files[]" id="file" class="box__file" data-multiple-caption="{count} files selected" multiple="" type="file"> 
                             <label for="file" class="dragDropChoose"><strong>Drag a PDF or Image here to upload.</strong><span class="box__dragndrop"></span></label>
-                            <!-- <button type="submit" class="box__button">Upload</button> -->
+                             <button type="submit" class="box__button">Upload</button> 
                             </div>
 
                         </div>
+                        -->
                         </form>
 
                         <button class="save">Save</button>
@@ -142,14 +147,29 @@ parasails.registerComponent('sourceModals', {
 
   },
   mounted: function(){
-
+    this.bindUIActions();
   },
 
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
+    bindUIActions: function() {
+        var id = this.id;
+        console.log("bindUidActions id ",id);
+        //trigger create Grid Cllick
+        var SourceModal = this;
+        console.log("box__input length ",$("#"+id+ " .box__input").length);
 
-    
+        $("#"+id+ " .box__input").on("click", function() {
+          console.log("clicked id ",id);
+          console.log("new_source_file length ",$("#"+id+ " .new_source_file").length);
+
+          $("#"+id+ " .new_source_file").click();
+        });
+    },
+
+
+
   }
 });

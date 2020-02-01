@@ -15,6 +15,7 @@ parasails.registerComponent('tile-modals', {
   //  ╩  ╩╚═╚═╝╩  ╚═╝
   props: [
     //…
+    'projects'
   ],
 
   //  ╦╔╗╔╦╔╦╗╦╔═╗╦    ╔═╗╔╦╗╔═╗╔╦╗╔═╗

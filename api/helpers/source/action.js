@@ -48,6 +48,14 @@ module.exports = {
         case "getSource":
             source_id = post['source_id'];
             source = await Source.findOne({source_id:source_id}).populate("pages").populate("annotations") ;
+            source.user_id = 2;
+            source.source_url = "/images/SFHgH8-1.jpg";
+            var pages = [
+              {
+                source_page_content: "SFHgH8-1.jpg",
+              }
+            ]
+            source.pages = pages;
             result = source;
             break;
     
@@ -64,9 +72,11 @@ module.exports = {
               source_title : post.new_source_title,
               source_author : post.new_source_author,
               source_type : post.new_source_type,
-              source_text : post.new_source_text
+              source_text : post.new_source_text,
+              source_url: post.source_url_input
             }
-            saved = await sails.helpers.source.create(user_id,source);
+            saved = await sails.helpers.source.create(user_id,source,req);
+            
             result = [saved];
             break;
         case "deleteSource":

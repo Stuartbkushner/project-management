@@ -13,6 +13,11 @@ module.exports = {
       required: true,
       type: "number",
     },
+    team_id: {
+      description: 'user id of user owner',
+      required: true,
+      type: "number",
+    },
     grid_id: {
       description: 'grid id of grid owner',
       required: true,
@@ -38,8 +43,11 @@ module.exports = {
   fn: async function (inputs) {
     // TODO
     var user_id = inputs.user_id;
+    var team_id = inputs.team_id;
     var grid_id = inputs.grid_id;
     var update = inputs.update;
+    console.log("helpers grid copy grid inputs",inputs);
+
     // //TODO: relace note with grid in grids db table
 
 
@@ -61,6 +69,54 @@ module.exports = {
 
 
     */
+
+    var grid = await Grid.findOne({grid_id:grid_id}).populate("locations").populate("floating_tiles");
+    var locations = grid.locations;
+    var floating_tiles = grid.floating_tiles;
+    delete grid.grid_id;
+    delete grid.locations;
+    console.log("helpers grid copy grid grid",grid);
+    console.log("helpers grid copy grid locations",locations);
+    console.log("helpers grid copy grid floating_tiles",floating_tiles);
+
+    update.user_id =  user_id;
+    update.team_id =  team_id;
+
+    var newGridInfo = Object.assign(grid, update);
+    delete newGridInfo.grid_lock_user_id;
+    delete newGridInfo.grid_privacy_user_id;
+    console.log("helpers grid copy grid newGridInfo",newGridInfo);
+
+    var newGrid = await Grid.create(newGridInfo).fetch();
+    var newGrid = await Grid.findOne({grid_id:newGrid.grid_id}).populate("floating_tiles");
+    console.log("helpers grid copy grid newGrid",newGrid);
+    console.log("helpers grid copy grid newGrid.floating_tiles",newGrid.floating_tiles);
+
+
+    
+    var tileIds = [];
+    var floatingTileIds = [];
+    for (let i = 0; i < locations.length; i++) {
+      var location = locations[i];
+      location.grid_id = newGrid.grid_id;
+      delete location.location_id;
+      var newLocation = await Location.create(location).fetch();
+      tileIds.push(location.tile_id);
+    }
+    for (let i = 0; i < floating_tiles.length; i++) {
+      const tile = floating_tiles[i];
+      floatingTileIds.push(tile.tile_id);
+    }
+    console.log("helpers grid copy grid tileIds",tileIds);
+    console.log("helpers grid copy grid floatingTileIds",floatingTileIds);
+
+    await Grid.addToCollection(newGrid.grid_id, "tiles").members(tileIds);
+    await Grid.addToCollection(newGrid.grid_id, "floating_tiles").members(floatingTileIds);
+
+    var newGrid = await Grid.findOne({grid_id:newGrid.grid_id}).populate("tiles").populate("locations").populate("floating_tiles");
+    console.log("helpers grid copy grid newGrid",newGrid);
+    return newGrid;
+
 		// copied_notes =  [];
 		// copied_sources =  [];
 		// copied_tiles =  [];

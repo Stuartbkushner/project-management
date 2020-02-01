@@ -21,7 +21,7 @@ module.exports = {
 
       var grids = await Grid.find({grid_type:"grid"});
       var templates = await Grid.find({grid_type:"template"});
-      // var published = await Grid.find({grid_type:"published"});
+      var published = await Grid.find({grid_type:"published"});
 
       var projects = await Project.find().populate("user_id");
 
@@ -128,33 +128,33 @@ module.exports = {
       //   var tiles = await Tile.find();
   
       //   var sources = await Source.find();
-      var published = [
-        {
-          grid_id: '1',
-          grid_title: 'Grid1',
-          slug: 'Slug1',
-          user_id: {
-            slug: 'Slug1',
-          },
-          project_id: {
-            slug: 'Slug1',
-          },
-          team_id: {
-            slug: 'Team1',
-          }
-        },
-        {
-          grid_id: '2',
-          grid_title: 'Grid2',
-          slug: 'Slug2',
-          user_id: {
-            slug: 'Slug2',
-          },
-          project_id: {
-            slug: 'Slug2',
-          },
-        },
-      ]
+      // var published = [
+      //   {
+      //     grid_id: '1',
+      //     grid_title: 'Grid1',
+      //     slug: 'Slug1',
+      //     user_id: {
+      //       slug: 'Slug1',
+      //     },
+      //     project_id: {
+      //       slug: 'Slug1',
+      //     },
+      //     team_id: {
+      //       slug: 'Team1',
+      //     }
+      //   },
+      //   {
+      //     grid_id: '2',
+      //     grid_title: 'Grid2',
+      //     slug: 'Slug2',
+      //     user_id: {
+      //       slug: 'Slug2',
+      //     },
+      //     project_id: {
+      //       slug: 'Slug2',
+      //     },
+      //   },
+      // ]
       // var templates = [
       //   {
       //     grid_id: '1',
@@ -218,6 +218,8 @@ module.exports = {
   
 
       return {
+        published: published,
+        templates: templates,
         grids: grids,
         projects: projects, 
         tiles: tiles, 

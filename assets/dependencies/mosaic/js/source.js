@@ -409,6 +409,13 @@ loadLeftNav: function(tiles,modal) {
       droppedFiles = e.originalEvent.dataTransfer.files;
       modal.find(".dragDropChoose").html("Ready to upload: "+droppedFiles[0].name);
     });
+    console.log("box__input length ",modal.find(".box__input").length);
+
+    modal.find(".box__input").on("click", function() {
+      console.log("new_source_file length ",modal.find(".new_source_file").length);
+
+      modal.find(".new_source_file").click();
+    });
 
 
 
@@ -455,11 +462,14 @@ loadLeftNav: function(tiles,modal) {
     var our_form = $(this)[0];
     var ajaxData = new FormData(our_form);
 
-    if (droppedFiles) {
-      $.each( droppedFiles, function(i, file) {
-        ajaxData.append( $(our_form).find('input[type="file"]').attr('name'), file );
-      });
-    }
+    // if (droppedFiles) {
+    //   $.each( droppedFiles, function(i, file) {
+    //     ajaxData.append( $(our_form).find('input[type="file"]').attr('name'), file );
+    //   });
+    // }
+    console.log("source fiel ",$(our_form).find('.new_source_file')[0].files[0]);
+    ajaxData.append( $(our_form).find('input[type="file"]').attr('name'), $(our_form).find('.new_source_file')[0].files[0] );
+
     var csrf = await CSRF.token();
     console.log('csrf',csrf);
     //    console.log('form_id',form_id);
@@ -825,7 +835,7 @@ loadPage: function(page_num) {
       if(!this.source.pages[page_num - 1]) return;
 
       var page_image_url = this.source.pages[page_num - 1].source_page_content;
-      var page_content = $("<img class='sourcePageImage' src='/img/"+this.source.user_id+"/"+page_image_url+"' />");
+      var page_content = $("<img class='sourcePageImage' src='/images/"+this.source.user_id+"/"+page_image_url+"' />");
 
       var page_number = $("<div>", {
         "class": "sourcePageNumber"

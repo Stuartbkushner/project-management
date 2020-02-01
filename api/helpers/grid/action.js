@@ -65,9 +65,10 @@ module.exports = {
       case "saveDecision":
         result = Grid.update({id:post['grid_id']},{grid_decision : post['decision']});
       break;
-      // case "publishGrid":
-      //   result = Grid.publish(post);
-      // break;
+      case "publishGrid":
+        result = await sails.helpers.grid.publish(user_id,team_id,post);
+
+      break;
       case "saveContact":
         publish = new Publish_Helper();
         result = await sails.helpers.updateContact(user_id,team_id,post);
@@ -216,6 +217,7 @@ module.exports = {
         break;
       
     } //end switch
+    return result;
     return {
       req:req,
       result:result

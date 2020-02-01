@@ -1799,7 +1799,7 @@ moveTile: async function(tile){
             tile_video:tile.tile_video,
             tile_tags:tile.tile_tags,
             tile_color:tile.tile_color,
-            project_id: User.data.settings.current_project_id,
+            project_id: tile.project_id,
             tile_type: tile.tile_type,
             tile_place_on_grid:tile.tile_place_on_grid,
             annotations:tile.annotations
@@ -1862,7 +1862,7 @@ moveTile: async function(tile){
             tile_video:tile.tile_video,
             tile_tags:tile.tile_tags,
             tile_color:tile.tile_color,
-            project_id: User.data.settings.current_project_id,
+            project_id: tile.project_id,
             tile_type: tile.tile_type,
             tile_place_on_grid: tile_html.find('.tile_modal_send_to_grid').val(),
             annotations:annotations
@@ -1963,6 +1963,8 @@ getTileDomInfo: function(tile_html) {
   tile.tile_tags = tile_html.find('.tile_modal_tags').val();
   tile.tile_title = tile_html.find('.tile_modal_title').val();
   tile.tile_place_on_grid = tile_html.find('.tile_modal_send_to_grid').val();
+  tile.project_id = tile_html.find('.tile_modal_project_id').val();
+  
   tile.annotations = [];
   tile.annotation_ids = [];
   
@@ -2025,6 +2027,7 @@ getGridCoordinates: async function(tile_position) {
     var tile_tags = tile.find('.tile_modal_tags').val();
     var tile_title = tile.find('.tile_modal_title').val();
     var tile_place_on_grid = tile.find('.tile_modal_send_to_grid').val();
+    var project_id = tile.find('.tile_modal_project_id').val();
 
 
 
@@ -2045,7 +2048,7 @@ getGridCoordinates: async function(tile_position) {
   headers :apiRequestHeader,
   data: {
 
-   tile:{tile_id:tile_id,tile_grid_id:tile_grid_id,tile_title:tile_title,tile_content:tile_content,tile_video:tile_video,tile_tags:tile_tags,tile_color:tile_color,tile_source:tile_source,tile_position:tile_position,tile_active:tile_active,tile_share:tile_share,tile_place_on_grid:tile_place_on_grid,tile_project_id:User.data.settings.current_project_id},
+   tile:{tile_id:tile_id,tile_grid_id:tile_grid_id,tile_title:tile_title,tile_content:tile_content,tile_video:tile_video,tile_tags:tile_tags,tile_color:tile_color,tile_source:tile_source,tile_position:tile_position,tile_active:tile_active,tile_share:tile_share,tile_place_on_grid:tile_place_on_grid,tile_project_id:project_id},
 
    tile_source_annotations:my_source_annotations
  },

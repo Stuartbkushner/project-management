@@ -90,10 +90,11 @@ module.exports.routes = {
   'GET /project': { action: 'project/view-project' },
   'GET /grid': { action: 'grid/view-view' },
   'GET /source': { action: 'source/view-source' },
+  'GET /source/:sourceSlug?': { action: 'source/view-source' },
 
   //app routes minus dashboard
   'GET /:userSlug?/:projectSlug?/:gridSlug?': { action: 'grid/view-view' },
-  'GET /:userSlug?/:projectSlug?/:sourceSlug?': { action: 'project/view-project' },
+  'GET /:userSlug?/:projectSlug?/:sourceSlug?': { action: 'project/view-source' },
   'GET /:userSlug?/:projectSlug?/:projectSlug?': { action: 'project/view-project' },
 
   'GET /:userSlug?/:projectSlug?': { action: 'project/view-project' },
@@ -153,6 +154,7 @@ module.exports.routes = {
   'GET /source/source': { action: 'source/view-source' },
   'POST /source/saveSource': { action: 'source/save-source' },
   'POST /source/editSource': { action: 'source/edit-source' },
+  'POST /source/getSource': { action: 'source/get-source' },
 
 
   //published 

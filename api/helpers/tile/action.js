@@ -8,6 +8,21 @@ module.exports = {
 
 
   inputs: {
+    action: {
+      description: 'action of grid',
+      required: true,
+      type: "string",
+    },
+    req: {
+        description: 'req object posted',
+        required: true,
+        type: "ref",
+    },
+    result: {
+        description: 'req object posted',
+        type: "ref",
+        defaultsTo: {},
+    },
 
   },
 
@@ -26,7 +41,8 @@ module.exports = {
     var req = inputs.req;
     var result = inputs.result;
     var post = inputs.req.body;
-    user_id = req.me ? req.me.user_id : 0;
+    var user_id = req.me ? req.me.user_id : 0;
+    var team_id = req.session.team_id ? req.session.team_id: 0;
 
 
     switch(action) {

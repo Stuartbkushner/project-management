@@ -1,3 +1,23 @@
+Make the tile table appear under welcome page tile tab
+
+add edit and delete button and fucntionlity to all tables under welcome page tabs
+
+add publish button and fucntionlity to grid table
+
+add use templates button and functionality to grid table
+    when clicked select template in grid modal select option for templates
+    make sure fresh/new grid modal shows up when clicked
+
+
+add templates to grid modal. make sure templates show up under template select 
+
+
+
+
+
+
+
+----------------------
 grid component
     good
         edit tile

@@ -135,8 +135,8 @@ parasails.registerComponent('grid-modals', {
         //trigger create Grid Cllick
         var GridModals = this;
         $("#new_grid_button, .new_grid_button ").on("click", function() {
-			  GridModals.selectTemplate();
-		});
+            GridModals.selectTemplate();
+        });
     },
     edit: function() {
         var GridModals = this;

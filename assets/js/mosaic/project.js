@@ -242,14 +242,20 @@ newProject: function() {
 	
 	$(".projectModal").filter(":visible").remove();
 	var modal = $("#project_modal").mj_modal();
+	// var modal = $("#project_modal");
 	modal.children(".header").prepend("New Project");
 	Project.activateSave(modal);
 },
 activateSave: function(modal) {
+	console.log("project modal",modal);
 	var project = {};
 	project.project_id = 0;
 	var helpModal = modal.hasClass('helpModal');
+	console.log("project save clicked");
+	console.log("project save count",modal.find('.save').length);
 	modal.find('.save').on("click", function() {
+		console.log("project save clicked");
+
 		project.project_name = modal.find(".name").val();
 		project.project_name = $.trim(project.project_name);
 		if (project.project_name == '') {
