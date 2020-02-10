@@ -15,8 +15,9 @@ parasails.registerPage('source', {
   },
   mounted: async function() {
     //…
-    var source_id = 1;
+    var source_id = this.source_id;
     var page_num = 1;
+    console.log("this.source_id",this.source_id);
     Source.viewSource(source_id,page_num);
   },
 

@@ -37,6 +37,11 @@ module.exports = {
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
+
+    notes: {
+      collection: 'source_annotation',
+      via: 'page'
+    },
     
 
 

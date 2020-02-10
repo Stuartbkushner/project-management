@@ -55,7 +55,7 @@ module.exports = {
 		console.log("helpers source upload",image);
 		var sourceFileType = image.type;
 		if(sourceFileType ==  "pdf"){
-
+			console.log("pre pdf2pic",image.baseFilename);
 			const pdf2pic = new PDF2Pic({
 				density: 100,           // output pixels per inch
 				savename: image.baseFilename,     // output file name
@@ -63,12 +63,16 @@ module.exports = {
 				format: "jpg",          // output file format
 				size: "600x600"         // output size in pixels
 			});
+			console.log("post pdf2pic");
+
 			
 			var images = await pdf2pic.convertBulk(image.path,-1).then((resolve) => {
 				console.log("image converter successfully!");
 				console.log("image converter successfully!",resolve);
 				return resolve;
 			});
+			console.log("post images",images);
+
 			var source_pages = [];
 			for (let i = 0; i < images.length; i++) {
 				const imageX = images[i];

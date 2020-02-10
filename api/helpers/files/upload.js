@@ -37,15 +37,50 @@ module.exports = {
 
 
   fn: async function (inputs) {
+    // const req = inputs.req;
+    // const type = inputs.type;
+    // var location = '/assets/images/'+type+"/";
+    // var tmpLocation = '/.tmp/public/images/'+type+"/";
+    // return new Promise(function(resolve, reject) {
+    //   req.file(type).upload({ dirname : process.cwd() + location },
+    //   async function(err, uploadedImage) {
+    //   if (err) return reject(err);
+    //   if (uploadedImage.length === 0){
+    //     console.log('No file was uploaded');
+    //     return resolve({
+    //       flag: false,
+    //       msg: 'No file was uploaded',
+    //     });
+    //     return resolve(uploadedImage);
+    //   }else{
+    //     let filename = uploadedImage[0].fd.substring(uploadedImage[0].fd.lastIndexOf('/')+1);
+    //     let uploadLocation = process.cwd() +location + filename;
+    //     let tempLocation = process.cwd() + tmpLocation + filename;
+    //     console.log("upload uploadedImage[0]",uploadedImage[0]);
+    //     console.log("upload tempLocation",tempLocation);
+    //     console.log("upload uploadLocation",uploadLocation);
+    //     fs.createReadStream(uploadLocation).pipe(fs.createWriteStream(tempLocation));
+    //     var updateValues = {};
+    //     var src = uploadedImage[0].fd.split('images/')[1];
+    //     src = '/images/'+ src;
+    //     updateValues[type] = src;
+    //     await User.update({ id : req.me.id }).set(updateValues);
+    //     return resolve({
+    //       flag: true,
+    //       msg: "success",
+    //       src: src,
+    //     });
+    //   }
+      
     // TODO
     const req = inputs.req;
     const type = inputs.type;
     const sourceDir = inputs.saveToDir;
     var location = sourceDir;
     var tmpLocation = '/.tmp/public/images/'+type+"/";
-    var path = process.cwd() + location;
+    var path = process.cwd() + tmpLocation;
     return new Promise(function(resolve, reject) {
-      req.file(type).upload({ dirname : path },
+      req.file(type).upload({ dirname : location },
       async function(err, uploadedImage) {
       if (err) return reject(err);
       if (uploadedImage.length === 0){
@@ -58,8 +93,18 @@ module.exports = {
       }else{
         let filename = uploadedImage[0].fd.substring(uploadedImage[0].fd.lastIndexOf('/')+1);
         let fileType = uploadedImage[0].fd.substring(uploadedImage[0].fd.lastIndexOf('.')+1);
-        let uploadLocation = process.cwd() +location + filename;
+          //  var _location = '/assets/images/'+type+"/";  
+        // let uploadLocation = process.cwd() +_location + filename;
+        let uploadLocation = location + filename;
         let tempLocation = process.cwd() + tmpLocation + filename;
+        console.log("upload uploadedImage[0]",uploadedImage[0]);
+        console.log("upload tempLocation",tempLocation);
+        console.log("upload uploadLocation",uploadLocation);
+        if (!fs.existsSync(location)){
+            fs.mkdirSync(location);
+        }
+        console.log("upload location",location);
+
         fs.createReadStream(uploadLocation).pipe(fs.createWriteStream(tempLocation));
         var updateValues = {};
         var src = uploadedImage[0].fd.split('images/')[1];

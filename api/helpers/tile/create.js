@@ -39,6 +39,9 @@ module.exports = {
     if(info.tags){
       info.tags = await sails.helpers.tag.saveTags(user_id,info.tags);
     }
+    if(info.annotations){
+      info.annotations = await sails.helpers.source.saveAnnotations(user_id,info.annotations);
+    }
     var tile = await Tile.create(info).fetch();
     if(place_on_grid){
       var grid_tiles = await sails.helpers.tile.place(tile.tile_id,place_on_grid);
