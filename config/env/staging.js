@@ -29,7 +29,7 @@ module.exports = Object.assign({}, PRODUCTION_CONFIG, {
 
   datastores: Object.assign({}, PRODUCTION_CONFIG.datastores, {
     default: Object.assign({}, PRODUCTION_CONFIG.datastores.default, {
-      // url: 'mysql://shared:some_password_everyone_knows@db.example.com:3306/my_staging_db',
+      url: process.env.CLEARDB_DATABASE_URL,
       //--------------------------------------------------------------------------
       // /\  Hard-code your staging db `url`.
       // ||  (or use system env var: `sails_datastores__default__url`)
@@ -40,7 +40,7 @@ module.exports = Object.assign({}, PRODUCTION_CONFIG, {
   sockets: Object.assign({}, PRODUCTION_CONFIG.sockets, {
 
     onlyAllowOrigins: [
-      'http://localhost:1337',
+      'https://mosaic-junction-staging.herokuapp.com',
       // 'https://example-staging.herokuapp.com',
       // 'http://example-staging.herokuapp.com',
       // 'https://staging.example.com',
@@ -50,7 +50,7 @@ module.exports = Object.assign({}, PRODUCTION_CONFIG, {
     // /\  Hard-code a staging-only override for allowed origins.
     // ||  (or set this array via JSON-encoded system env var)
     //     ```
-    //     sails_sockets__onlyAllowOrigins='["http://localhost:1337", "…"]'
+    //     sails_sockets__onlyAllowOrigins='["https://mosaic-junction-staging.herokuapp.com", "…"]'
     //     ```
     //--------------------------------------------------------------------------
 
