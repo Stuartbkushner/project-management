@@ -50,7 +50,7 @@ module.exports = {
     var tokenId = inputs.tokenId;
     var twitter = inputs.twitter;
     var website = inputs.website;
-    var userId = this.req.me.id;
+    var userId = this.req.me.user_id;
     var token = await sails.models.token.findOne({id:tokenId});
     var current_frequency = token.symbol;
     if(token.userId === userId){

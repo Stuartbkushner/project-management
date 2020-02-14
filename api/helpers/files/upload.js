@@ -110,7 +110,7 @@ module.exports = {
         var src = uploadedImage[0].fd.split('images/')[1];
         src = '/images/'+ src;
         updateValues[type] = src;
-        await User.update({ id : req.me.id }).set(updateValues);
+        await User.update({ id : req.me.user_id }).set(updateValues);
         path += filename;
         var fileList = filename.split(".");
         baseFilename = fileList[0];

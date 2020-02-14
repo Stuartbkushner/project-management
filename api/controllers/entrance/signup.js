@@ -75,6 +75,7 @@ the account verification message.)`,
     var slug = await sails.helpers.slug.create('user',inputs.fullName);
 
     var newUserRecord = await User.create(_.extend({
+      id: await sails.helpers.strings.random('url-friendly'),
       emailAddress: newEmailAddress,
       slug:slug,
       password: await sails.helpers.passwords.hashPassword(inputs.password),

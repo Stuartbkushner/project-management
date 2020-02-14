@@ -119,7 +119,7 @@ module.exports = {
     }
 
     // Save to the db
-    await User.updateOne({id: this.req.me.id })
+    await User.updateOne({user_id: this.req.me.user_id })
     .set(valuesToSet);
 
     // If this is an immediate change, and billing features are enabled,
@@ -136,7 +136,7 @@ module.exports = {
         emailAddress: newEmailAddress
       }).timeout(5000).retry();
       if (didNotAlreadyHaveCustomerId){
-        await User.updateOne({ id: this.req.me.id })
+        await User.updateOne({ user_id: this.req.me.user_id })
         .set({
           stripeCustomerId
         });

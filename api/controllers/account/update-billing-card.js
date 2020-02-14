@@ -63,7 +63,7 @@ module.exports = {
     // > Remember, never store complete card numbers-- only the last 4 digits + expiration!
     // > Storing (or even receiving) complete, unencrypted card numbers would require PCI
     // > compliance in the U.S.
-    await User.updateOne({ id: this.req.me.id })
+    await User.updateOne({ user_id: this.req.me.user_id })
     .set({
       stripeCustomerId,
       hasBillingCard: inputs.stripeToken ? true : false,
