@@ -43,7 +43,7 @@ module.exports = Object.assign({}, PRODUCTION_CONFIG, {
       'https://mosaic-junction-staging.herokuapp.com',
       // 'https://example-staging.herokuapp.com',
       // 'http://example-staging.herokuapp.com',
-      // 'https://staging.example.com',
+      // 'https://mosaic-junction-staging.herokuapp.com',
       // 'http://staging.example.com',
     ],
     //--------------------------------------------------------------------------
@@ -71,7 +71,7 @@ module.exports = Object.assign({}, PRODUCTION_CONFIG, {
 
   custom: Object.assign({}, PRODUCTION_CONFIG.custom, {
 
-    baseUrl: 'https://staging.example.com',
+    baseUrl: 'https://mosaic-junction-staging.herokuapp.com',
     //--------------------------------------------------------------------------
     // /\  Hard-code the base URL where your staging environment is hosted.
     // ||  (or use system env var: `sails_custom__baseUrl`)
