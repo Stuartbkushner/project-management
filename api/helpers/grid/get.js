@@ -42,9 +42,13 @@ module.exports = {
     var grid_id = inputs.grid_id;
     var lock = inputs.lock;
     var lock_user_id = inputs.lock_user_id;
+    var grid_id_int = parseInt(grid_id);
+    var grid_id_type = typeof grid_id_int;
+    console.log("helpers grid get grid_id_int",grid_id_int);
     console.log("helpers grid get grid_id",grid_id);
-    if(typeof grid_id == "string"){
-      var grid = await Grid.findOne({slug:grid_id})
+    console.log("helpers grid get grid_id_type",grid_id_type);
+    if(grid_id_int){
+        var grid = await Grid.findOne({grid_id:grid_id})
           .populate("user_id")
           // .populate("team_id")
           .populate("tiles")
@@ -54,7 +58,7 @@ module.exports = {
           // .populate("sources")
           .populate('locations');
     }else{
-      var grid = await Grid.findOne({grid_id:grid_id})
+      var grid = await Grid.findOne({slug:grid_id})
           .populate("user_id")
           // .populate("team_id")
           .populate("tiles")
@@ -63,7 +67,11 @@ module.exports = {
           // .populate("tile_groups")
           // .populate("sources")
           .populate('locations');
+      
     }
+    console.log("get grid grid",grid);
+    console.log("helpers grid get post grid_id",grid_id);
+    console.log("helpers grid get post grid_id_type",grid_id_type);
     var project = await Project.findOne({project_id:grid.project_id}).populate("user_id").populate("tiles");
     project.author  = {
       user_id : project.user_id,

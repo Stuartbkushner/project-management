@@ -166,7 +166,7 @@ will be disabled and/or hidden in the UI.
 
             // Otherwise, look up the logged-in user.
             var loggedInUser = await User.findOne({
-              id: req.session.userId
+              user_id: req.session.userId
             });
 
             // If the logged-in user has gone missing, log a warning,
@@ -198,14 +198,14 @@ will be disabled and/or hidden in the UI.
             var MS_TO_BUFFER = 60*1000;
             var now = Date.now();
             if (loggedInUser.lastSeenAt < now - MS_TO_BUFFER) {
-              User.updateOne({id: loggedInUser.id})
+              User.updateOne({user_id: loggedInUser.user_id})
               .set({ lastSeenAt: now })
               .exec((err)=>{
                 if (err) {
-                  sails.log.error('Background task failed: Could not update user (`'+loggedInUser.id+'`) with a new `lastSeenAt` timestamp.  Error details: '+err.stack);
+                  sails.log.error('Background task failed: Could not update user (`'+loggedInUser.user_id+'`) with a new `lastSeenAt` timestamp.  Error details: '+err.stack);
                   return;
                 }//•
-                sails.log.verbose('Updated the `lastSeenAt` timestamp for user `'+loggedInUser.id+'`.');
+                sails.log.verbose('Updated the `lastSeenAt` timestamp for user `'+loggedInUser.user_id+'`.');
                 // Nothing else to do here.
               });//_∏_  (Meanwhile...)
             }//ﬁ
