@@ -42,7 +42,13 @@ module.exports = {
     if(info.annotations){
       info.annotations = await sails.helpers.source.saveAnnotations(user_id,info.annotations);
     }
-    info['slug'] = await sails.helpers.slug.create('tile',info['tile_title'],user_id);
+    if(tile_title){
+      var tile_title =  info['tile_title'];
+
+    }else{
+      var tile_title =  "empty";
+    }
+    info['slug'] = await sails.helpers.slug.create('tile',tile_title,user_id);
 
     var tile = await Tile.create(info).fetch();
     if(place_on_grid){
