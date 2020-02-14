@@ -94,6 +94,7 @@ parasails.registerComponent('tile-modals', {
               <label class="usedOnGridsLabel">Used on grids:</label>
               <div class="tile_modal_used_on_grids"></div>
               <label class="">Project</label>
+              {{projects}}
               <select name="project" class="tile_modal_project_id projectSelect">
                   <option v-for="project in projects" :value="project.project_id"> {{project.project_name}}</option>
               </select>
@@ -150,7 +151,7 @@ parasails.registerComponent('tile-modals', {
 
   },
   mounted: function(){
-
+    console.log("projects",this.projects);
   },
 
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗

@@ -74,8 +74,11 @@ module.exports = {
 
     // Start building the values to set in the db.
     // (We always set the fullName if provided.)
+    // var slug = await sails.helpers.slug.create('user',inputs.fullName);
+
     var valuesToSet = {
       fullName: inputs.fullName,
+      // slug:slug,
     };
 
     switch (desiredEmailEffect) {

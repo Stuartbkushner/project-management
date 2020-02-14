@@ -18,16 +18,17 @@ module.exports = {
 
 
   fn: async function () {
+      var me = this.req.me;
+      var user_id = me.user_id;
+      var grids = await Grid.find({user_id:user_id,grid_type:"grid"}).populate("user_id").populate("project_id");
+      var templates = await Grid.find({user_id:user_id,grid_type:"template"}).populate("user_id").populate("project_id");
+      var published = await Grid.find({user_id:user_id,grid_type:"published"}).populate("user_id").populate("project_id");
 
-      var grids = await Grid.find({grid_type:"grid"});
-      var templates = await Grid.find({grid_type:"template"});
-      var published = await Grid.find({grid_type:"published"});
-
-      var projects = await Project.find().populate("user_id");
+      var projects = await Project.find({user_id:user_id}).populate("user_id");
 
       // var tiles = await Tile.find();
 
-      var sources = await Source.find().populate("project_id").populate("team_id").populate("user_id");
+      var sources = await Source.find({user_id:user_id}).populate("project_id").populate("team_id").populate("user_id");
       var project = {
         project_id: '1',
         project_name: 'Project1',

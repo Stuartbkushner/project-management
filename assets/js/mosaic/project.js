@@ -8,18 +8,18 @@ init: function() {
 },
 loadProjectSelect: function(projects) {
 
-    $(".projectSelect").each( function(index,select) {
-        select = $(this);
-        var selected_id = select.val();
-        select.empty();
-        $.each(projects, function(index,project) {
-            var selected = '';
-            if (project.project_id == selected_id) {
-              selected = "selected='selected'";
-            };
-            select.prepend("<option "+selected+" value='"+project.project_id+"'>"+project.project_name+"</option>");
-        });
-    });
+    // $(".projectSelect").each( function(index,select) {
+    //     select = $(this);
+    //     var selected_id = select.val();
+    //     select.empty();
+    //     $.each(projects, function(index,project) {
+    //         var selected = '';
+    //         if (project.project_id == selected_id) {
+    //           selected = "selected='selected'";
+    //         };
+    //         select.prepend("<option "+selected+" value='"+project.project_id+"'>"+project.project_name+"</option>");
+    //     });
+    // });
 
   },
 

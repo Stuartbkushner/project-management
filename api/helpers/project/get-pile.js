@@ -47,6 +47,13 @@ module.exports = {
         .populate("tiles")
       var tiles = project.tiles;
     }
+    var tile_ids = [];
+    for (let i = 0; i < tiles.length; i++) {
+      const tile = tiles[i];
+      tile_ids.push(tile.tile_id);
+      
+    }
+    tiles = await sails.helpers.tile.get(tile_ids);
     
     return tiles;
   }

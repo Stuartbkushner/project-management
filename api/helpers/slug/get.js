@@ -63,6 +63,8 @@ module.exports = {
         var object = await Tile_Group.find(where);
     }else if(slug_type == "team"){
         var object = await Team.find(where);
+    }else if(slug_type == "tile"){
+        var object = await Tile.find(where);
     }
 
     console.log("get inputs",inputs);

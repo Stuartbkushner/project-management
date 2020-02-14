@@ -2,12 +2,13 @@
 
  <!-- {{user}} -->
   <!-- {{"test"}} -->
-  {{grid}}
+  <!-- {{grid}} -->
+  {{projects}}
   <button id="new_project_button" class="btn">New Project</button>
 
-  <!-- <div class="bodyContainer">
+  <div class="bodyContainer">
     <div class="bodyWrapper">
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link tab active" id="projcts-tab" data-toggle="tab" href="#projcts" role="tab" aria-controls="projcts" aria-selected="true">Home</a>
         </li>
@@ -17,24 +18,14 @@
         <li class="nav-item">
           <a class="nav-link tab" id="tiles-tab" data-toggle="tab" href="#tiles" role="tab" aria-controls="tiles" aria-selected="false">Contact</a>
         </li>
-      </ul>
-      <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="projcts" role="tabpanel" aria-labelledby="projcts-tab">...</div>
-        <div class="tab-pane fade" id="grids" role="tabpanel" aria-labelledby="grids-tab">
-          <div class="appTable">
-            <grid-nav id="grid-nav"></grid-nav>
-            <pile id="pile"></pile>
-            <grid-wrapper id="grid-wrapper" :grid="grid"></grid-wrapper>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="tiles" role="tabpanel" aria-labelledby="tiles-tab">...</div>
+      </ul> -->
+      <div class="appTable">
+        <!-- <grid-nav id="grid-nav"></grid-nav> -->
+        <pile id="pile"></pile>
+        <grid-wrapper id="grid-wrapper" :grid="grid"></grid-wrapper>
       </div>
-      
-      
-
-
     </div>
-  </div> -->
+  </div>
   <decision-modals id="decision_modals"></decision-modals>
   <grid-modals id="grid_modals"></grid-modals>
   <group-modals id="group_modals"></group-modals>
@@ -44,7 +35,7 @@
   <source-modals id="source_modals"></source-modals>
   <team-modals id="team_modals"></team-modals>
   <template-modals id="template_modals"></template-modals>
-  <tile-modals id="tile_modals" ></tile-modals>
+  <tile-modals id="tile_modals" :projects="projects" ></tile-modals>
   <tutorial-modals id="tutorial_modals" ></tutorial-modals>
 
 

@@ -41,7 +41,8 @@ parasails.registerComponent('grid-table', {
             <tbody>
               <tr v-for="grid in grids">
                 <td>{{ grid.grid_id }}</td>
-                <td>{{ grid.grid_title }}</td>
+                
+                <td> <a :href="'/'+grid.user_id.slug+'/'+grid.project_id.slug+'/'+grid.slug" >{{ grid.grid_title }} </a> </td>
               </tr>
             </tbody>
     </table>

@@ -8,6 +8,11 @@ module.exports = {
 
 
   inputs: {
+    tile_ids: {
+      description: 'array of tile ids or tile id',
+      required: true,
+      type: "ref",
+    },
 
   },
 
@@ -22,20 +27,27 @@ module.exports = {
 
 
   fn: async function (inputs) {
-    /*
-      public function get_tile($tile_id) {
-        $query = "SELECT *, u.user_first,u.user_last FROM tiles AS t 
-          INNER JOIN users AS u 
-          ON t.tile_id = $tile_id
-          AND u.user_id = t.user_id ";
-        $tile = Tiles::sql($query, SimpleOrm::FETCH_ONE);
-        $status = $this->status;
-        $tile = $this->load_tile($tile,$status);
-        return $tile;
-        //need to todo sql
-
-      }
-    */
+    var tile_ids = inputs.tile_ids;
+    if(typeof tile_ids == "array"){
+      var tiles = await Tile.find({tile_id:tile_ids})
+            .populate("user_id")
+            // .populate("team_id")
+            .populate("tags")
+            .populate("groups");
+      tiles = await sails.helpers.format.tiles(tiles);
+      return tiles;
+    }else{
+      var tile = await Tile.findOne({tile_id:tile_ids})
+            .populate("user_id")
+            // .populate("team_id")
+            .populate("tags")
+            .populate("groups");
+      tile = await sails.helpers.format.tile(tile);
+      return tile;
+    }
+    
+    
+    
   }
 
 
