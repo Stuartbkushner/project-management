@@ -48,7 +48,7 @@ module.exports = {
       case "group":
         group_info =  post['group'];
         tiles =  post['tiles'];
-        var new_group = await sails.helpers.group.tile.create(group_info,tiles);
+        var new_group = await sails.helpers.group.tile.create(user_id,group_info,tiles);
         result = new_group;
         break;
       case "editGroup":
