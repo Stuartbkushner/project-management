@@ -27,7 +27,7 @@ module.exports = {
 
     tile_title: {
         type: 'string',
-        required: true,
+        required: false,
     },
 
     tile_color: {
