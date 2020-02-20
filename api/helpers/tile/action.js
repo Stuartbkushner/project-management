@@ -58,9 +58,9 @@ module.exports = {
         result = new_tile;
         break;
       case "getTile": // used to be getNOte
-        tile_id = intval(post['tile_id']);
-        // tile = await sails.helpers.tile.get(tile_id) ;
-        tile = await Tile.findOne({tile_id:tile_id}).populate("tags").populate("annotations").populate("grids").populate("groups");
+        tile_id = parseInt(post['tile_id']);
+        tile = await sails.helpers.tile.get(tile_id) ;
+        // tile = await Tile.findOne({tile_id:tile_id}).populate("tags").populate("annotations").populate("grids").populate("groups");
         result = tile; // idk where this is being echoed out but it is somewhere.
         break;
       case "starTile": // used to be StarNote
@@ -98,6 +98,8 @@ module.exports = {
       default:
         break;
     } //end switch
+    return result;
+
   }
 
 

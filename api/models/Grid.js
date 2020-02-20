@@ -22,6 +22,7 @@ module.exports = {
     slug: {
       type: 'string',
       required: true,
+      // unique: true,
     },
 
     grid_title: {

@@ -62,7 +62,7 @@ module.exports = {
       }
       
     }
-    var grid_tiles = await sails.helpers.tile.place(tile.id,place_on_grid);
+    var grid_tiles = await sails.helpers.tile.place(tile.tile_id,place_on_grid);
     tile = await Tile.findOne({tile_id:tile_id}).populate("tags").populate("annotations").populate("grids").populate("groups");
 
     return tile;

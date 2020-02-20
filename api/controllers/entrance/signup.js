@@ -72,7 +72,9 @@ the account verification message.)`,
 
     // Build up data for the new user record and save it to the database.
     // (Also use `fetch` to retrieve the new ID so that we can use it below.)
-    var slug = await sails.helpers.slug.create('user',inputs.fullName);
+    // var slug = await sails.helpers.slug.create('user',inputs.fullName);
+    var slug = await sails.helpers.slug.create('team','team_name',inputs.fullName);
+    slug = await sails.helpers.slug.create('user','slug',slug);
 
     var newUserRecord = await User.create(_.extend({
       id: await sails.helpers.strings.random('url-friendly'),

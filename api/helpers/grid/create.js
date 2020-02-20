@@ -52,7 +52,7 @@ module.exports = {
     projectCollection = grid_type == 'template'? "templates": projectCollection;
     projectCollection = grid_type == 'published'? "published": projectCollection;
     
-    info['slug'] = await sails.helpers.slug.create('grid',info['grid_title'],user_id);
+    info['slug'] = await sails.helpers.slug.create('grid','grid_title',info['grid_title'],user_id);
 
     var grid = await Grid.create(info).fetch();
     await Project.addToCollection(project_id,"grids").members(grid.grid_id);

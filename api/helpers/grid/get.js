@@ -100,12 +100,24 @@ module.exports = {
     project.tiles = project_tiles;
     project.pile_tiles = project_tiles;
     var _tiles = [];
+    console.log("get grid tiles_dict",tiles_dict);
 
     for (let i = 0; i < grid.locations.length; i++) {
       const location = grid.locations[i];
       const tile_id = location.tile_id;
+      console.log("get grid location",location);
+      console.log("get grid tile_id",tile_id);
       var tile = tiles_dict[tile_id];
-      tile.tile_grid_id = tile.location_id;
+      if(tile){
+
+      }else{
+        var tile =  await Tile.findOne({tile_id:tile_id});
+      }
+      tile.grid_tile_id = location.location_id;
+      tile.tile_grid_id = location.location_id;
+      tile.x = location.x;
+      tile.y = location.y;
+      tile.width = location.width;
       tiles_dict[tile.tile_id] = tile;
       
       tile = Object.assign(location,tile);

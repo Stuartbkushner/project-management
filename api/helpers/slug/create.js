@@ -14,6 +14,12 @@ module.exports = {
       type: "string",
 
     },
+    title_key: {
+      description: 'the column name in the data base for making slugs from',
+      required: true,
+      type: "string",
+
+    },
     title: {
       description: 'title/ name of slug',
       required: true,
@@ -43,6 +49,7 @@ module.exports = {
   fn: async function (inputs) {
     var slug_type = inputs.slug_type;
     var title = inputs.title;
+    var title_key = inputs.title_key;
     var user_id = inputs.user_id;
 
 
@@ -54,9 +61,11 @@ module.exports = {
     console.log("slug",slug);
     // slug = stripcslashes(slug);
     // slug = str_ireplace('\'', '', slug);
-    slug_exits = await sails.helpers.slug.exists(slug_type,slug,user_id);
+    var slug_exits = await sails.helpers.slug.exists(slug_type,slug,user_id);
+    console.log("slug_exits",slug_exits);
+
     if (slug_exits ) {
-        slug_name_count =  await sails.helpers.slug.nameCount(slug_type,slug,user_id);
+        slug_name_count =  await sails.helpers.slug.nameCount(slug_type,title_key,title,user_id);
         slug +='-'+slug_name_count;
     }
     return slug;

@@ -35,6 +35,8 @@ module.exports = {
             .populate("user_id")
             // .populate("team_id")
             .populate("tags")
+            .populate("grids")
+            .populate("annotations")
             .populate("groups");
       tiles = await sails.helpers.format.tiles(tiles);
       return tiles;
@@ -43,6 +45,8 @@ module.exports = {
             .populate("user_id")
             // .populate("team_id")
             .populate("tags")
+            .populate("grids")
+            .populate("annotations")
             .populate("groups");
       tile = await sails.helpers.format.tile(tile);
       return tile;

@@ -127,6 +127,7 @@ module.exports.routes = {
   // tile
   'POST /tile/get': { action: 'tile/get-tile' },
   'POST /tile/update': { action: 'tile/update-tile' },
+  'POST /tile/updateTile': { action: 'tile/update-tile' },
   'POST /tile/saveTileAndSource': { action: 'tile/save-tile-and-source' },
   'POST /tile/addGridTile': { action: 'tile/add-grid-tile' },
   'POST /tile/moveGridTile': { action: 'tile/move-grid-tile' },

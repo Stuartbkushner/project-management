@@ -48,8 +48,8 @@ module.exports = {
         var user = await User.findOne({user_id:user_id});
         // name = user.user_first+user.last_name;
         name = user.fullName;
-        slug = await sails.helpers.slug.create('team',name);
-        slug = await sails.helpers.slug.create('user',slug);
+        slug = await sails.helpers.slug.create('team','team_name',name);
+        slug = await sails.helpers.slug.create('user','slug',slug);
         info.slug = slug;
         user = await User.updateOne({user_id:user_id}).set(info);
 

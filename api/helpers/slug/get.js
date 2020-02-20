@@ -51,21 +51,7 @@ module.exports = {
     if(user_id){
         where.user_id = user_id;
     }
-    if(slug_type == "project"){
-        var object = await Project.find(where);
-    }else if(slug_type == "grid"){
-        var object = await Grid.find(where);
-    }else if(slug_type == "source"){
-        var object = await Source.find(where);
-    }else if(slug_type == "user"){
-        var object = await User.find(where);
-    }else if(slug_type == "tile_group"){
-        var object = await Tile_Group.find(where);
-    }else if(slug_type == "team"){
-        var object = await Team.find(where);
-    }else if(slug_type == "tile"){
-        var object = await Tile.find(where);
-    }
+    var object = await sails.helpers.app.find(slug_type,where);
 
     console.log("get inputs",inputs);
     console.log("get object",object);

@@ -22,9 +22,12 @@ module.exports = {
     var me = this.req.me;
     if(me){
       var projects = await Project.find({user_id:me.user_id});
+      var grids = await Grid.find({user_id:me.user_id});
     }else{
       var projects = [];
+      var grids = [];
     }
+
 
 
     var gridSlug = this.req.param("gridSlug");
@@ -139,7 +142,9 @@ module.exports = {
       active_grid : grid,
       global_grid_groups : { 
         templates : [],
-      }
+      }, 
+      grids:grids,
+      projects:projects
     }
     user.parent_user = user ;
     return {

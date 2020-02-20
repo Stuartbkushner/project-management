@@ -48,13 +48,13 @@ module.exports = {
       case "group":
         group_info =  post['group'];
         tiles =  post['tiles'];
-        var new_group = await sails.helpers.group.create(user_id,group_info,tiles);
+        var new_group = await sails.helpers.group.tile.create(group_info,tiles);
         result = new_group;
         break;
       case "editGroup":
         group_info =  post['group'];
         tile_group_id =  post['tile_group_id'];
-        var updated_group = await sails.helpers.group.update(tile_group_id,group_info);
+        var updated_group = await sails.helpers.group.tile.update(tile_group_id,group_info);
         result = updated_group;
         break;
       case "ungroup":
@@ -103,7 +103,6 @@ module.exports = {
       default:
         break;
     } //end switch
-    return result;
     
 
 

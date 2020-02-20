@@ -30,6 +30,7 @@ module.exports = {
     var tile_id = inputs.tile_id;
 
     var deleted_tile = await Tile.destroy({tile_id:tile_id}).fetch();
+    var deleted_locations = await Location.destroy({tile_id:tile_id}).fetch();
     return deleted_tile;
   }
 

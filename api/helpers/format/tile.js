@@ -41,6 +41,19 @@ module.exports = {
     tile.user_first = tile.author.user_first;
     tile.user_last = tile.author.user_last;
     tile.user_id = author.user_id;
+    tile.tile_share = [];
+    
+    if(tile.grids){
+      tile.tile_grids = tile.grids;
+    }else{
+      tile.tile_grids = [];
+    }
+    if(tile.annotations){
+      tile.tile_source_anno = tile.annotations;
+    }else{
+      tile.tile_source_anno = [];
+    }
+    
     return tile;
   }
 

@@ -50,7 +50,7 @@ module.exports = {
     title = info['project_name'];
     console.log("crete project pre info",info);
 
-    info['slug'] = await sails.helpers.slug.create('project',info['project_name'],user_id);
+    info['slug'] = await sails.helpers.slug.create('project','project_name',info['project_name'],user_id);
     console.log("crete project pre info",info);
     project = await Project.create(info).fetch();
     // project->grid_groups = make_project_grid_groups(project);

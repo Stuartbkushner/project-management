@@ -39,7 +39,7 @@ module.exports = {
     var update_grid_title = info.hasOwnProperty("grid_title");
     if(update_grid_title){
       var grid = await Grid.findOne({grid_id:grid_id});
-      slug = await sails.helpers.slug.create('grid',info["grid_title"],grid.user_id);
+      slug = await sails.helpers.slug.create('grid','grid_title',info["grid_title"],grid.user_id);
       info.slug = slug;
       grid = await Grid.updateOne({grid_id:grid_id}).set(info);
     }else{

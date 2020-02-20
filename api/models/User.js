@@ -178,7 +178,9 @@ without necessarily having a billing card.`
 
     slug: { 
       type: 'string',
-      // required: true,
+      required: true,
+      unique: true,
+
     },
 
     user_version: { 

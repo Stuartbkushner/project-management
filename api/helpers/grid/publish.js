@@ -48,7 +48,7 @@ module.exports = {
 		update['grid_lock_user_id'] = 0;
 		update['grid_privacy_user_id'] = 0;
     title = update['grid_title'];
-    update['slug'] = await sails.helpers.slug.create('grid',title, user_id);
+    update['slug'] = await sails.helpers.slug.create('grid','grid_title',title, user_id);
     console.log("helpers grid publish update",update);
     
 		grid_id = info['grid_id'];

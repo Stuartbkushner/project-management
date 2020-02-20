@@ -22,7 +22,7 @@ module.exports = {
     slug: {
       type: 'string',
       required: true,
-      unique: true,
+      // unique: true,
 
     },
     

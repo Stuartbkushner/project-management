@@ -37,7 +37,7 @@ module.exports = {
     var update_tile_group_title = info.hasOwnProperty("tile_group_title");
     
     if(update_tile_group_title){
-        info['slug'] = await sails.helpers.slug.create('tile_group','tile_group_title',info['tile_group_title'],1);
+        info['slug'] = await sails.helpers.slug.create('tile_group',info['tile_group_title'],1);
     }
     var updateGroup = await Tile_Group.update({tile_group_id:tile_group_id}).set(info).fetch();
     return updateGroup;

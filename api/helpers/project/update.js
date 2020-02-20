@@ -37,7 +37,7 @@ module.exports = {
     var update_project_name = info.hasOwnProperty("project_name");
     
     if(update_project_name){
-      slug = await sails.helpers.slug.create('project',info["project_name"]);
+      slug = await sails.helpers.slug.create('project','project_name',info["project_name"]);
       info.slug = slug;
     console.log("update name project_id",project_id);
 

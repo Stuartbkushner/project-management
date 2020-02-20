@@ -42,7 +42,7 @@ module.exports = {
     var req = inputs.req;
     console.log("helpers source create pre source create info",info);
 
-    info['slug'] = await sails.helpers.slug.create('source',info['source_title'],user_id);
+    info['slug'] = await sails.helpers.slug.create('source','source_title',info['source_title'],user_id);
     info.user_id = user_id;
     var new_source = await Source.create(info).fetch();
     new_source.source_url = info.source_url;

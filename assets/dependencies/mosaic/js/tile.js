@@ -55,7 +55,8 @@ Tile = {
     }else if (grid_lock_user_id == 0){
       this.makeDraggable(rendered_tile);
     }else{
-
+      //realtime update
+      this.makeDraggable(rendered_tile);
     }
   },
 
@@ -2002,7 +2003,7 @@ getTileDomInfo: function(tile_html) {
 
   return tile;
 },
-getGridCoordinates: async function(tile_position) {
+getGridCoordinates: function(tile_position) {
 
   var position_array = tile_position.split(",");
   var x = position_array[0] ;

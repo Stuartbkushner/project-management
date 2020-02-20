@@ -28,7 +28,8 @@ module.exports = {
   fn: async function (inputs) {
     var info = inputs.info;
     var grid_tile_id = info['grid_tile_id'];
-    var location = await Location.updateOne({location_id:grid_tile_id}).set(info);
+    var update = info["update"];
+    var location = await Location.updateOne({location_id:grid_tile_id}).set(update);
     return location;
 
     // TODO
