@@ -78,11 +78,18 @@ module.exports = {
       user_first : project.user_id.user_first,
       user_last : project.user_id.user_last,
     }
-    var tileIds = [];
+    var projectTileIds = [];
+    var floatingTileIds = [];
     for (let i = 0; i < project.tiles.length; i++) {
       const tile = project.tiles[i];
-      tileIds.push(tile.tile_id);
+      projectTileIds.push(tile.tile_id);
     }
+    for (let i = 0; i < grid.floating_tiles.length; i++) {
+      const tile = grid.floating_tiles[i];
+      floatingTileIds.push(tile.tile_id);
+    }
+
+    var tileIds = projectTileIds.concat(floatingTileIds);
     var tiles = await Tile.find({tile_id:tileIds})
           .populate("user_id")
           // .populate("team_id")
@@ -90,15 +97,22 @@ module.exports = {
           .populate("groups");
     var tiles_dict = {};
     var project_tiles = [];
+    var floating_tiles = [];
 
     for (let i = 0; i < tiles.length; i++) {
       var tile = tiles[i];
       tile = await sails.helpers.format.tile(tile);
       tiles_dict[tile.tile_id] = tile;
-      project_tiles.push(tile);
+      if(projectTileIds.includes(tile.tile_id)){
+        project_tiles.push(tile);
+      }
+      if(floatingTileIds.includes(tile.tile_id)){
+        floating_tiles.push(tile);
+      }
     }
     project.tiles = project_tiles;
     project.pile_tiles = project_tiles;
+    grid.floating_tiles = floating_tiles;
     var _tiles = [];
     console.log("get grid tiles_dict",tiles_dict);
 
@@ -135,6 +149,7 @@ module.exports = {
             .set({grid_version:grid.grid_version,lock_user_id:lock_user_id })
     }
     grid.project = project;
+    grid.groups = [];
     return grid;
   }
 

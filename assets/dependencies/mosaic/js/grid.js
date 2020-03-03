@@ -974,6 +974,7 @@ renderGrid: function(grid)
     $(".searchContainer").removeClass('projectFilter');
    Application.setMode(grid.grid_type);
    Navigation.showAllItems();
+   console.log("renderGrid grid",grid);
    User.data.active_grid = grid;
    var grid_url = User.data.settings.current_project_url+"/"+grid.slug; 
    Navigation.updateUrl(grid_url);
@@ -1156,11 +1157,13 @@ loadFloatingTiles: function(tiles)
   if($.isEmptyObject(tiles))
   {
     $('.floatingTilesContainer').hide();
+    $('.floatingTilesContainer').addClass("hidden");
 
   }
   else
   {
     $('.floatingTilesContainer').show();
+    $('.floatingTilesContainer').removeClass("hidden");
   }
 
   $.each(tiles, function(key, val) {

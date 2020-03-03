@@ -21,20 +21,38 @@ module.exports = {
     // Respond with view.
     var me = this.req.me;
     if(me){
-      var projects = await Project.find({user_id:me.user_id});
+      var projects = await Project.find({user_id:me.user_id}).populate("user_id");
+      console.log("view grid me.user_id",me.user_id);
       var grids = await Grid.find({user_id:me.user_id});
     }else{
       var projects = [];
       var grids = [];
     }
 
+    projects = await sails.helpers.format.projects(projects);
+
 
 
     var gridSlug = this.req.param("gridSlug");
-    console.log("view grid gridSlug",gridSlug);
+    console.log("view grid view grid gridSlug",gridSlug);
     var grid = await sails.helpers.grid.get(gridSlug);
     var project = grid.project;
-    console.log("grid",grid);
+
+    /*
+      must load project
+      User.data.pile_tiles = project.tiles;
+      User.data.grids = project.grids;
+      User.data.sources = project.sources;
+      User.data.outlines = project.outlines;
+      User.data.published = project.published;
+      User.data.templates = project.templates;
+      User.data.grid_groups = project.grid_groups;
+      User.data.settings.current_project_url =  project.user_url +'/'+project.slug;
+    */
+    project.grids = grids;
+    grid.groups = [];
+    console.log("view grid grid",grid);
+    console.log("view grid grids",grids);
 
     // var grid = {
     //   grid_id : 1,
@@ -147,9 +165,12 @@ module.exports = {
       projects:projects
     }
     user.parent_user = user ;
+    console.log("view grid user.grids",user.grids);
+
     return {
       user : user,
       grid : grid,
+      grids:user.grids,
       projects:projects,
     };
 

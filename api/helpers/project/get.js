@@ -65,11 +65,16 @@ module.exports = {
     var author = {};
     if(project.team_id == null ){
         author = project.user_id;
+        console.log("project project.user_id",project.user_id);
+
 
     }else{
       author = project.team_id;
+      console.log("project project.team_id",project.team_id);
 
     }
+    console.log("project author",author);
+    author.username = author.slug;
     project.author = author;
     
     return project;

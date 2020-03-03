@@ -871,8 +871,8 @@ selectColor: function(tile, hex) {
         {
           modal.remove();
           $(".selectedTile").removeClass("selectedTile");
-            // Grid.loadGrid(data.grid);
-            Grid.reloadGrids();
+            Grid.loadGrid(grid);
+            // Grid.reloadGrids();
           }
         });
     });
@@ -919,7 +919,10 @@ selectColor: function(tile, hex) {
         {
           modal.remove();
           tiles.remove();
-          Grid.reloadGrids();
+          // Grid.reloadGrids();
+          //data is grid
+          Grid.loadGrid(data);
+
         }
       });
 

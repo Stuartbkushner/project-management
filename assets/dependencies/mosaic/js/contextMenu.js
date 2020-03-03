@@ -461,9 +461,11 @@ $.contextMenu({
 					  var grid_list = Array();
 					  var group_grid_list = Array();
 
-					  // console.log('User.data',User.data);
+					  console.log('User.data',User.data);
 					  var my_groups = User.data.active_grid.groups;
 					  var my_grids = User.data.grids;
+					  console.log('User.data.grids',User.data.grids);
+
 
 
 

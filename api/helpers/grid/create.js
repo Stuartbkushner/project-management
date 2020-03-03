@@ -46,8 +46,8 @@ module.exports = {
     info['grid_decision'] = '';
     info['slug'] = "test";
     title = info['grid_title'];
-    
-    projectCollection = "";
+    console.log("create grid grid_type",grid_type);
+    projectCollection = "grids";
     projectCollection = grid_type == 'grid'? "grids": projectCollection;
     projectCollection = grid_type == 'template'? "templates": projectCollection;
     projectCollection = grid_type == 'published'? "published": projectCollection;

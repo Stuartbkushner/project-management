@@ -348,11 +348,13 @@ parasails.registerComponent('grid-wrapper', {
       if($.isEmptyObject(tiles))
       {
         $('.floatingTilesContainer').hide();
+        $('.floatingTilesContainer').addClass("hidden");
     
       }
       else
       {
         $('.floatingTilesContainer').show();
+        $('.floatingTilesContainer').removeClass("hidden");
       }
     
       $.each(tiles, function(key, val) {

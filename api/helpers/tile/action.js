@@ -87,6 +87,10 @@ module.exports = {
         tile = await sails.helpers.tile.destroy(post['tile_id']) ;
         result = tile;	
         break;
+      case "saveFilters": // used to be deleteNote
+        tile = await sails.helpers.tile.destroy(post['tile_id']) ;
+        result = tile;	
+        break;
       // case "copyTileToProject":
       //   tile_info = post['tile'];
       //   tile_id = tile_info['tile_id'];

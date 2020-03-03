@@ -39,6 +39,7 @@ module.exports = {
       grid_tile = await Location.create(info['location']).fetch();
       // grid_tile.location = location.location_id;
     }
+    grid_tile.grid_tile_id = grid_tile.location_id;
     return grid_tile;
 
     /*

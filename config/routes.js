@@ -143,6 +143,7 @@ module.exports.routes = {
   'POST /tile/starTile': { action: 'tile/star-tile' },
   'POST /tile/ungroup': { action: 'tile/ungroup' },
   'POST /tile/getPile': { action: 'tile/get-pile' },
+  'POST /tile/saveFilters': { action: 'tile/save-filters' },
 
 
 

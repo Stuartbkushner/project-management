@@ -108,17 +108,9 @@ module.exports = {
         break;
       case "placeTileOnGrid":
         var grid_id = post['grid_id'];
-        var tiles = []; 
-        for (let i = 0; i < post['tile_ids'].length; i++) {
-          const tile_id = post['tile_ids'][i];
-          info = {
-            "tile_id": tile_id,
-            "grid_id": grid_id
-          };
-          tiles.push(await sails.helpers.grid.tile.create(info) );
+        var tile_ids = post['tile_ids'];
 
-          
-        }
+        await Grid.addToCollection(grid_id,"floating_tiles").members(tile_ids);
         new_grid = await sails.helpers.grid.get(grid_id);
         result = new_grid;
         break;
@@ -183,34 +175,45 @@ module.exports = {
         grids_tile = await sails.helpers.grid.tile.destroy(post['grid_tile_id']) ;
         result = grids_tile;
         break;
-      // case "copyToNewGrid":
-      //   post['grid']['user_id']  = user_id;
-      //   new_grid = await sails.helpers.grid.create(post['grid']) ;
-      //   update['grid_id'] =  new_grid.grid_id;
-      //   grid_tile_ids =  post['grid_tile_ids'];
-      //   new_grid_tiles = {};
-      //   foreach (grid_tile_ids as grid_tile_id) {
-      //     new_grid_tiles[grid_tile_id] = await sails.helpers.grid.tile.copy(grid_tile_id,update);
-      //   }
-      //   new_group = sails.helpers.group.copy(new_grid_tiles);
-      //   new_grid = sails.helpers.grid.get(new_grid.grid_id,false) ;
-      //   result = new_grid;
-      //   break;
-      // case "moveToNewGrid":
-      //   post['grid']['user_id']  =  user_id;
-      //   new_grid = sails.helpers.grid.create(post['grid']) ;
-      //   update['grid_id'] =  new_grid.grid_id;
-      //   grid_tile_ids =  post['grid_tile_ids'];
-      //   new_grid_tiles = array();
-      //   foreach (grid_tile_ids as grid_tile_id) {
-      //     new_grid_tiles[grid_tile_id] = sails.helpers.grid.tile.copy(grid_tile_id,update);
-      //   }
-      //   new_group = sails.helpers.group.copy(new_grid_tiles);
-      //   await sails.helpers.group.tile.destroy(grid_tile_ids);
-      //   sails.helpers.grid.tile.destroy(grid_tile_ids);
-      //   new_grid = sails.helpers.grid.get(new_grid.grid_id,false) ;
-      //   result = new_grid;
-      //   break;
+      case "copyToNewGrid":
+        var update = {};
+        post['grid']['user_id']  = user_id;
+        new_grid = await sails.helpers.grid.create(user_id,post['grid']) ;
+        console.log("copyToNewGrid new_grid ",new_grid);
+        update['grid_id'] =  new_grid.grid_id;
+        grid_tile_ids =  post['grid_tile_ids'];
+        new_grid_tiles = [];
+        for (let i = 0; i < grid_tile_ids.length; i++) {
+          const grid_tile_id = grid_tile_ids[i];
+          var grid_tile = await sails.helpers.grid.tile.copy(grid_tile_id,update);
+          new_grid_tiles.push(grid_tile);
+        }
+        //copy grid group based off location ids TODO 
+        // new_group = sails.helpers.group.copy(new_grid_tiles);
+        new_grid = await sails.helpers.grid.get(new_grid.grid_id,false) ;
+        result = new_grid;
+        break;
+      case "moveToNewGrid":
+        var update = {};
+        post['grid']['user_id']  =  user_id;
+        new_grid = await sails.helpers.grid.create(user_id,post['grid']) ;
+        console.log("moveToNewGrid new_grid ",new_grid);
+        update['grid_id'] =  new_grid.grid_id;
+        grid_tile_ids =  post['grid_tile_ids'];
+        new_grid_tiles = [];
+        for (let i = 0; i < grid_tile_ids.length; i++) {
+          const grid_tile_id = grid_tile_ids[i];
+          var grid_tile = await sails.helpers.grid.tile.copy(grid_tile_id,update);
+          new_grid_tiles.push(grid_tile);
+        }
+
+        // new_group = sails.helpers.group.copy(new_grid_tiles);
+        // await sails.helpers.group.tile.destroy(grid_tile_ids);
+        var deleted_locations = await Location.destroy({location_id:grid_tile_ids});
+
+        new_grid = await sails.helpers.grid.get(new_grid.grid_id,false) ;
+        result = new_grid;
+        break;
       
       
       default:

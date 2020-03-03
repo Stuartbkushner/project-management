@@ -339,7 +339,7 @@ Navigation = {
 	},
 	switchToTab: function(tab_id,reload)
 	{
-
+		console.log("switchToTab tab_id",tab_id);
 		var tab_split = tab_id.split("_");
 		var tab_type = tab_split[1];
 		var tab_object_id = tab_split[2];
@@ -382,8 +382,10 @@ Navigation = {
 
 					break;
 					default:
-
+						console.log("case grid tab_object_id",tab_object_id);
 					    $.when(Grid.getGrid(tab_object_id)).done(function(grid) {
+							console.log("case grid got grid",grid);
+
 					    	Grid.renderGrid(grid);
 
 					    });

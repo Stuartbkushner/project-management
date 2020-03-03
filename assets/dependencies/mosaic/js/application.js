@@ -44,6 +44,8 @@ Application = {
       // User.data.settings.current_project_id = grid.project.project_id;
       // Pile.reloadPile();
       Project.loadProjectResources(project);
+      console.log("init loadGrid grid",grid);
+
       Grid.loadGrid(grid);
     }else if (state == 'loadProject') {
       var project_id = state_data;
