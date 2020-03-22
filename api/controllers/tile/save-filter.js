@@ -9,10 +9,45 @@ module.exports = {
 
   inputs: {
 
-    filter: {
-      description: 'title object.',
-      type: 'ref',
-      required: true
+    filter_search: {
+      description: 'filter_search',
+      type: 'string',
+      required: false
+    },
+    match_title: {
+      description: 'match_title',
+      type: 'boolean',
+      required: false
+    },
+    match_content: {
+      description: 'match_content',
+      type: 'boolean',
+      required: false
+    },
+    match_tags: {
+      description: 'match_tags',
+      type: 'boolean',
+      required: false
+    },
+    match_starred: {
+      description: 'match_starred',
+      type: 'boolean',
+      required: false
+    },
+    filter_from: {
+      description: 'filter_from',
+      type: 'string',
+      required: false
+    },
+    filter_to: {
+      description: 'filter_to',
+      type: 'string',
+      required: false
+    },
+    type: {
+      description: 'type',
+      type: 'string',
+      required: false
     },
 
 
@@ -20,9 +55,10 @@ module.exports = {
 
 
   fn: async function (inputs) {
-
     console.log("controller saveFilters",inputs);
-    var result = await sails.helpers.filter.action("saveFilters",this.req);
+    this.req.session.filter = inputs;
+    var result = this.req.session.filter;
+    // var result = await sails.helpers.filter.action("saveFilters",this.req);
     console.log("controller saveFilters",result);
     return result;
    

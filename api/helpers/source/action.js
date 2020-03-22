@@ -86,6 +86,8 @@ module.exports = {
             result = source;
             break;
         case "saveAnnotation": // should change to saveSourceNote
+            console.log("saveAnnotation post",post);
+            console.log("saveAnnotation post note",post['note']);
             source_note = await sails.helpers.source.note.create(post['note']);
             result = source_note;
             break;	

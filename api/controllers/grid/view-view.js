@@ -24,9 +24,11 @@ module.exports = {
       var projects = await Project.find({user_id:me.user_id}).populate("user_id");
       console.log("view grid me.user_id",me.user_id);
       var grids = await Grid.find({user_id:me.user_id});
+      var public = 0;
     }else{
       var projects = [];
       var grids = [];
+      var public = 1;
     }
 
     projects = await sails.helpers.format.projects(projects);
@@ -141,7 +143,7 @@ module.exports = {
 			name: "Mosaic Junction",
 			phone: undefined,
 			projects:  [],
-			public: "1",
+			public: public,
 			settings: {current_project_id: 1, outline_cnt: 0, publish_cnt: 0, timer: 0},
 			slug: "",
 			state: "loadGrid",

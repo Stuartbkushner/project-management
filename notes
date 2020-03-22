@@ -12,6 +12,42 @@ add use templates button and functionality to grid table
 add templates to grid modal. make sure templates show up under template select 
 
 
+Review as of March 3, 2020
+WORKED:
+
+Create new project, but navigation needs help, see below.
+
+Create new grid, Add and Delete rows/columns
+
+For the most part, Groups worked but had some bugs.
+
+BUGS
+
+Had to refresh to see the project – no save indication
+
+Grids are showing in the dashboard like they were different projects, not grids IN A project.
+
+Tiles not showing up in the Pile when making a new grid in the same project.
+
+Grouping does not show group definition and Ungrouping does not work
+
+When I moved a tile off of the pile to a grid – the tile was REMOVED from the Pile. When I press refresh it comes back to the pile.
+
+QUESTION – The grids are showing up as Tabs in the MJ window, not separate browser tabs. What are we going to do?
+
+Big issues that will need sources to test
+
+When using a tile more than once, the source should NOT duplicate
+
+Only one source with all of the tiles, bug is several copies of the source, with only one tile each and no source text.
+
+A tile used more than once only shows the highlighted source text on just the first tile usage, not any of the duplicates.
+
+When a grid has A LOT of tiles, the grid flashes on the screen and then disappears, it takes over a minute for the grid to re-appear.
+
+Remember to move the URL so mosaicjunction.com goes to what we now call home.mosaicjunction.com
+
+
 
 
 

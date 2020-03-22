@@ -240,8 +240,15 @@ Pile = {
   saveFilters: function(type) {
 
       //get our currently set filters and send them off
+      console.log('saveFilters CSRF',CSRF);
+      var csrf = await CSRF.token();
+      var apiRequestHeader = {
+        'X-CSRF-Token':csrf._csrf,
+          // 'cookie':cookie
+      };
       $.ajax({
       type: "POST",
+      headers :apiRequestHeader,
       url: '/tile/saveFilters',
       data: {
         filter_search: $('.searchContainer .searchTextInput').val(),
@@ -348,14 +355,14 @@ Pile = {
     });
 
   },
-  reloadSearch: function () {
+  reloadSearch: async function () {
     var project_dashboard =  $('.gridTabs .active').hasClass("tab_project_dashboard");
     if (project_dashboard) {
       Application.loadDashboard();
-      Pile.saveFilters('project');
+      await Pile.saveFilters('project');
     }else{
       Pile.reloadPile();
-      Pile.saveFilters('pile');
+      await Pile.saveFilters('pile');
     }
   }
 

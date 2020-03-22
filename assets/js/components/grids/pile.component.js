@@ -343,7 +343,7 @@ parasails.registerComponent('pile', {
         //get our currently set filters and send them off
         $.ajax({
         type: "POST",
-        url: '/action?action=saveFilters',
+        url: '/tile/saveFilters',
         data: {
           filter_search: $('.searchContainer .searchTextInput').val(),
           match_title: $('.searchContainer .searchTitles').prop("checked"),

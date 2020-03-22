@@ -49,6 +49,11 @@ module.exports = {
       if(info['annotation_ids']){
         await Tile.replaceCollection(tile_id,"annotations").members(info['annotation_ids']);
       }
+      if(info.annotations){
+        console.log("info.annotations",info.annotations);
+        info.annotations = await sails.helpers.source.saveAnnotations(tile_id,info.annotations);
+        console.log("info.annotations post",info.annotations);
+      }
       if(info['tile_tags']){
         var tags = info['tile_tags'].split(",");
         var tag_ids = [];
