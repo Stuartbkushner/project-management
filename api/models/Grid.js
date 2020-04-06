@@ -112,6 +112,7 @@ module.exports = {
 
     grid_privacy_user_id: {
       model: 'user'
+
     },
 
     totalSpending: {

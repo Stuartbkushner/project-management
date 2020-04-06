@@ -23,15 +23,15 @@ For the most part, Groups worked but had some bugs.
 
 BUGS
 
-Had to refresh to see the project – no save indication
+//Had to refresh to see the project – no save indication
 
-Grids are showing in the dashboard like they were different projects, not grids IN A project.
+//Grids are showing in the dashboard like they were different projects, not grids IN A project.
 
-Tiles not showing up in the Pile when making a new grid in the same project.
+//Tiles not showing up in the Pile when making a new grid in the same project.
 
 Grouping does not show group definition and Ungrouping does not work
 
-When I moved a tile off of the pile to a grid – the tile was REMOVED from the Pile. When I press refresh it comes back to the pile.
+//When I moved a tile off of the pile to a grid – the tile was REMOVED from the Pile. When I press refresh it comes back to the pile.
 
 QUESTION – The grids are showing up as Tabs in the MJ window, not separate browser tabs. What are we going to do?
 

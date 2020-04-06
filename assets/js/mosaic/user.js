@@ -247,7 +247,8 @@ User = {
        $.each(data, function(key, val) {
         $('#tile_pile').append(Tile.renderTile(val));
       });
-
+        console.log(" about to make tile pile draggable data",data);
+        console.log(" about to make tile pile draggable tiles",tiles);
        $('#tile_pile > .draggable').draggable({ cursor: "move", cursorAt: { top: 85, left: 85 }, appendTo: "#grid", helper: "clone" });
        
 

@@ -1,6 +1,8 @@
 <div id="login" v-cloak>
   <div class="container">
     <h1 class="text-center">Sign in to your account</h1>
+  <button type="button" class="btn btn-lg btn-danger"  data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+
     <div class="login-form-container">
       <hr/>
       <ajax-form action="login" :syncing.sync="syncing" :cloud-error.sync="cloudError" :form-data="formData" :form-rules="formRules" :form-errors.sync="formErrors" @submitted="submittedForm()">

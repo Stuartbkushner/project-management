@@ -9,7 +9,7 @@ Tile = {
   },
 
   makeDraggable: function(tile) {
-
+    console.log("tile made dragable",tile);
     $(tile).draggable({helper: "clone", appendTo: "body", distance: 10 }).click(function(evt){
       if ( $(this).is('.ui-draggable-dragging') ) {
         return;
@@ -1174,7 +1174,7 @@ renderTile: function(tile){
     tile.tile_group = tile.groups[0];
 
     var strip_tile_desc = tile.tile_group.tile_group_description.replace(/<\/?[^>]+(>|$)/g, "");
-    var tile_div = $('<div class="tile draggable" data-container="body" data-content="'+strip_tile_desc+'" data-original-title="'+tile.tile_group.tile_group_title+'"></div>').css({'background':tile.tile_color});
+    var tile_div = $('<div class="tile draggable" data-toggle="popover" data-trigger="hover" data-container="body" data-content="'+strip_tile_desc+'" data-title="'+tile.tile_group.tile_group_title+'"></div>').css({'background':tile.tile_color});
 
     $(tile_div).popover({'trigger':'hover','delay':{'show':1000}});
 
@@ -1884,9 +1884,10 @@ moveTile: async function(tile){
           if(reload_grid === true)
           {
            Grid.reloadGrid();
-           Pile.reloadPile();
 
           }
+          Pile.reloadPile();
+
           console.log('send', 'event', 'Tiles', 'save grid tile', tile.tile_title, result.grid_tile_id);
 
 
