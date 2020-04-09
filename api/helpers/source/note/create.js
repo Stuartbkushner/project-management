@@ -60,7 +60,7 @@ module.exports = {
 
 
 
-
+    //TODO uncomment rezie code and add source height and width
     const sharp = require('sharp');
     const cutout = await sharp((source_page_content_path))
     .extract({ left: left, top: top, width: width, height: height })

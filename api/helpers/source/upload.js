@@ -61,7 +61,7 @@ module.exports = {
 				savename: image.baseFilename,     // output file name
 				savedir: saveToDir,    // output file location
 				format: "jpg",          // output file format
-				size: "600x600"         // output size in pixels
+				size: "600x600"         // output size in pixels TODO replace this with standard high and witdth
 			});
 			console.log("post pdf2pic");
 
@@ -80,6 +80,7 @@ module.exports = {
 				source_page = {};
 				source_page['source_page_number'] = imageX.page;
 				source_page['source_page_content'] = filename;
+				// TODO Resize image to standard height and width 
 				source_pages.push(source_page); 
 			}
 
@@ -89,6 +90,7 @@ module.exports = {
 			source_page = {};
 			source_page['source_page_number'] = 1;
 			source_page['source_page_content'] = filename;
+			// TODO Resize image to standard height and width
 			source_pages.push(source_page); 
 		}
 
@@ -111,6 +113,7 @@ module.exports = {
 		source_page = {};
 		source_page['source_page_number'] = 1;
 		source_page['source_page_content'] = filename;
+		// TODO Resize image to standard height and width
 		source_pages.push(source_page); 
 	}
 	

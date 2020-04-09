@@ -1,0 +1,76 @@
+body {
+	overflow:auto;
+}
+/* contact */
+    .contact-page {
+        background: #fff;
+        font-size: 25px;
+    }
+    .contact-page textarea, .contact-page input {
+        font-size: 25px;
+    }
+    .contact-page textarea {
+        height: 250px;
+    }
+    .contact-page .btn {
+            background-color: #38281d;
+    }
+
+/* home info */
+    .home-info {
+    	background: #fff;
+    }
+    .home-info h1 {
+        min-width: 100%;
+    }
+    .home-info p {
+    	text-align: center;
+    }
+    .home-info img {
+    	max-width: 100%;
+    	height: auto !important;
+    	width: 100%;
+    }
+    .alignleft {
+        display: inline;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 10px;
+        width: 50% !important;
+    }
+    .alignright {
+        display: inline;
+        float: right;
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+    .half {
+        width: 50% !important;
+    }
+/* help */
+    .step img {
+        max-width: 100%;
+    }
+    .success {
+        color:green;
+    }
+    .help-container {
+        width: 80%;
+    }
+/*     .carousel .carousel-item {
+        /* width: 54%; */
+/*         width: 800px; */
+/*         height: auto; */
+        /* top: -11%; */
+        /* position: absolute; */
+        /* transform: translateY(0px) !important; */
+    }
+/*     .carousel .carousel-item img {
+        max-height: 600px;
+    } */
+/*     .carousel {
+        /* width: 54%; */
+        /* width: 500px; */
+/*         height: 700px;
+    } */
+      */

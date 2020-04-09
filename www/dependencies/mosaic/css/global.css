@@ -1,0 +1,136 @@
+/* tile Modal */
+body .viewTileTemplate {
+    width: 700px;
+    min-height: 540px;
+    height: 600px;
+    padding-bottom: 20px;
+}
+.view_tile_annotations_list .selectedTextContainer {
+  color: #666;
+  font-size: 12px;
+  padding-top: 5px;
+  text-decoration: underline;
+}
+
+.view_tile_annotations_list {
+  border: 1px dashed #ccc;
+  /* max-height: 150px; */
+  min-height: 50px;
+  overflow: auto;
+  position: relative;
+  /* padding-bottom: 35%; */
+  height:0;
+}
+
+.view_tile_annotations_list {
+  border:1px dashed #ccc;
+  height: auto;
+  overflow:auto;
+}
+.viewTileLeft, .viewTileRight {
+  display:inline-block;
+  width:49%;
+  vertical-align: top;
+}
+
+.view_tile_tile_title {
+  height:40px;
+  overflow-y:auto;
+}
+
+.view_tile_tile_content {
+  height:85px;
+    border:1px solid #ccc;
+  overflow-y:auto;
+  padding:10px;
+}
+
+.view_tile_tile_tags, .view_tile_used_on_grids_list {
+  height:40px;
+  overflow-y:auto;
+}
+
+
+
+.viewTileTemplate {
+  width:700px;
+  min-height: 540px;
+  height: 540px;
+}
+
+.viewTileRight, .viewTileLeft, .viewTileBottom {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+}
+.viewTileBottom {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  /* overflow: auto; */
+}
+.viewTileBottom .bottom-content  {
+  /* position: absolute; */
+  width: 95%;
+  height: 85%;
+  max-width: 100%;
+  overflow: auto;
+  border-bottom:     1px dashed #ccc;
+}
+.viewTileBottom .actions  {
+  position: relative;
+  /* height: 10px; */
+  width: 100%;
+  /* bottom: -3px; */
+  /* left: -14px; */
+}
+.viewTileBottom > div {
+  /* position: relative; */
+  /* width: 100%; */
+  /* padding-bottom:40%; */
+  /* height:0; */
+  /* overflow:hidden; */
+}
+
+.view_tile_annotations_list img {
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  cursor:pointer;
+}
+
+.view_tile_annotations_list a {
+  color: #333;
+  font-size: 14px;
+}
+
+.view_tile_annotations_list > div {
+  border-left: 3px solid #333;
+  border-radius: 8px;
+  margin: 15px;
+  padding-bottom: 2px;
+  padding-left: 12px;
+  padding-top: 5px;
+}
+
+.tileModalAnnotationList img {
+  display: block;
+  cursor:pointer;
+}
+
+.tileModalAnnotationList a {
+  color: #333;
+  font-size: 14px;
+}
+
+.tileModalAnnotationList > div {
+  border-left: 3px solid #333;
+  border-radius: 8px;
+  margin: 15px;
+  padding-bottom: 2px;
+  padding-left: 12px;
+  padding-top: 5px;
+}
+.tileModalAnnotationList {
+  position: relative;
+}

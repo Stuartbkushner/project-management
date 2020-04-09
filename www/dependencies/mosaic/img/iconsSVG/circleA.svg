@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW Home & Student X6 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1.75in" height="1.333in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1750 1333"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <font id="FontID0" horiz-adv-x="666" font-variant="normal" style="fill-rule:nonzero" font-style="normal" font-weight="400">
+	<font-face 
+		font-family="Arial">
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="A" horiz-adv-x="666"><path d="M-1.49948 0l274.665 716.001 104.169 0 291.499 -716.001 -107.833 0 -82.833 217.001 -301.502 0 -77.6661 -217.001 -100.499 0zm205.999 294.001l244.001 0 -74.6671 198.498c-22.4983,60.3347 -39.4985,110.167 -51.3317,149.5 -9.83398,-46.6647 -23.0012,-92.4983 -39.5015,-137.832l-78.5002 -210.166z"/></glyph>
+  </font>
+  <style type="text/css">
+   <![CDATA[
+    @font-face { font-family:"Arial";src:url("#FontID0") format(svg)}
+    .str0 {stroke:black;stroke-width:6.94488}
+    .fil1 {fill:black}
+    .fil0 {fill:yellow}
+    .fnt0 {font-weight:normal;font-size:1283.91px;font-family:'Arial'}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <ellipse class="fil0 str0" cx="859" cy="649" rx="816" ry="622"/>
+  <text x="425" y="1038"  class="fil1 fnt0">A</text>
+ </g>
+</svg>
