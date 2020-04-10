@@ -175,6 +175,10 @@ module.exports.routes = {
   'POST /team/leaveTeam': { action: 'team/leave-team' },
 
   
+  'GET /grid/listen': { action: 'grid/listen' , csrf: false },
+
+
+  
 
   
   

@@ -105,6 +105,7 @@ module.exports = {
           
         }
         result = grid_tile;
+        //TODO brocdacast grid update 
         break;
       case "placeTileOnGrid":
         var grid_id = post['grid_id'];
@@ -113,11 +114,15 @@ module.exports = {
         await Grid.addToCollection(grid_id,"floating_tiles").members(tile_ids);
         new_grid = await sails.helpers.grid.get(grid_id);
         result = new_grid;
+
+        //TODO brocdacast grid update 
+        //sails.sockets.broadcast("grid", grid_id, gridUpdae, req);
         break;
       case "moveGridTile":
           // var location = await sails.helpers.grid.tile.update(post);
           var location = await sails.helpers.grid.tile.move(post);
           result = location;
+        //TODO brocdacast grid update 
         break;
       case "saveGrid":
         
@@ -174,6 +179,7 @@ module.exports = {
       case "removeFromGrid":
         grids_tile = await sails.helpers.grid.tile.destroy(post['grid_tile_id']) ;
         result = grids_tile;
+        //TODO brocdacast grid update 
         break;
       case "copyToNewGrid":
         var update = {};

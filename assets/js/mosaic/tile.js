@@ -1174,6 +1174,7 @@ renderTile: function(tile){
     tile.tile_group = tile.groups[0];
 
     var strip_tile_desc = tile.tile_group.tile_group_description.replace(/<\/?[^>]+(>|$)/g, "");
+    // TODO popover pt 2 do this very last. try to get pop over to work here. tile should be in group
     var tile_div = $('<div class="tile draggable" data-toggle="popover" data-trigger="hover" data-container="body" data-content="'+strip_tile_desc+'" data-title="'+tile.tile_group.tile_group_title+'"></div>').css({'background':tile.tile_color});
 
     $(tile_div).popover({'trigger':'hover','delay':{'show':1000}});
@@ -1302,7 +1303,8 @@ var tile_title = $('<div/>', {
 
 var tile_content = $('<div/>', {
   class: 'tileContent',
-}).html(tile.tile_content);
+// }).html(tile.tile_content);
+}).html("");
 
         //is the title too long for a pile tile?
         if(tile.tile_title.length > 20)
