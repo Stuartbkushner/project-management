@@ -47,7 +47,7 @@ module.exports = {
 
         case "getSource":
             source_id = post['source_id'];
-            source = await Source.findOne({source_id:source_id}).populate("pages").populate("annotations") ;
+            source = await Source.findOne({source_id:source_id}).populate("pages").populate("annotations").populate("source_tiles") ;
             pages = await Source_Page.find({source_id:source_id}).populate("notes") ;
             // source.user_id = 2;
             // source.source_url = "/images/SFHgH8-1.jpg";
@@ -57,6 +57,7 @@ module.exports = {
             //   }
             // ]
             source.pages = pages;
+            // source.source_tiles = source.annotations;
             result = source;
             break;
     

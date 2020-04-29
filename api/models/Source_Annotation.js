@@ -15,9 +15,9 @@ module.exports = {
 
     source_annotation_id: {
       type: 'number',
-      unique: true,
+      // unique: true,
       autoIncrement: true,
-      required: true,
+      // required: true,
     },
 
     focus_width: {
@@ -37,7 +37,7 @@ module.exports = {
 
     focus_left: {
         type: 'number',
-        required: true,
+        // required: true,
     },
 
     focus_top: {
@@ -57,12 +57,12 @@ module.exports = {
 
     source_text: {
         type: 'string',
-        required: true,
+        // required: true,
     },
 
     type: {
         type: 'number',
-        required: true,
+        // required: true,
     },
 
     cutout: {
@@ -72,7 +72,7 @@ module.exports = {
 
     source_annotation_version: {
         type: 'number',
-        required: true,
+        // required: true,
     },
     
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

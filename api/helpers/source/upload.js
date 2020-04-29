@@ -35,7 +35,12 @@ module.exports = {
     var req = inputs.req;
 	var source = inputs.source;
 	var sourceDir = sails.config.custom.sourceDir;
-    var sourceDirPath = process.cwd() + sourceDir;
+	var sourceHeight = sails.config.custom.sourceHeight;
+	var sourceWidth = sails.config.custom.sourceWidth;
+	var sourceDirPath = process.cwd() + sourceDir;
+	console.log("helpers source upload sourceHeight",sourceHeight);
+	console.log("helpers source upload sourceWidth",sourceWidth);
+	const sharp = require('sharp');
 	
 	var source_id =  source.source_id;
 	var user_id =  source.user_id;
@@ -61,7 +66,7 @@ module.exports = {
 				savename: image.baseFilename,     // output file name
 				savedir: saveToDir,    // output file location
 				format: "jpg",          // output file format
-				size: "600x600"         // output size in pixels TODO replace this with standard high and witdth
+				size: sourceHeight+"x"+sourceWidth         // output size in pixels TODO replace this with standard high and witdth
 			});
 			console.log("post pdf2pic");
 
@@ -76,21 +81,51 @@ module.exports = {
 			var source_pages = [];
 			for (let i = 0; i < images.length; i++) {
 				const imageX = images[i];
-				let filename = imageX.path.substring(imageX.path.lastIndexOf('/')+1);
+				var filename = imageX.path.substring(imageX.path.lastIndexOf('/')+1);
 				source_page = {};
 				source_page['source_page_number'] = imageX.page;
 				source_page['source_page_content'] = filename;
 				// TODO Resize image to standard height and width 
+				console.log("upload exstract tofile pdf pre  filename",filename);
+
+				var filename_sharp = await sharp((filename))
+				// .resize({ 
+				// height: sourceHeight ,
+				// width: sourceHeight ,
+				// })
+				.toFile(filename, function(err) {
+				// Extract a region of the input image, saving in the same format.
+				console.log("upload exstract tofile  err",err);
+				console.log("upload exstract tofile  filename",filename);
+				return filename;
+				});
+		       console.log("upload exstract tofile pdf post  filename",filename);
+		       console.log("upload exstract tofile pdf post  filename_sharp",filename_sharp);
+
 				source_pages.push(source_page); 
 			}
 
 		}else{
-			let filename = image.path.substring(image.path.lastIndexOf('/')+1);
+			var filename = image.path.substring(image.path.lastIndexOf('/')+1);
 			var source_pages = [];
 			source_page = {};
 			source_page['source_page_number'] = 1;
 			source_page['source_page_content'] = filename;
 			// TODO Resize image to standard height and width
+		    	console.log("upload exstract tofile image pre  filename",filename);
+			    filename_sharp = await sharp((filename))
+				// .resize({ 
+				// height: sourceHeight ,
+				// width: sourceHeight ,
+				// })
+				.toFile(filename, function(err) {
+				// Extract a region of the input image, saving in the same format.
+				console.log("upload exstract tofile  err",err);
+				console.log("upload exstract tofile  filename",filename);
+				return filename;
+				});
+		       console.log("upload exstract tofile image post  filename",filename);
+		       console.log("upload exstract tofile image post  filename_sharp",filename_sharp);
 			source_pages.push(source_page); 
 		}
 
@@ -108,12 +143,31 @@ module.exports = {
 				console.log('Screenshot taken successfully!');
 			}
 		});
-		let filename = filePath.substring(filePath.lastIndexOf('/')+1);
+		var filename = filePath.substring(filePath.lastIndexOf('/')+1);
 		var source_pages = [];
 		source_page = {};
 		source_page['source_page_number'] = 1;
 		source_page['source_page_content'] = filename;
 		// TODO Resize image to standard height and width
+		console.log("upload pre resize filename",filename);
+
+		filename_sharp = await sharp((filename))
+		// .resize({ 
+		// height: sourceHeight ,
+		// width: sourceHeight ,
+		// })
+		.toFile(filename, function(err) {
+		// Extract a region of the input image, saving in the same format.
+		console.log("upload exstract tofile  err",err);
+		console.log("upload exstract tofile  filename",filename);
+		return filename;
+		
+		});
+		console.log("upload post resize filename",filename);
+		console.log("upload post resize filename_sharp",filename_sharp);
+	
+	
+
 		source_pages.push(source_page); 
 	}
 	

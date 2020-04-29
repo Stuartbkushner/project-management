@@ -81,6 +81,11 @@ module.exports = {
         collection: 'source_page',
         via: 'source_id'
       },
+      source_tiles: {
+          collection: 'tile',
+          via: 'sources'
+
+      },
 
 
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
@@ -93,6 +98,8 @@ module.exports = {
     user_id: {
         model: 'user'
     },
+    
+    
 
     // this is new and might not need to be a thing
     //

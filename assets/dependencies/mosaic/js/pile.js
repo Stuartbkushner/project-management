@@ -15,19 +15,19 @@ Pile = {
     match_starred_chkbox: $('.searchContainer .searchFavorites')
   },
 
-  init: function() {
+  init: async function() {
     
-    this.setFilters(Pile.settings);
+    await this.setFilters(Pile.settings);
     // this.loadPile(User.data.pile_tiles);
 
     //set our filters (set values of inputs)
-    this.setFilters(Pile.settings);
+    await this.setFilters(Pile.settings);
 
     //load our pile
     //this.loadPile(pile_tiles);
     
     //bind all our actions
-    this.bindUIActions();
+    await this.bindUIActions();
 
   },
 
@@ -237,7 +237,7 @@ Pile = {
     return;
   },
 
-  saveFilters: function(type) {
+  saveFilters: async function(type) {
 
       //get our currently set filters and send them off
       console.log('saveFilters CSRF',CSRF);

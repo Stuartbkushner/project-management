@@ -90,5 +90,7 @@ module.exports.custom = {
   ***************************************************************************/
   
   sourceDir :  '/assets/images/',
+  sourceHeight :  600,
+  sourceWidth :  600,
 
 };

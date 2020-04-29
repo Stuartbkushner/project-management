@@ -88,6 +88,10 @@ module.exports = {
         collection: 'tile_group',
         via: 'tiles'
     },
+    sources: {
+      collection: 'source',
+      via: 'source_tiles'
+    },
 
 
 

@@ -771,8 +771,10 @@ renderTmpAnnotation: function(annotation,jcrop_object) {
     var source_page_image_url = jcrop_object.ui.holder.parents(".pageContainer").find(".sourcePageImage").attr("src");
     var width = annotation.jcrop_coords.c.w;
     var height = annotation.jcrop_coords.c.h;
-    var bound_width = annotation.jcrop_coords.bounds[0];
-    var bound_height = annotation.jcrop_coords.bounds[1];
+    // var bound_width = annotation.jcrop_coords.bounds[0];
+    // var bound_height = annotation.jcrop_coords.bounds[1];
+    var bound_width = annotation.jcrop_coords.bounds.bounds[0];
+    var bound_height = annotation.jcrop_coords.bounds.bounds[1];
     var left = annotation.jcrop_coords.c.x;
     var top = annotation.jcrop_coords.c.y;
   }

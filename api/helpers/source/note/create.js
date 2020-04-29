@@ -35,6 +35,8 @@ module.exports = {
     var height = parseInt(annotation_data.c_h);
     var new_width = parseInt(annotation_data.bounds_0);
     var new_height = parseInt(annotation_data.bounds_1);
+    var sourceHeight = sails.config.custom.sourceHeight;
+	  var sourceWidth = sails.config.custom.sourceWidth;
     console.log("note create inputs",inputs);
     console.log("note create annotation_data",annotation_data);
 
@@ -65,8 +67,8 @@ module.exports = {
     const cutout = await sharp((source_page_content_path))
     .extract({ left: left, top: top, width: width, height: height })
     // .resize({ 
-    //   height: new_height ,
-    //   width: new_width ,
+    //   height: sourceHeight ,
+    //   width: sourceHeight ,
     // })
     .toFile(saveToName, function(err) {
       // Extract a region of the input image, saving in the same format.
@@ -75,8 +77,11 @@ module.exports = {
       return saveToName;
       
     });
-      console.log("note create cutout",cutout);
-      annotation_data.cutout = cutout;
+      console.log("note create saveToName",saveToName);
+      var filename = saveToName.substring(saveToName.lastIndexOf('/')+1);
+      console.log("note create filename",filename);
+
+      annotation_data.cutout = "/images/"+user_id+"/"+filename;
       console.log("note create annotation_data",annotation_data);
 
     var source_annotation = await Source_Annotation.create(annotation_data).fetch();
