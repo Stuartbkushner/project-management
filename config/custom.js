@@ -90,6 +90,7 @@ module.exports.custom = {
   ***************************************************************************/
   
   sourceDir :  '/assets/images/',
+  sourceDirTemp :  '/.tmp/public/images/',
   sourceHeight :  600,
   sourceWidth :  600,
 

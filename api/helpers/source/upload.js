@@ -35,20 +35,26 @@ module.exports = {
     var req = inputs.req;
 	var source = inputs.source;
 	var sourceDir = sails.config.custom.sourceDir;
+	var sourceDirTemp = sails.config.custom.sourceDirTemp;
 	var sourceHeight = sails.config.custom.sourceHeight;
 	var sourceWidth = sails.config.custom.sourceWidth;
 	var sourceDirPath = process.cwd() + sourceDir;
+	var sourceDirPathTemp = process.cwd() + sourceDirTemp;
 	console.log("helpers source upload sourceHeight",sourceHeight);
 	console.log("helpers source upload sourceWidth",sourceWidth);
 	const sharp = require('sharp');
+	var fs = require('fs');
+
 	
 	var source_id =  source.source_id;
 	var user_id =  source.user_id;
 	var saveToDir = sourceDirPath +user_id+"/";
+	var saveToDirTemp = sourceDirPathTemp +user_id+"/";
 
 	const webshot = require('webshot');
 	const PDF2Pic = require("pdf2pic");
 	console.log("helpers source upload saveToDir",saveToDir);
+	console.log("helpers source upload saveToDirTemp",saveToDirTemp);
 
 	if(source.source_type == "pdf"){
 		var image = await sails.helpers.files.upload.with({
@@ -58,6 +64,13 @@ module.exports = {
 			saveToDir:saveToDir
 		});
 		console.log("helpers source upload",image);
+		var imageTemp = await sails.helpers.files.upload.with({
+			req: req,
+			// folder:"tokens",
+			type:'new_source_file',
+			saveToDir:saveToDirTemp
+		});
+		console.log("helpers source upload imageTemp",imageTemp);
 		var sourceFileType = image.type;
 		if(sourceFileType ==  "pdf"){
 			console.log("pre pdf2pic",image.baseFilename);
@@ -65,6 +78,16 @@ module.exports = {
 				density: 100,           // output pixels per inch
 				savename: image.baseFilename,     // output file name
 				savedir: saveToDir,    // output file location
+				format: "jpg",          // output file format
+				size: sourceHeight+"x"+sourceWidth         // output size in pixels TODO replace this with standard high and witdth
+			});
+			console.log("post pdf2pic");
+
+			console.log("pre pdf2pic",imageTemp.baseFilename);
+			const pdf2picTemp = new PDF2Pic({
+				density: 100,           // output pixels per inch
+				savename: imageTemp.baseFilename,     // output file name
+				savedir: saveToDirTemp,    // output file location
 				format: "jpg",          // output file format
 				size: sourceHeight+"x"+sourceWidth         // output size in pixels TODO replace this with standard high and witdth
 			});
@@ -107,6 +130,10 @@ module.exports = {
 
 		}else{
 			var filename = image.path.substring(image.path.lastIndexOf('/')+1);
+			// var filePathTemp = saveToDirTemp+filename;
+			// console.log("upload image  filePathTemp",filePathTemp);
+			// fs.createReadStream(filePath).pipe(fs.createWriteStream(filePathTemp));
+
 			var source_pages = [];
 			source_page = {};
 			source_page['source_page_number'] = 1;
@@ -132,7 +159,11 @@ module.exports = {
 	}else if(source.source_type == "webpage"){
 		//must be
 		var randomName = await sails.helpers.strings.random('url-friendly');
-		var filePath = saveToDir+randomName+'.png';
+		var filename = randomName+'.png';
+		var filePath = saveToDir+filename;
+		var filePathTemp = saveToDirTemp+filename;
+		console.log("upload post web filePathTemp",filePathTemp);
+
 		var options  = {
 			shotSize: { 
 				height: 'all'
@@ -143,7 +174,9 @@ module.exports = {
 				console.log('Screenshot taken successfully!');
 			}
 		});
-		var filename = filePath.substring(filePath.lastIndexOf('/')+1);
+
+		fs.createReadStream(filePath).pipe(fs.createWriteStream(filePathTemp));
+		filename = filePath.substring(filePath.lastIndexOf('/')+1);
 		var source_pages = [];
 		source_page = {};
 		source_page['source_page_number'] = 1;

@@ -177,6 +177,9 @@ module.exports.routes = {
   
   'GET /grid/listen': { action: 'grid/listen' , csrf: false },
 
+  '/file':                           { action: 'FileController' },
+
+
 
   
 

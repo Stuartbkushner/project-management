@@ -48,22 +48,32 @@ module.exports = {
     var source_page_content = source_page.source_page_content;
 
     var sourceDir = sails.config.custom.sourceDir;
+	  var sourceDirTemp = sails.config.custom.sourceDirTemp;
+
     var sourceDirPath = process.cwd() + sourceDir;
+    var sourceDirPathTemp = process.cwd() + sourceDirTemp;
 	
     var user_id =  source_page.source_id.user_id;
     var saveToDir = sourceDirPath +user_id+"/";
+    var saveToDirTemp = sourceDirPathTemp +user_id+"/";
     var image_name = await sails.helpers.strings.random('url-friendly');
     var saveToName = saveToDir+image_name+".png";
+    var saveToNameTemp = saveToDirTemp+image_name+".png";
     var source_page_content_path = saveToDir+source_page_content;
     console.log("note create source_page_content_path",source_page_content_path);
     console.log("note create saveToDir",saveToDir);
     console.log("note create saveToName",saveToName);
+    console.log("note create saveToDirTemp",saveToDirTemp);
+    console.log("note create saveToNameTemp",saveToNameTemp);
+    console.log("note create saveToDirTemp",saveToDirTemp);
 
 
 
 
     //TODO uncomment rezie code and add source height and width
     const sharp = require('sharp');
+	  var fs = require('fs');
+
     const cutout = await sharp((source_page_content_path))
     .extract({ left: left, top: top, width: width, height: height })
     // .resize({ 
@@ -77,6 +87,31 @@ module.exports = {
       return saveToName;
       
     });
+    console.log("note create cutout",cutout);
+
+    const cutoutTemp = await sharp((source_page_content_path))
+    .extract({ left: left, top: top, width: width, height: height })
+    // .resize({ 
+    //   height: sourceHeight ,
+    //   width: sourceHeight ,
+    // })
+    .toFile(saveToNameTemp, function(err) {
+      // Extract a region of the input image, saving in the same format.
+      console.log("note create exstract tofile  err",err);
+      console.log("note create exstract tofile  saveToNameTemp",saveToNameTemp);
+      return saveToNameTemp;
+      
+    });
+    console.log("note create cutoutTemp",cutoutTemp);
+
+    // // destination.txt will be created or overwritten by default.
+    // fs.copyFile(saveToName, saveToNameTemp, (err) => {
+    //   if (err) throw err;
+    //   console.log('note create  '+saveToName +'was copied to '+saveToNameTemp);
+    // });
+
+		// fs.createReadStream(saveToName).pipe(fs.createWriteStream(saveToNameTemp));
+
       console.log("note create saveToName",saveToName);
       var filename = saveToName.substring(saveToName.lastIndexOf('/')+1);
       console.log("note create filename",filename);

@@ -101,7 +101,7 @@ parasails.registerComponent('sourceModals', {
         <!-- end edit source modal -->
 
         <!-- start view source modal -->
-        <div id="source_modal" class="modal source_modal">
+        <div id="source_modal" class="source_modal" style="display:none">
           <div class="header unselectable">
             <input type="hidden" class="view_source_source_id">
             <div class="sourceNav">

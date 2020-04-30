@@ -113,33 +113,36 @@ findAnnoObjectByTempID: function(temp_id) {
   
 viewSource: async function(source_id,page_num) {
   User.data.active_source_id =  source_id;
-  if($(".source_modal").is(":visible"))
-  {
-    var source_modal = $(".source_modal").filter(":visible");
-    source_modal.remove();
-  }
+  // if($(".source_modal").is(":visible"))
+  // {
+  //   var source_modal = $(".source_modal").filter(":visible");
+  //   source_modal.remove();
+  // }
+  $(".source_modal").css("display","block");
+  
   if(User.data.team_id > 0)
   {
       source_timer = setInterval(Source.reloadSourceAnnotations, 2000);
   }
-    var modal = $("#source_modal").mj_modal();
-     modal.find(".modalCloseButton").on("click", function() {
-		clearInterval(source_timer);
-	  });
-    modal.resizable({
-        minHeight: 540,
-        minWidth: 1000
-      });
+    var modal = $("#source_modal");
+    // var modal = $("#source_modal").mj_modal();
+    //  modal.find(".modalCloseButton").on("click", function() {
+		// clearInterval(source_timer);
+	  // });
+    // modal.resizable({
+    //     minHeight: 540,
+    //     minWidth: 1000
+    //   });
 
-    modal.width("80%");
-    modal.height("80%");
+    // modal.width("80%");
+    // modal.height("80%");
 
     modal.css({"background":"white"});
 
 
 
-    modal.find(".sourceRight").height($(".source_modal").filter(":visible").height());
-    modal.find(".sourceLeft").height($(".source_modal").filter(":visible").height());
+    // modal.find(".sourceRight").height($(".source_modal").filter(":visible").height());
+    // modal.find(".sourceLeft").height($(".source_modal").filter(":visible").height());
 
       modal.find(".source_create_tile_btn").on("click", function(e) {
       e.stopPropagation();
@@ -154,20 +157,20 @@ viewSource: async function(source_id,page_num) {
 	// }).mouseup(function(ev) {
 	//   draggableDiv.draggable('enable');
 	// });
-	modal.find(".pageNumbers").find("input[type=text]").mousedown(function(e) {
+	// modal.find(".pageNumbers").find("input[type=text]").mousedown(function(e) {
 
-	  modal.draggable('disable');
+	//   modal.draggable('disable');
 
-	});
+	// });
 
-	modal.find(".pageNumbers").find("input[type=text]").mouseup(function(e) {
-		modal.draggable('enable');
-		// $(this).focus();
-		// var tmpStr = $(this).val();
-		// $(this).val('');
-		// $(this).val(tmpStr);
+	// modal.find(".pageNumbers").find("input[type=text]").mouseup(function(e) {
+	// 	modal.draggable('enable');
+	// 	// $(this).focus();
+	// 	// var tmpStr = $(this).val();
+	// 	// $(this).val('');
+	// 	// $(this).val(tmpStr);
 
-	});
+	// });
 
       modal.find(".goButton").on("click", function() {
         var new_page_number = modal.find(".pageNumbers").find("input[type=text]").val();
@@ -215,20 +218,26 @@ viewSource: async function(source_id,page_num) {
             modal.find(".view_source_source_id").val(source_id);
             modal.find(".sourceLeft").empty();
 
+            source_annotations = data.source_annotations;
+            console.log("view source source_annotations",source_annotations);
+
+
             if(Source.source.source_tiles)
             {
               Source.loadLeftNav(Source.source.source_tiles,modal);
 
             }
+            Source.loadPage(page_num);
+
             //TODO: backend is currently sending source annotations back in a funny way. find the TODO for this on the backend in Source_Helper.php in function get_source_pages
-            if(typeof data.pages[0].notes !== "undefined" && data.pages[0].notes.length > 0)
-            {
-              source_annotations = data.pages[0].notes;
-              //Source.loadAnnotationsForPage(source_annotations,1);
-            }
+            // if(typeof data.pages[0].notes !== "undefined" && data.pages[0].notes.length > 0)
+            // {
+            //   source_annotations = data.pages[0].notes;
+            //   //Source.loadAnnotationsForPage(source_annotations,1);
+            // }
+            
 
             //load first page of source
-            Source.loadPage(page_num);
 
             
             
@@ -295,7 +304,7 @@ reloadSourceAnnotations: async function() {
               $.each(data.pages, function(index,annotation) {
                 if(Source.pageIsVisible(annotation.source_page_number))
                 {
-                  Source.loadAnnotationsForPage(data.pages[parseInt(annotation.source_page_number) - 1].notes,annotation.source_page_number);
+                  Source.loadAnnotationsForPage(data.source_annotations,annotation.source_page_number);
                 }
               });
             }
@@ -592,16 +601,17 @@ loadLeftNav: function(tiles,modal) {
                     height:annotation.focus_height+'%',
                     width:annotation.focus_width+'%',
                     class: 'textSelectionHighlight'
-                    }).css({'background':'#ffff4d','left':annotation.anchor_left+'%','top':annotation.anchor_top+'%',position:'absolute'}).on("click", function(e) {
+                    }).css({'background':'#ffff4d','left':annotation.anchor_left+'%','top':annotation.anchor_top+'%',position:'absolute'}).on("click", async function(e) {
                         console.log('annotation clicked');
                         e.stopPropagation();
-                        var tile_promise = Tile.getTile(annotation.tile_id);
+                        var tile_data = await Tile.getTile(annotation.tile_id);
                         var modal = $("#view_tile_template").mj_modal();
                         modal.children(".header").prepend("View Tile");
+                        Tile.populateViewTileTemplate(modal,tile_data);
 
-                        tile_promise.success(function(data) {
-                          Tile.populateViewTileTemplate(modal,data);
-                        });
+                        // tile_promise.success(function(data) {
+                        //   Tile.populateViewTileTemplate(modal,data);
+                        // });
 
                         modal.find('.save').on("click", function() {
                           $(this).parents(".modal").remove();

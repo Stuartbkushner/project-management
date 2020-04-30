@@ -57,7 +57,7 @@ module.exports = {
             //   }
             // ]
             source.pages = pages;
-            // source.source_tiles = source.annotations;
+            source.source_annotations = source.annotations;
             result = source;
             break;
     

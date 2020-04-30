@@ -724,8 +724,8 @@ select > option {
 }
 
 .source_modal {
-	margin-left:-45% !important;
-	margin-top:-5%;
+	/* margin-left:-45% !important;
+	margin-top:-5%; */
 }
 
 .sourceNav img {
@@ -1324,6 +1324,7 @@ s {
   /* width: auto; */
   max-height: 780px;
   min-width: 870px;
+  z-index: 1000000000 !important;
   /* overflow-y: auto; */
   /* position: relative !important; */
 }
@@ -1880,6 +1881,9 @@ s {
 
 .context-menu-root {
 	z-index:9999 !important;
+}
+.viewTileTemplate {
+	z-index: 1000000000 !important;
 }
 .modal.viewTileTemplate .content div  {
 	font-size:20px !important; 
