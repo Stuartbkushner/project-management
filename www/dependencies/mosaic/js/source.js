@@ -173,7 +173,7 @@ viewSource: async function(source_id,page_num) {
         var new_page_number = modal.find(".pageNumbers").find("input[type=text]").val();
         Source.loadPage(new_page_number);
 
-        //TODO: FIX THIS SO IT'S nNOT CALLED WHEN WE ARE JUST LOADING ONE PAGE FROM AN INITIAL VIEW SOURCE CALL
+        //BEWARE: FIX THIS SO IT'S nNOT CALLED WHEN WE ARE JUST LOADING ONE PAGE FROM AN INITIAL VIEW SOURCE CALL
         Source.scrollToPage(new_page_number);
       });
       var csrf = await CSRF.token();
@@ -198,7 +198,6 @@ viewSource: async function(source_id,page_num) {
           success: function(data) 
           {
 
-            //TODO: REMOVE ALL THIS "THIS" THESE DON'T NEED TO BE CLASS VARS
             Source.source = data;
             Source.modal = modal;
             Source.page_count = Source.source.pages.length;
@@ -220,10 +219,9 @@ viewSource: async function(source_id,page_num) {
               Source.loadLeftNav(Source.source.source_tiles,modal);
 
             }
-            //TODO: backend is currently sending source annotations back in a funny way. find the TODO for this on the backend in Source_Helper.php in function get_source_pages
-            if(typeof data.pages[0].notes !== "undefined" && data.pages[0].notes.length > 0)
+            if(typeof data.source_annotations !== "undefined" && data.source_annotations.length > 0)
             {
-              source_annotations = data.pages[0].notes;
+              source_annotations = data.source_annotations;
               //Source.loadAnnotationsForPage(source_annotations,1);
             }
 

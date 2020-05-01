@@ -295,7 +295,7 @@ Navigation = {
 		return tab;
 	},
 
-	//TODO: FIX THIS - weird behavior after you close a grid, go back to the grid dashboard and open the same grid again. grid renders on the dashboard tab instead of creating a new tab
+	//BEWARE: FIX THIS - weird behavior after you close a grid, go back to the grid dashboard and open the same grid again. grid renders on the dashboard tab instead of creating a new tab
 	removeTab: function(tab)
 	{
 		var tab_id = tab.tab_id;

@@ -203,7 +203,7 @@ parasails.registerComponent('pile', {
         var created_at = new Date(index.created_at).getTime();
   
         var pile_search_field = $(".searchTextInput");
-        //TODO: Must load tags on projects in backend
+        //BEWARE: Must load tags on projects in backend
         //index.project_tags.toLowerCase().search(Pile.settings.filter_search_field.val().toLowerCase()) >= 0
         
         var filtered_projects = 
@@ -265,7 +265,7 @@ parasails.registerComponent('pile', {
         var tile_created = new Date(index.tile_created).getTime();
   
         var pile_search_field = $(".searchTextInput");
-        //TODO: Must load tags on tiles in backend
+        //BEWARE: Must load tags on tiles in backend
         //index.tile_tags.toLowerCase().search(Pile.settings.filter_search_field.val().toLowerCase()) >= 0
         
         var filtered_tiles = 

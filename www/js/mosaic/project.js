@@ -297,7 +297,7 @@ activateSave: function(modal) {
 						modal.remove();
 					}
 					
-					return; //TODO: return is here because updateFrames does some funky stuff if called. function calls in updateFrames that do things besides update the frame should be removed from updateFrames into the appropriate places
+					return; //BEWARE: return is here because updateFrames does some funky stuff if called. function calls in updateFrames that do things besides update the frame should be removed from updateFrames into the appropriate places
 	          }          
 
 				Navigation.updateFrames();
@@ -363,7 +363,7 @@ deleteProject: async function(project_id) {
 	    //   {
 		// 		Application.loadDashboard();
 		// 		// modal.remove();
-		// 		return; //TODO: return is here because updateFrames does some funky stuff if called. function calls in updateFrames that do things besides update the frame should be removed from updateFrames into the appropriate places
+		// 		return; //BEWARE: return is here because updateFrames does some funky stuff if called. function calls in updateFrames that do things besides update the frame should be removed from updateFrames into the appropriate places
 	    //   }    
 
       },

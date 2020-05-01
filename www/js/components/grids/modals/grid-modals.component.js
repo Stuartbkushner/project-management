@@ -306,7 +306,7 @@ parasails.registerComponent('grid-modals', {
           class:"gridAsIconObjects"
         });
         
-        var grid_size = [6,6]; //TODO: this needs to pull the actual size of the grid!
+        var grid_size = [6,6]; //BEWARE: this needs to pull the actual size of the grid!
         var container_width = 200;
         var container_height = 140;
         var grid_lines = GridModals.getIconGridLines(grid_size,container_width,container_height);

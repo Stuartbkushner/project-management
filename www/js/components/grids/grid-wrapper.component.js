@@ -471,7 +471,7 @@ parasails.registerComponent('grid-wrapper', {
       $(".grid").droppable({
         accept:".tile, .header",
         drop: function( event, ui ) {
-          //TODO: make this function properly (AUTO GRID EXPAND)
+          //BEWARE: make this function properly (AUTO GRID EXPAND)
           if(event.clientX > 1000)
           {
             $(".grid").width($(".grid").width() + (205 * 2));

@@ -186,7 +186,7 @@ Tile = {
       var tile_id = tile.find('.tile_id').val();
       if(position)
       {
-        Tile.createGridTile(tile,true); // (TODO: true causes createGridTile to also cause reloadGrid, this could be rewritten)
+        Tile.createGridTile(tile,true); // (BEWARE: true causes createGridTile to also cause reloadGrid, this could be rewritten)
       }
       else if(tile_id == 0){
         Tile.saveTile(tile);
@@ -1511,7 +1511,7 @@ populateViewTileTemplate: function(tile,tile_data) {
       });
 },
 
-//TODO make this call update tile location function that doesnt exist yet 
+//BEWARE make this call update tile location function that doesnt exist yet 
 
 moveExistingTiles: function(positions,tile) {
 
@@ -1828,7 +1828,7 @@ moveTile: async function(tile){
     var grid_coordinates =  tile.tile_position.split(',');
     if (grid_coordinates.length == 2) {
         // grid tile info
-        grid_tile.tile_id = tile.tile_id; // TODO: need to check if set in backend. if not create tile
+        grid_tile.tile_id = tile.tile_id; // BEWARE: need to check if set in backend. if not create tile
         grid_tile.grid_id = tile.tile_grid_id;
         //location info 
         location.x = grid_coordinates[0];
