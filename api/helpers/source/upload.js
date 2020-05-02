@@ -40,7 +40,7 @@ module.exports = {
 	var sourceWidth = sails.config.custom.sourceWidth;
 	var sourceDirPath = process.cwd() + sourceDir;
 	var sourceDirPathTemp = process.cwd() + sourceDirTemp;
-	console.log("helpers source upload process.cwd()",process.cwd());
+	console.log("helpers source upload   process.cwd()",process.cwd());
 	console.log("helpers source upload sourceHeight",sourceHeight);
 	console.log("helpers source upload sourceWidth",sourceWidth);
 	const sharp = require('sharp');
