@@ -70,7 +70,6 @@ module.exports = {
 
 
 
-    //TODO uncomment rezie code and add source height and width
     const sharp = require('sharp');
 	  var fs = require('fs');
 

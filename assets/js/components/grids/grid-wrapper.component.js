@@ -64,6 +64,8 @@ parasails.registerComponent('grid-wrapper', {
     // console.log("grid wrapper Tile",Tile);
 
     GridWrapper.renderGrid(grid);
+    GridWrapper.listen();
+
 
   },
 
@@ -78,14 +80,15 @@ parasails.registerComponent('grid-wrapper', {
     listen: function() {
       var GridWrapper = this;
       var grid_id = GridWrapper.grid.grid_id;
+      console.log("listen grid_id",grid_id);
       io.socket.get("/grid/listen", function gotResponse(data, jwRes) {
         console.log('Server responded with status code ' + jwRes.statusCode + ' and data: ', data);
       });
       io.socket.on(grid_id, function (update){
-          console.log(update);
+          console.log("grid update",update);
           //TODO make sure update has a grid  and pile in it
-          // GridWrapper.renderGrid(update.grid);
-          // Pile.loadPile(update.pile_tiles);
+          GridWrapper.renderGrid(update.grid);
+          Pile.loadPile(update.pile_tiles);
       });
       
 

@@ -105,7 +105,9 @@ module.exports = {
           
         }
         result = grid_tile;
-        //TODO brocdacast grid update 
+        broadcast = await sails.helpers.grid.broadcast(req,grid_tile.grid_id);
+        console.log("broadcast",broadcast);
+
         break;
       case "placeTileOnGrid":
         var grid_id = post['grid_id'];
@@ -116,13 +118,16 @@ module.exports = {
         result = new_grid;
 
         //TODO brocdacast grid update 
-        //sails.sockets.broadcast("grid", grid_id, gridUpdae, req);
+        broadcast = await sails.helpers.grid.broadcast(req,new_grid.grid_id);
+        console.log("broadcast",broadcast);
+
         break;
       case "moveGridTile":
           // var location = await sails.helpers.grid.tile.update(post);
           var location = await sails.helpers.grid.tile.move(post);
           result = location;
-        //TODO brocdacast grid update 
+        broadcast = await sails.helpers.grid.broadcast(req,location.grid_id);
+        console.log("broadcast",broadcast); 
         break;
       case "saveGrid":
         
@@ -179,7 +184,10 @@ module.exports = {
       case "removeFromGrid":
         grids_tile = await sails.helpers.grid.tile.destroy(post['grid_tile_id']) ;
         result = grids_tile;
-        //TODO brocdacast grid update 
+        broadcast = await sails.helpers.grid.broadcast(req,grids_tile.grid_id) ;
+        console.log("broadcast",broadcast);
+
+
         break;
       case "copyToNewGrid":
         var update = {};

@@ -50,12 +50,16 @@ module.exports = {
       case "saveTile": // saveTile
         post['tile']['user_id'] = user_id;
         new_tile = await sails.helpers.tile.create(post['tile'],post['tile']['tile_place_on_grid']) ;
+        broadcast = await sails.helpers.grid.broadcast(req,post['tile']['tile_place_on_grid']);
+
         result = new_tile;
         break;
       case "saveHeader":
         post['tile']['user_id'] = user_id;
         new_tile = await sails.helpers.tile.create(post['tile']) ;
         result = new_tile;
+        broadcast = await sails.helpers.grid.broadcast(req,post['tile']['place_on_grid']);
+        console.log("broadcast",broadcast); 
         break;
       case "getTile": // used to be getNOte
         tile_id = parseInt(post['tile_id']);
@@ -74,22 +78,51 @@ module.exports = {
         }
         tile = await sails.helpers.tile.update(tile_id,update) ;
         result = tile;
+        var grids = tile.grids;
+        console.log("tile",tile);
+        console.log("grids",grids);
+        for (let i = 0; i < grids.length; i++) {
+          const grid = grids[i];
+          broadcast = await sails.helpers.grid.broadcast(req,grid.grid_id);
+        }
+
         break;
       case "updateTile": // used to be StarNote
         tile = await sails.helpers.tile.update(post['tile_id'],post['update'],post['tile_place_on_grid']) ;
         result = tile;
+        var grids = tile.grids;
+        console.log("tile",tile);
+        console.log("grids",grids);
+        for (let i = 0; i < grids.length; i++) {
+          const grid = grids[i];
+          broadcast = await sails.helpers.grid.broadcast(req,grid.grid_id);
+        }
         break;
       case "deleteTile": // used to be deleteNote
         tile = await sails.helpers.tile.destroy(post['tile_id']) ;
         result = tile;	
+        var grids = tile.grids;
+        console.log("tile",tile);
+        console.log("grids",grids);
+        for (let i = 0; i < grids.length; i++) {
+          const grid = grids[i];
+          broadcast = await sails.helpers.grid.broadcast(req,grid.grid_id);
+        }
         break;
       case "deleteTileSingle": // used to be deleteNote
         tile = await sails.helpers.tile.destroy(post['tile_id']) ;
         result = tile;	
+        var grids = tile.grids;
+        console.log("tile",tile);
+        console.log("grids",grids);
+        for (let i = 0; i < grids.length; i++) {
+          const grid = grids[i];
+          broadcast = await sails.helpers.grid.broadcast(req,grid.grid_id);
+        }
         break;
       case "saveFilters": // used to be deleteNote
-        tile = await sails.helpers.tile.destroy(post['tile_id']) ;
-        result = tile;	
+        // tile = await sails.helpers.tile.destroy(post['tile_id']) ;
+        // result = tile;	
         break;
       // case "copyTileToProject":
       //   tile_info = post['tile'];
