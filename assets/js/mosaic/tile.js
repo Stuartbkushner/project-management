@@ -211,9 +211,13 @@ Tile = {
       })
         .autocomplete({
           source: function( request, response ) {
-            $.getJSON( "/action", {
+            // $.getJSON( "/action", {
+            //   term: Tile.extractLast( request.term ),
+            //   action: "getTags"
+            // }, response );
+            $.getJSON( "/getTags", {
               term: Tile.extractLast( request.term ),
-              action: "getTags"
+              // action: "getTags"
             }, response );
           },
           search: function() {
@@ -869,6 +873,7 @@ selectColor: function(tile, hex) {
         },
         success: function(data)
         {
+          grid = data;
           modal.remove();
           $(".selectedTile").removeClass("selectedTile");
             Grid.loadGrid(grid);
@@ -1325,7 +1330,8 @@ var tile_content = $('<div/>', {
         var created_by = tile.user_first[0] +"."+tile.user_last;
         var tile_date = $('<div/>', {
           class: 'tileDate',
-        }).html((new Date(tile.tile_created)).prettyDate());
+        }).html((new Date(tile.createdAt)).prettyDate());
+        // }).html((new Date(tile.tile_created)).prettyDate());
 
         tile_date.append("&nbsp;&nbsp;&nbsp;"+created_by);
 
@@ -1832,6 +1838,7 @@ moveTile: async function(tile){
         // grid tile info
         grid_tile.tile_id = tile.tile_id; // TODO: need to check if set in backend. if not create tile
         grid_tile.grid_id = tile.tile_grid_id;
+        grid_tile.project_id = User.data.settings.current_project_id;
         //location info 
         location.x = grid_coordinates[0];
         location.y = grid_coordinates[1];
@@ -1856,6 +1863,7 @@ moveTile: async function(tile){
               // 'cookie':cookie
           };
           console.log('csrf',csrf);
+          console.log('addGridTile User.data.settings.current_project_id',User.data.settings.current_project_id);
 
       return $.ajax({
         type: "POST",
@@ -1868,7 +1876,8 @@ moveTile: async function(tile){
             tile_video:tile.tile_video,
             tile_tags:tile.tile_tags,
             tile_color:tile.tile_color,
-            project_id: tile.project_id,
+            // project_id: tile.project_id,
+            project_id: User.data.settings.current_project_id,
             tile_type: tile.tile_type,
             tile_place_on_grid: tile_html.find('.tile_modal_send_to_grid').val(),
             annotations:annotations

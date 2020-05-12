@@ -1,4 +1,5 @@
 
+/*
 Tile = {
 
   settings: {},
@@ -550,10 +551,8 @@ selectColor: function(tile, hex) {
 
     var our_color_box = tile.find('.colorBox').filter(function() {
         var match = hex; // match background-color: black
-        /*
-            true = keep this element in our wrapped set
-            false = remove this element from our wrapped set
-            */
+            // true = keep this element in our wrapped set
+            // false = remove this element from our wrapped set
             return ( rgb2hex($(this).css('background-color')) == match );
 
           });
@@ -612,7 +611,7 @@ selectColor: function(tile, hex) {
 
 
   split: function( val ) {
-    return val.split( /,\s*/ );
+    // return val.split( /,\s* / );
   },
   extractLast: function( term ) {
     return Tile.split( term ).pop();
@@ -1319,7 +1318,8 @@ var tile_content = $('<div/>', {
         var created_by = tile.user_first[0] +"."+tile.user_last;
         var tile_date = $('<div/>', {
           class: 'tileDate',
-        }).html((new Date(tile.tile_created)).prettyDate());
+        }).html((new Date(tile.createdAt)).prettyDate());
+        // }).html((new Date(tile.tile_created)).prettyDate());
 
         tile_date.append("&nbsp;&nbsp;&nbsp;"+created_by);
 
@@ -2172,3 +2172,4 @@ updatePlaceOnGridSelect: function()
 
 
 };
+*/

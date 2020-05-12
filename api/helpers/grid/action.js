@@ -98,6 +98,7 @@ module.exports = {
           post['tile']['user_id'] = user_id;
           new_tile = await sails.helpers.tile.create(post['tile'],tile_place_on_grid) ;
           grid_tile['tile_id'] = new_tile.tile_id;
+          grid_tile['project_id'] = new_tile.project_id;
           grid_tile = await sails.helpers.grid.tile.create(grid_tile); 
         }
         else {
@@ -220,6 +221,7 @@ module.exports = {
           var grid_tile = await sails.helpers.grid.tile.copy(grid_tile_id,update);
           new_grid_tiles.push(grid_tile);
         }
+        console.log("moveToNewGrid new_grid_tiles",new_grid_tiles);
 
         // new_group = sails.helpers.group.copy(new_grid_tiles);
         // await sails.helpers.group.tile.destroy(grid_tile_ids);

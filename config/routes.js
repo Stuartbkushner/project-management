@@ -84,6 +84,7 @@ module.exports.routes = {
   'POST /project/saveProject': { action: 'project/save-project' },
   'POST /project/deleteProject': { action: 'project/delete-project' },
   'POST /project/get': { action: 'project/get-project' },
+  'POST /project/getProject': { action: 'project/get-project' },
   'POST /project/getGrids': { action: 'project/get-grids' },
 
   'GET /project/:projectSlug?': { action: 'project/view-project' },
@@ -143,7 +144,8 @@ module.exports.routes = {
   'POST /tile/starTile': { action: 'tile/star-tile' },
   'POST /tile/ungroup': { action: 'tile/ungroup' },
   'POST /tile/getPile': { action: 'tile/get-pile' },
-  'POST /tile/saveFilters': { action: 'tile/save-filters' },
+  'POST /tile/saveFilters': { action: 'tile/save-filter' },
+
 
 
 
@@ -178,6 +180,10 @@ module.exports.routes = {
   'GET /grid/listen': { action: 'grid/listen' , csrf: false },
 
   '/file':                           { action: 'FileController' },
+
+  //user
+  'GET /getTags/:term?': { action: 'user/get-tags' },
+
 
 
 

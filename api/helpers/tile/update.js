@@ -54,14 +54,22 @@ module.exports = {
         info.annotations = await sails.helpers.source.saveAnnotations(tile_id,info.annotations);
         console.log("info.annotations post",info.annotations);
       }
+      console.log("update tile info['tile_tags']",info['tile_tags']);
+
       if(info['tile_tags']){
         var tags = info['tile_tags'].split(",");
+        console.log("update tile tags",tags);
+
         var tag_ids = [];
         for (let i = 0; i < tags.length; i++) {
           var tag = tags[i];
           tag = await Tag.findOrCreate({tag_content:tag},{tag_content:tag});
+          console.log("update tile tag",tag);
+
           tag_ids.push(tag.id);
         }
+        console.log("update tile tag_ids",tag_ids);
+
         //info['tile_tags'] "tere,fefee,fefe"
         await Tile.replaceCollection(tile_id,"tags").members(tag_ids);
       }

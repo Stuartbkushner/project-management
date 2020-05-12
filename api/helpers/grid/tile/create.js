@@ -28,14 +28,17 @@ module.exports = {
 
   fn: async function (inputs) {
     var info = inputs.info;
+    console.log("create grid tile info",info);
     var grid_id = info['grid_id'];
     var tile_id = info['tile_id'];
+    var project_id = info['project_id'];
     await Grid.addToCollection(grid_id, 'tiles').members(tile_id);
     var grid_tile = {};
     if(info['location'])
     {
       info['location']["grid_id"] = grid_id;
       info['location']["tile_id"] = tile_id;
+      info['location']["project_id"] = project_id;
       grid_tile = await Location.create(info['location']).fetch();
       // grid_tile.location = location.location_id;
     }

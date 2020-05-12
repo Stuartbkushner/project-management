@@ -157,9 +157,17 @@ loadProject: function(project_id) {
 
 },
 
-getProject: function(project_id) {
+getProject: async function(project_id) {
+	var csrf = await CSRF.token();
+       console.log('csrf',csrf);
+       console.log('project_id',project_id); //data in json format
+       var apiRequestHeader = {
+         'X-CSRF-Token':csrf._csrf,
+           // 'cookie':cookie
+       };
 	return $.ajax({
       type: "POST",
+	  headers:apiRequestHeader,
       dataType: 'json',
       url: '/project/getProject',
       data: {

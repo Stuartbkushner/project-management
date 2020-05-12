@@ -108,14 +108,15 @@ parasails.registerComponent('pile', {
 
   },
   mounted: function(){
-    Pile = this;
+    // Pile = this;
     Pile.init();
   },
-
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
+/*
+
     init: function() {
     
       this.setFilters(Pile.settings);
@@ -338,12 +339,19 @@ parasails.registerComponent('pile', {
       return;
     },
   
-    saveFilters: function(type) {
-  
+    saveFilters: async function(type) {
+      var csrf = await CSRF.token();
+      var apiRequestHeader = {
+        'X-CSRF-Token':csrf._csrf,
+          // 'cookie':cookie
+      };
+      console.log('csrf',csrf);
         //get our currently set filters and send them off
         $.ajax({
         type: "POST",
         url: '/tile/saveFilters',
+        headers :apiRequestHeader,
+
         data: {
           filter_search: $('.searchContainer .searchTextInput').val(),
           match_title: $('.searchContainer .searchTitles').prop("checked"),
@@ -459,6 +467,7 @@ parasails.registerComponent('pile', {
         Pile.saveFilters('pile');
       }
     }
+    */
     
   }
 });
