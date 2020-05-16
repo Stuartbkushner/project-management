@@ -76,8 +76,11 @@ module.exports = {
     const req = inputs.req;
     const type = inputs.type;
     const sourceDir = inputs.saveToDir;
+    var user_id = req.me.user_id;
     var location = sourceDir;
-    var tmpLocation = '/.tmp/public/images/'+type+"/";
+    // var tmpLocation = '/.tmp/public/images/'+type+"/";
+    var tmpLocation = '/.tmp/public/images/'+user_id+"/";
+    var tempDir = '/.tmp/public/images/'+user_id+"/";
     var path = process.cwd() + tmpLocation;
     return new Promise(function(resolve, reject) {
       req.file(type).upload({ dirname : location },
@@ -101,9 +104,16 @@ module.exports = {
         console.log("upload tempLocation",tempLocation);
         console.log("upload uploadLocation",uploadLocation);
         if (!fs.existsSync(location)){
+            console.log("upload making location",location);
             fs.mkdirSync(location);
         }
+        
+        if (!fs.existsSync(tempDir)){
+            console.log("upload making tempDir",tempDir);
+            fs.mkdirSync(tempDir);
+        }
         if (!fs.existsSync(tempLocation)){
+            console.log("upload making tempLocation",tempLocation);
             fs.mkdirSync(tempLocation);
         }
         console.log("upload location",location);
