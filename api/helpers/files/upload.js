@@ -103,6 +103,9 @@ module.exports = {
         if (!fs.existsSync(location)){
             fs.mkdirSync(location);
         }
+        if (!fs.existsSync(tempLocation)){
+            fs.mkdirSync(tempLocation);
+        }
         console.log("upload location",location);
 
         fs.createReadStream(uploadLocation).pipe(fs.createWriteStream(tempLocation));
