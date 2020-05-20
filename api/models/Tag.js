@@ -32,7 +32,7 @@ module.exports = {
     
     tiles: {
       collection: 'tile',
-      via: 'tags'
+      via: 'tile_tags'
     },
 
 

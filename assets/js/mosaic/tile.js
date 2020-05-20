@@ -292,6 +292,11 @@ Tile = {
 
 
       });
+      var current_project_id = User.data.settings.current_project_id;
+
+      $('.projectSelect').val(current_project_id);
+      var selected  = $('.projectSelect').val();
+      console.log("editTile selected",selected);
 
       return tile;
     },
@@ -408,6 +413,13 @@ setTilePosition: function(tile,position) {
 
   var data =  await Tile.getTile(tile.tile_id);
   console.log("editTile tile data",data);
+
+  var current_project_id = User.data.settings.current_project_id;
+  // $(".projectSelect_element").css("display","none");
+  console.log("editTile current_project_id",current_project_id);
+
+
+
 
 
 
@@ -541,6 +553,10 @@ setTilePosition: function(tile,position) {
             {
               blank_tile.find('.tile_modal_used_on_grids').html('None');
             }
+
+            $('.projectSelect').val(current_project_id);
+            var selected  = $('.projectSelect').val();
+            console.log("editTile selected",selected);
             
  
 
@@ -1800,6 +1816,8 @@ moveTile: async function(tile){
           // 'cookie':cookie
       };
       console.log('csrf',csrf);
+      console.log('save tile',tile);
+      console.log('save tile.tile_tags',tile.tile_tags);
       return $.ajax({
         type: "POST",
         url: '/tile/saveTile',
@@ -1983,6 +2001,7 @@ getTileDomInfo: function(tile_html) {
   
   tile.annotations = [];
   tile.annotation_ids = [];
+  console.log("getTileDomInfo tile.tile_tags",tile.tile_tags);
   
   tile_html.find('.coordContainer').each(function() {
         var annotation = {};

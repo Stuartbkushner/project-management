@@ -61,7 +61,11 @@ module.exports = {
     tiles: {
         collection: 'tile',
         via: 'groups'
-      },
+    },
+    locations: {
+        collection: 'location',
+        via: 'groups'
+    },
 
 
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗

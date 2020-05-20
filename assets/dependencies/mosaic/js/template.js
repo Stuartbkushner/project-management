@@ -237,9 +237,10 @@ Template = {
 
 
     rendered_header.find(".save").on("click", function() {
-      rendered_header.find(".template_header_title").val(rendered_header.find(".template_header_edit_container textarea").val());
+      var title = rendered_header.find(".template_header_edit_container textarea").val();
+      rendered_header.find(".template_header_title").val(title);
       rendered_header.find(".template_header_edit_container").hide();
-      rendered_header.find(".template_header_title_container").html(rendered_header.find(".template_header_edit_container textarea").val());
+      rendered_header.find(".template_header_title_container").html(title);
       Template.updateHeader(rendered_header);
     });
   },

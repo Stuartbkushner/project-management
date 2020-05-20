@@ -93,8 +93,8 @@ parasails.registerComponent('tile-modals', {
               <input type="text" class="tile_modal_tags" placeholder="Tags">
               <label class="usedOnGridsLabel">Used on grids:</label>
               <div class="tile_modal_used_on_grids"></div>
-              <label class="">Project</label>
-              <select name="project" class="tile_modal_project_id projectSelect">
+              <label class="projectSelect_element">Project</label>
+              <select name="project" class="tile_modal_project_id projectSelect projectSelect_element">
                   <option v-for="project in projects" :value="project.project_id"> {{project.project_name}}</option>
               </select>
 

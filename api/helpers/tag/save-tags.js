@@ -42,6 +42,7 @@ module.exports = {
     if(typeof tags == "string"){
       tags = tags.split(",");
     }
+    console.log("tags",tags);
     for (let i = 0; i < tags.length; i++) {
       var tag_content = tags[i];
       tag_content = tag_content.trim();
@@ -53,6 +54,8 @@ module.exports = {
 
       
     }
+    console.log("tagIds",tagIds);
+
    return tagIds;
 
 

@@ -22,6 +22,14 @@ select > option {
 	padding:5px;
 }
 /* global */
+	.tab_project_dashboard{
+		display:none !important;
+	}
+	.popover{
+		z-index: 9000000000000 !important;
+		opacity: 1 !important;
+		background: #000 !important;
+	}
 	#username {
 		font-size: 12px;
 		padding-left: 20px;

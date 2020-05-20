@@ -53,6 +53,18 @@ module.exports = {
     }else{
       tile.tile_source_anno = [];
     }
+    if(tile.tile_tags){
+      var tags = [];
+      for (let i = 0; i < tile.tile_tags.length; i++) {
+        const tag = tile.tile_tags[i];
+        tags.push(tag.tag_content);
+      }
+      tags = tags.join();
+      tile.tile_tags = tags;
+      console.log("tile.tile_tags",tile.tile_tags);
+    }else{
+      tile.tile_source_anno = [];
+    }
     
     return tile;
   }

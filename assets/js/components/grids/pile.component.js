@@ -448,7 +448,7 @@ parasails.registerComponent('pile', {
   
       //datepickers
       $('.searchContainer .searchFromInput').datepicker();
-      $('.searchContainer .searchToIpnput').datepicker();
+      $('.searchContainer .searchToInput').datepicker();
       $('.searchContainer .searchFromInput').on("change", function() {
         Pile.reloadSearch();
       });

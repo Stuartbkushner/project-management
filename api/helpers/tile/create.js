@@ -36,8 +36,13 @@ module.exports = {
     var info = inputs.info;
     var place_on_grid = inputs.place_on_grid;
     var user_id =  info.user_id;
-    if(info.tags){
-      info.tags = await sails.helpers.tag.saveTags(user_id,info.tags);
+    console.log("tile create info",info);
+    console.log("tile create info.tile_tags",info.tile_tags);
+
+    if(info.tile_tags){
+      info.tile_tags = await sails.helpers.tag.saveTags(user_id,info.tile_tags);
+    }else{
+      delete info.tile_tags;
     }
     
     if(info['tile_title']){

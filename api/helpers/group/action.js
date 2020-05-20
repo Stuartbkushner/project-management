@@ -58,11 +58,38 @@ module.exports = {
         result = updated_group;
         break;
       case "ungroup":
-        // grid_tile_ids =  post['grid_tile_ids']; must update on ront end
-        tile_ids =  post['tile_ids'];
-        tile_group_id =  post['tile_group_id'];
-        deleted_group_tiles = await Tile_Group.removeFromCollection(tile_group_id).members(tile_ids);
-        result = deleted_group_tiles;
+        var grid_tile_ids =  post['grid_tile_ids']; //must update on ront end
+        // tile_ids =  post['tile_ids'];
+        // tile_group_id =  post['tile_group_id'];
+        var locations = await Location.find(grid_tile_ids).populate("groups");
+        var tile_group_ids = [];
+        var deleted_group_tiles_list = [];
+        console.log("ungroup grid_tile_ids",grid_tile_ids);
+        console.log("ungroup locations",locations);
+        for (let i = 0; i < locations.length; i++) {
+          const location = locations[i];
+          const groups = location.groups;
+          const location_id = location.location_id;
+          console.log("ungroup location",location);
+          console.log("ungroup groups",groups);
+          console.log("ungroup location_id",location_id);
+
+          for (let i = 0; i < groups.length; i++) {
+            const group = groups[i];
+            var tile_group_id = group.tile_group_id;
+            console.log("ungroup tile_group_id",tile_group_id);
+
+            tile_group_ids.push(tile_group_id);
+            deleted_group_tiles = await Tile_Group.removeFromCollection(tile_group_id,"locations").members(location_id);
+            console.log("ungroup deleted_group_tiles",deleted_group_tiles);
+
+            deleted_group_tiles_list.push(deleted_group_tiles);
+          }
+          
+        }
+        console.log("ungroup deleted_group_tiles_list",deleted_group_tiles_list);
+
+        result = deleted_group_tiles_list;
         break;
       case "add2Group":
         tile_group_id =  post['tile_group_id'];

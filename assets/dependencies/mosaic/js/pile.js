@@ -218,10 +218,13 @@ Pile = {
 
     $(".pile .tile").remove();
     $.each(tiles, function() {
-      this.groups = [];
-      var rendered_tile = Tile.renderTile(this);
-      Tile.makeDraggable(rendered_tile);
-      $(".pile").append(rendered_tile);
+      if(this.tile_type !==  "header"){
+        this.groups = [];
+        var rendered_tile = Tile.renderTile(this);
+        Tile.makeDraggable(rendered_tile);
+        $(".pile").append(rendered_tile);
+      }
+      
     });
 
   },
@@ -346,7 +349,7 @@ Pile = {
 
     //datepickers
     $('.searchContainer .searchFromInput').datepicker();
-    $('.searchContainer .searchToIpnput').datepicker();
+    $('.searchContainer .searchToInput').datepicker();
     $('.searchContainer .searchFromInput').on("change", function() {
       Pile.reloadSearch();
     });

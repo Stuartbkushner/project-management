@@ -41,7 +41,7 @@ module.exports = {
     var tile_id = inputs.tile_id;
     var info = inputs.info;
     var place_on_grid = inputs.place_on_grid;
-    var tile = await Tile.updateOne({tile_id:tile_id}).set(info);
+    var tile = await Tile.findOne({tile_id:tile_id});
     if (tile.tile_type !== 'header') {
       // clear annotions
       // save annoations
@@ -66,17 +66,20 @@ module.exports = {
           tag = await Tag.findOrCreate({tag_content:tag},{tag_content:tag});
           console.log("update tile tag",tag);
 
-          tag_ids.push(tag.id);
+          tag_ids.push(tag.tag_id);
         }
         console.log("update tile tag_ids",tag_ids);
 
         //info['tile_tags'] "tere,fefee,fefe"
-        await Tile.replaceCollection(tile_id,"tags").members(tag_ids);
+        await Tile.replaceCollection(tile_id,"tile_tags").members(tag_ids);
+        info['tile_tags'] = tag_ids;
       }
       
     }
+    var tile = await Tile.updateOne({tile_id:tile_id}).set(info);
+
     var grid_tiles = await sails.helpers.tile.place(tile.tile_id,place_on_grid);
-    tile = await Tile.findOne({tile_id:tile_id}).populate("tags").populate("annotations").populate("grids").populate("groups");
+    tile = await Tile.findOne({tile_id:tile_id}).populate("tile_tags").populate("annotations").populate("grids").populate("groups");
 
     return tile;
     /*

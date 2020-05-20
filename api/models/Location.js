@@ -48,6 +48,10 @@ module.exports = {
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
+    groups: {
+        collection: 'tile_group',
+        via: 'locations'
+    },
     
 
 

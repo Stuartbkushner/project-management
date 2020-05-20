@@ -43,6 +43,8 @@ module.exports = {
       // grid_tile.location = location.location_id;
     }
     grid_tile.grid_tile_id = grid_tile.location_id;
+    await Grid.removeFromCollection(grid_id, 'floating_tiles').members(tile_id);
+
     return grid_tile;
 
     /*

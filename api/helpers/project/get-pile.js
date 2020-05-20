@@ -50,7 +50,8 @@ module.exports = {
     var tile_ids = [];
     for (let i = 0; i < tiles.length; i++) {
       const tile = tiles[i];
-      tile_ids.push(tile.tile_id);
+      if(tile.tile_type !== "header")
+        tile_ids.push(tile.tile_id);
       
     }
     tiles = await sails.helpers.tile.get(tile_ids);

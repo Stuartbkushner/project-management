@@ -57,6 +57,8 @@ module.exports = {
           // .populate("tile_groups")
           // .populate("sources")
           .populate('locations');
+        var locations = await Location.find({grid_id:grid_id})
+          .populate("groups");
     }else{
       var grid = await Grid.findOne({slug:grid_id})
           .populate("user_id")
@@ -67,6 +69,8 @@ module.exports = {
           // .populate("tile_groups")
           // .populate("sources")
           .populate('locations');
+      var locations = await Location.find({grid_id:grid.grid_id})
+          .populate("groups");
       
     }
     console.log("get grid grid",grid);
@@ -93,8 +97,8 @@ module.exports = {
     var tiles = await Tile.find({tile_id:tileIds})
           .populate("user_id")
           // .populate("team_id")
-          .populate("tags")
-          .populate("groups");
+          .populate("tile_tags");
+          // .populate("groups");
     var tiles_dict = {};
     var project_tiles = [];
     var floating_tiles = [];
@@ -116,8 +120,8 @@ module.exports = {
     var _tiles = [];
     console.log("get grid tiles_dict",tiles_dict);
 
-    for (let i = 0; i < grid.locations.length; i++) {
-      const location = grid.locations[i];
+    for (let i = 0; i < locations.length; i++) {
+      const location = locations[i];
       const tile_id = location.tile_id;
       console.log("get grid location",location);
       console.log("get grid tile_id",tile_id);
@@ -132,6 +136,7 @@ module.exports = {
       tile.x = location.x;
       tile.y = location.y;
       tile.width = location.width;
+      tile.groups = location.groups;
       tiles_dict[tile.tile_id] = tile;
       
       tile = Object.assign(location,tile);

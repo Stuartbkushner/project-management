@@ -70,7 +70,7 @@ module.exports = {
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
 
-    tags: {
+    tile_tags: {
         collection: 'tag',
         via: 'tiles'
     },

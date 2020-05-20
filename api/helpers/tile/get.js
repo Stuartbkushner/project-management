@@ -34,7 +34,7 @@ module.exports = {
       var tiles = await Tile.find({tile_id:tile_ids})
             .populate("user_id")
             // .populate("team_id")
-            .populate("tags")
+            .populate("tile_tags")
             .populate("grids")
             .populate("annotations")
             .populate("groups");
@@ -44,7 +44,7 @@ module.exports = {
       var tile = await Tile.findOne({tile_id:tile_ids})
             .populate("user_id")
             // .populate("team_id")
-            .populate("tags")
+            .populate("tile_tags")
             .populate("grids")
             .populate("annotations")
             .populate("groups");
